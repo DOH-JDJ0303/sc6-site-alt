@@ -1,0 +1,64 @@
+title: Genomic Analysis Protocols
+description: >-
+  Step-by-step protocols for population-level genomic analysis, built from
+  shared operations and swappable methods.
+baseurl: ""   # e.g. "/protocol-hub" when hosted at username.github.io/protocol-hub
+url: ""
+
+markdown: kramdown
+
+# PGCoE Network branding. The top navigation bar links back to the network site;
+# edit or remove entries here. Set `active` on an entry to underline it.
+network:
+  name: PGCoE Network
+  url: https://pgcoe.github.io/
+  graphic: /assets/img/pgcoe-network-graphic-element.png
+  footer: Pathogen Genomics Centers of Excellence
+  links:
+    - title: Home
+      url: https://pgcoe.github.io/
+    - title: Sequencing Protocols
+      url: https://pgcoe.github.io/protocols.html
+    - title: Bioinformatics Workflows
+      url: https://pgcoe.github.io/workflows.html
+    - title: Response and Readiness
+      url: https://pgcoe.github.io/response.html
+    - title: Data and Visualization
+      url: https://pgcoe.github.io/dataviz.html
+    - title: Education
+      url: https://pgcoe.github.io/education.html
+
+# Four independent collections. Cross-links are computed from front matter,
+# so each file only needs to describe itself.
+collections:
+  questions:
+    output: true
+    permalink: /questions/:name/
+  protocols:
+    output: true
+    permalink: /protocols/:name/
+  operations:
+    output: true
+    permalink: /operations/:name/
+  methods:
+    output: true
+    permalink: /methods/:name/
+
+defaults:
+  - scope: { path: "", type: questions }
+    values: { layout: question }
+  - scope: { path: "", type: protocols }
+    values: { layout: protocol }
+  - scope: { path: "", type: operations }
+    values: { layout: operation }
+  - scope: { path: "", type: methods }
+    values: { layout: method }
+  - scope: { path: "" }
+    values: { layout: default }
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - tools

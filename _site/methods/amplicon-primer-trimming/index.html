@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Amplicon primer trimming · Genomic Analysis Protocols · PGCoE Network</title>
+  <meta name="description" content="Remove primer sequence from amplicon-based reads using a primer scheme.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  
+
+  
+  <nav class="network-nav" aria-label="PGCoE Network">
+    
+    <a href="https://pgcoe.github.io/">Home</a>
+    
+    <a href="https://pgcoe.github.io/protocols.html">Sequencing Protocols</a>
+    
+    <a href="https://pgcoe.github.io/workflows.html">Bioinformatics Workflows</a>
+    
+    <a href="https://pgcoe.github.io/response.html">Response and Readiness</a>
+    
+    <a href="https://pgcoe.github.io/dataviz.html">Data and Visualization</a>
+    
+    <a href="https://pgcoe.github.io/education.html">Education</a>
+    
+  </nav>
+  
+
+  <header class="hub-bar">
+    <div class="wrap hub-bar-inner">
+      <a class="brand" href="/">Genomic Analysis Protocols</a>
+      <nav class="site-nav" aria-label="Protocol hub">
+        <a class="nav-question" href="/questions/">Questions</a>
+        <a class="nav-protocol" href="/protocols/">Protocols</a>
+        <a class="nav-operation" href="/operations/">Operations</a>
+        <a class="nav-method is-active" href="/methods/">Methods</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <section class="page-head">
+    <div class="wrap page-head-inner">
+      <div class="page-head-text">
+        
+          
+          <p class="eyebrow eyebrow-method"><a href="/methods/">Method</a><span class="sep">/</span><a class="link-operation" href="/operations/read-preprocessing/">Read preprocessing</a></p>
+        
+        <h1>Amplicon primer trimming</h1>
+        
+        
+        <p class="lede">Remove primer sequence from amplicon-based reads using a primer scheme.</p>
+      </div>
+      
+      <div class="page-head-graphic">
+        <a href="https://pgcoe.github.io/"><img src="/assets/img/pgcoe-network-graphic-element.png" alt="PGCoE Network"></a>
+      </div>
+      
+    </div>
+  </section>
+
+  <main class="content-band">
+    <div class="wrap">
+      
+<article class="entry entry-method">
+
+  
+  <h2 class="section-title section-title-first">When to use this method</h2>
+  
+<div class="guidance">
+  
+  <div class="guidance-col guidance-use">
+    <p class="guidance-label">Use when</p>
+    <ul><li>The library was made with tiled amplicons, such as ARTIC-style schemes.</li><li>You have the BED file for the exact primer scheme and version used.</li></ul>
+  </div>
+  
+  
+  <div class="guidance-col guidance-avoid">
+    <p class="guidance-label">Skip this method when</p>
+    <ul>
+      
+      
+        <li>The library is shotgun, so there are no primers to remove.</li>
+      
+      
+      
+        <li>The primer scheme or its version is unknown, since trimming with the wrong scheme leaves primer sequence behind.</li>
+      
+      
+    </ul>
+  </div>
+  
+  
+  <div class="guidance-col guidance-combine">
+    <p class="guidance-label">Combine with</p>
+    <ul>
+      
+      
+      <li><a href="/methods/quality-and-adapter-trimming/">Quality and adapter trimming</a>: Apply it first to remove adapters and low-quality bases, which primer trimming does not fully address.</li>
+      
+    </ul>
+  </div>
+  
+</div>
+
+
+  
+
+  <div class="meta-grid">
+    <div class="meta-card">
+      <p class="label">Operation</p>
+      
+      <a class="pill pill-operation" href="/operations/read-preprocessing/">Read preprocessing</a>
+      
+    </div>
+    
+    <div class="meta-card">
+      <p class="label">Implementations</p>
+      <ul class="impl-list">
+        
+        <li><a href="https://github.com/andersen-lab/ivar">iVar trim</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <div class="meta-card">
+      <p class="label">Needs</p>
+      <p class="dtype-line"><span class="dtype">Raw reads <em>or</em> Clean reads</span>, <span class="dtype">Primer scheme</span>, <span class="dtype">Reference genome</span>
+</p>
+    </div>
+    
+    
+    <div class="meta-card">
+      <p class="label">Produces</p>
+      <p class="dtype-line"><span class="dtype">Clean reads</span>
+</p>
+    </div>
+    
+  </div>
+
+  
+
+  <div class="prose"><p>Primer-binding sites reflect the primer sequence, not the sample, so primer sequence must be removed before calling variants. Reads are mapped to the reference, and primer positions from the scheme are soft-clipped.</p>
+</div>
+
+  
+  
+  
+  
+
+  <h2 class="section-title">Used by protocols</h2>
+  
+    
+    <p class="label">Specified by</p>
+    <ul class="method-list"><li><a class="pill pill-protocol" href="/protocols/viral-phylogenomic-surveillance/">Viral phylogenomic surveillance</a><span class="pill-note">Step 1</span></li></ul>
+    
+    
+  
+
+  
+  
+  
+  <h2 class="section-title">Other methods for this operation</h2>
+  <ul class="method-list">
+    
+    <li><a class="pill pill-method" href="/methods/quality-and-adapter-trimming/">Quality and adapter trimming</a><span class="pill-note">Trim adapter sequence and low-quality bases from reads.</span></li>
+    
+  </ul>
+  <a class="find-link" href="/operations/read-preprocessing/#choosing">Compare all methods for read preprocessing →</a>
+  
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 <a href="https://pgcoe.github.io/">Pathogen Genomics Centers of Excellence</a></p>
+    <p class="footer-note">Protocols are built from <strong>operations</strong> (what is done) and <strong>methods</strong> (how it is done).</p>
+  </footer>
+  <script src="/assets/js/filter.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 830 262" role="img" aria-labelledby="de-novo-assembly-title de-novo-assembly-desc" class="diagram-svg">
+  <title id="de-novo-assembly-title">De novo assembly: overlapping reads are joined into longer contigs without using a reference genome.</title>
+  <desc id="de-novo-assembly-desc">Short reads with no reference are compared to find shared sequence at their ends. Overlapping reads are joined into a longer contig. An assembly usually yields several contigs, which must be ordered, oriented, and trimmed before alignment.</desc>
+  <text x="20" y="26" font-family="Raleway, Lato, Arial, sans-serif" font-size="14" font-weight="700" fill="#055A5E" text-anchor="start">1. Reads, no reference</text>
+  <rect x="31" y="50" width="138" height="16" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="40.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="60.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="80.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="100.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="120.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="140.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="160.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <rect x="63" y="96" width="138" height="16" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="72.0" y="107" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="92.0" y="107" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="112.0" y="107" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="132.0" y="107" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="152.0" y="107" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="172.0" y="107" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="192.0" y="107" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <rect x="19" y="142" width="138" height="16" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="28.0" y="153" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="48.0" y="153" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="68.0" y="153" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="88.0" y="153" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="108.0" y="153" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="128.0" y="153" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="148.0" y="153" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <rect x="51" y="188" width="138" height="16" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="60.0" y="199" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="80.0" y="199" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="100.0" y="199" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="120.0" y="199" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="140.0" y="199" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="160.0" y="199" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="180.0" y="199" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <line x1="214" y1="132" x2="266" y2="132" stroke="#027B84" stroke-width="2"/>
+  <polygon points="274,132 264,127 264,137" fill="#027B84"/>
+  <text x="244.0" y="108" font-family="Raleway, Lato, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#027B84" text-anchor="middle">find</text>
+  <text x="244.0" y="122" font-family="Raleway, Lato, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#027B84" text-anchor="middle">overlaps</text>
+  <text x="292" y="26" font-family="Raleway, Lato, Arial, sans-serif" font-size="14" font-weight="700" fill="#055A5E" text-anchor="start">2. Overlap reads</text>
+  <rect x="293" y="50" width="138" height="16" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="302.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="322.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="342.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="362.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="382.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="402.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="422.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <rect x="353" y="76" width="138" height="16" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="362.0" y="87" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="382.0" y="87" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="402.0" y="87" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="422.0" y="87" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="442.0" y="87" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="462.0" y="87" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="482.0" y="87" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <rect x="352" y="51" width="80" height="42" rx="3" fill="none" stroke="#95560A" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <rect x="413" y="102" width="138" height="16" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="422.0" y="113" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="442.0" y="113" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="462.0" y="113" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="482.0" y="113" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="502.0" y="113" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="522.0" y="113" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="542.0" y="113" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <rect x="412" y="77" width="80" height="42" rx="3" fill="none" stroke="#95560A" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <rect x="453" y="128" width="138" height="16" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="462.0" y="139" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="482.0" y="139" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="502.0" y="139" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="522.0" y="139" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="542.0" y="139" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="562.0" y="139" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="582.0" y="139" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <rect x="452" y="103" width="100" height="42" rx="3" fill="none" stroke="#95560A" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <text x="282" y="183" font-family="Raleway, Lato, Arial, sans-serif" font-size="12" font-weight="700" fill="#95560A" text-anchor="end">Contig</text>
+  <rect x="293" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="302.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">A</text>
+  <rect x="313" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="322.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">C</text>
+  <rect x="333" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="342.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">G</text>
+  <rect x="353" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="362.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">T</text>
+  <rect x="373" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="382.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">T</text>
+  <rect x="393" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="402.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">A</text>
+  <rect x="413" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="422.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">G</text>
+  <rect x="433" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="442.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">C</text>
+  <rect x="453" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="462.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">C</text>
+  <rect x="473" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="482.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">A</text>
+  <rect x="493" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="502.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">T</text>
+  <rect x="513" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="522.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">G</text>
+  <rect x="533" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="542.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">A</text>
+  <rect x="553" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="562.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">C</text>
+  <rect x="573" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="582.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">T</text>
+  <line x1="602" y1="132" x2="648" y2="132" stroke="#027B84" stroke-width="2"/>
+  <polygon points="656,132 646,127 646,137" fill="#027B84"/>
+  <text x="629.0" y="122" font-family="Raleway, Lato, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#027B84" text-anchor="middle">curate</text>
+  <text x="668" y="26" font-family="Raleway, Lato, Arial, sans-serif" font-size="14" font-weight="700" fill="#055A5E" text-anchor="start">3. Contigs</text>
+  <rect x="668" y="52" width="92" height="16" rx="4" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="768" y="64" font-family="Lato, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#4B5D5F" text-anchor="start">contig 1</text>
+  <rect x="668" y="86" width="40" height="16" rx="4" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="716" y="98" font-family="Lato, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#4B5D5F" text-anchor="start">contig 2</text>
+  <rect x="668" y="120" width="64" height="16" rx="4" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="740" y="132" font-family="Lato, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#4B5D5F" text-anchor="start">contig 3</text>
+  <text x="668" y="172" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="700" fill="#1B1B1B" text-anchor="start">Order, orient, and</text>
+  <text x="668" y="188" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="700" fill="#1B1B1B" text-anchor="start">trim contigs before</text>
+  <text x="668" y="204" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="700" fill="#1B1B1B" text-anchor="start">alignment</text>
+</svg>

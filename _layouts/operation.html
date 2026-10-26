@@ -1,0 +1,70 @@
+---
+layout: default
+---
+{% assign op_methods = site.methods | where: "operation", page.slug | sort: "title" %}
+<article class="entry entry-operation">
+
+  {% if page.inputs or page.outputs %}
+  <div class="meta-grid">
+    {% if page.inputs %}
+    <div class="meta-card">
+      <p class="label">Inputs</p>
+      <ul class="io-list">{% for i in page.inputs %}<li>{{ i }}</li>{% endfor %}</ul>
+    </div>
+    {% endif %}
+    {% if page.outputs %}
+    <div class="meta-card">
+      <p class="label">Outputs</p>
+      <ul class="io-list">{% for o in page.outputs %}<li>{{ o }}</li>{% endfor %}</ul>
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% if content != "" %}<div class="prose">{{ content }}</div>{% endif %}
+
+  {% if page.selection == "multiple" %}
+  <h2 class="section-title" id="choosing">Choosing methods <span class="count">{{ op_methods.size }}</span></h2>
+  <p class="section-help">These methods address different problems and can be combined. Apply each one whose conditions match your data.</p>
+  {% else %}
+  <h2 class="section-title" id="choosing">{% if op_methods.size > 1 %}Choosing a method{% else %}Methods{% endif %} <span class="count">{{ op_methods.size }}</span></h2>
+  {% if op_methods.size > 1 %}<p class="section-help">Each method below says when to use it and when another method fits better.</p>{% endif %}
+  {% endif %}
+  <ul class="card-list">
+    {% for m in op_methods %}
+    <li class="card card-method" id="method-{{ m.slug }}">
+      <a class="card-title" href="{{ m.url | relative_url }}">{{ m.title }}</a>
+      {% if m.summary %}<p>{{ m.summary }}</p>{% endif %}
+      {% include method-guidance.html method=m %}
+      {% if m.implementations %}
+      <p class="impl-inline">{% for impl in m.implementations %}{{ impl.name }}{% unless forloop.last %} · {% endunless %}{% endfor %}</p>
+      {% endif %}
+    </li>
+    {% else %}
+    <li class="muted">No methods documented for this operation yet.</li>
+    {% endfor %}
+  </ul>
+
+  <h2 class="section-title">Protocols using this operation</h2>
+  {% assign used = false %}
+  <ul class="method-list">
+    {% for p in site.protocols %}
+      {% for step in p.steps %}
+        {% if step.operation == page.slug %}
+          {% assign used = true %}
+          <li>
+            <a class="pill pill-protocol" href="{{ p.url | relative_url }}">{{ p.title }}</a>
+            <span class="pill-note">Step {{ forloop.index }}{% if step.optional %} (optional){% endif %} ·
+            {% assign n_methods = step.methods | size %}{% if n_methods > 0 %}
+              {% for m_slug in step.methods %}{% assign m = site.methods | where: "slug", m_slug | first %}{% if m %}<a href="{{ m.url | relative_url }}">{{ m.title }}</a>{% else %}<code>{{ m_slug }}</code>{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}
+            {% else %}
+              any method
+            {% endif %}
+            </span>
+          </li>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  </ul>
+  {% unless used %}<p class="muted">No protocols use this operation yet.</p>{% endunless %}
+</article>

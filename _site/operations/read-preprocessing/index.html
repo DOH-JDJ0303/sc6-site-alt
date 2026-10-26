@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Read preprocessing · Genomic Analysis Protocols · PGCoE Network</title>
+  <meta name="description" content="Remove adapters, primers, and low-quality sequence so downstream steps work from clean reads.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  
+
+  
+  <nav class="network-nav" aria-label="PGCoE Network">
+    
+    <a href="https://pgcoe.github.io/">Home</a>
+    
+    <a href="https://pgcoe.github.io/protocols.html">Sequencing Protocols</a>
+    
+    <a href="https://pgcoe.github.io/workflows.html">Bioinformatics Workflows</a>
+    
+    <a href="https://pgcoe.github.io/response.html">Response and Readiness</a>
+    
+    <a href="https://pgcoe.github.io/dataviz.html">Data and Visualization</a>
+    
+    <a href="https://pgcoe.github.io/education.html">Education</a>
+    
+  </nav>
+  
+
+  <header class="hub-bar">
+    <div class="wrap hub-bar-inner">
+      <a class="brand" href="/">Genomic Analysis Protocols</a>
+      <nav class="site-nav" aria-label="Protocol hub">
+        <a class="nav-question" href="/questions/">Questions</a>
+        <a class="nav-protocol" href="/protocols/">Protocols</a>
+        <a class="nav-operation is-active" href="/operations/">Operations</a>
+        <a class="nav-method" href="/methods/">Methods</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <section class="page-head">
+    <div class="wrap page-head-inner">
+      <div class="page-head-text">
+        
+          <p class="eyebrow eyebrow-operation"><a href="/operations/">Operation</a></p>
+        
+        <h1>Read preprocessing</h1>
+        
+        
+        <p class="lede">Remove adapters, primers, and low-quality sequence so downstream steps work from clean reads.</p>
+      </div>
+      
+      <div class="page-head-graphic">
+        <a href="https://pgcoe.github.io/"><img src="/assets/img/pgcoe-network-graphic-element.png" alt="PGCoE Network"></a>
+      </div>
+      
+    </div>
+  </section>
+
+  <main class="content-band">
+    <div class="wrap">
+      
+<article class="entry entry-operation">
+
+  
+  <div class="meta-grid">
+    
+    <div class="meta-card">
+      <p class="label">Inputs</p>
+      <ul class="io-list"><li>Raw sequencing reads (FASTQ)</li></ul>
+    </div>
+    
+    
+    <div class="meta-card">
+      <p class="label">Outputs</p>
+      <ul class="io-list"><li>Cleaned reads (FASTQ)</li><li>QC report</li></ul>
+    </div>
+    
+  </div>
+  
+
+  <div class="prose"><p>Preprocessing removes technical artifacts introduced during library preparation and sequencing, so that later steps measure differences between samples rather than differences between library preparations. Different artifacts need different treatments, so more than one method may apply to the same reads.</p>
+</div>
+
+  
+  <h2 class="section-title" id="choosing">Choosing methods <span class="count">2</span></h2>
+  <p class="section-help">These methods address different problems and can be combined. Apply each one whose conditions match your data.</p>
+  
+  <ul class="card-list">
+    
+    <li class="card card-method" id="method-amplicon-primer-trimming">
+      <a class="card-title" href="/methods/amplicon-primer-trimming/">Amplicon primer trimming</a>
+      <p>Remove primer sequence from amplicon-based reads using a primer scheme.</p>
+      
+<div class="guidance">
+  
+  <div class="guidance-col guidance-use">
+    <p class="guidance-label">Use when</p>
+    <ul><li>The library was made with tiled amplicons, such as ARTIC-style schemes.</li><li>You have the BED file for the exact primer scheme and version used.</li></ul>
+  </div>
+  
+  
+  <div class="guidance-col guidance-avoid">
+    <p class="guidance-label">Skip this method when</p>
+    <ul>
+      
+      
+        <li>The library is shotgun, so there are no primers to remove.</li>
+      
+      
+      
+        <li>The primer scheme or its version is unknown, since trimming with the wrong scheme leaves primer sequence behind.</li>
+      
+      
+    </ul>
+  </div>
+  
+  
+  <div class="guidance-col guidance-combine">
+    <p class="guidance-label">Combine with</p>
+    <ul>
+      
+      
+      <li><a href="/methods/quality-and-adapter-trimming/">Quality and adapter trimming</a>: Apply it first to remove adapters and low-quality bases, which primer trimming does not fully address.</li>
+      
+    </ul>
+  </div>
+  
+</div>
+
+
+      
+      <p class="impl-inline">iVar trim</p>
+      
+    </li>
+    
+    <li class="card card-method" id="method-quality-and-adapter-trimming">
+      <a class="card-title" href="/methods/quality-and-adapter-trimming/">Quality and adapter trimming</a>
+      <p>Trim adapter sequence and low-quality bases from reads.</p>
+      
+<div class="guidance">
+  
+  <div class="guidance-col guidance-use">
+    <p class="guidance-label">Use when</p>
+    <ul><li>Reads may contain adapter sequence, which is true of almost all Illumina libraries.</li><li>Base quality drops toward read ends or varies between runs.</li><li>The library is shotgun (whole-genome or metagenomic) or amplicon-based. Apply it in both cases.</li></ul>
+  </div>
+  
+  
+  
+  <div class="guidance-col guidance-combine">
+    <p class="guidance-label">Combine with</p>
+    <ul>
+      
+      
+      <li><a href="/methods/amplicon-primer-trimming/">Amplicon primer trimming</a>: Required in addition for amplicon libraries, because quality trimming does not remove primer sequence.</li>
+      
+    </ul>
+  </div>
+  
+</div>
+
+
+      
+      <p class="impl-inline">fastp · Trimmomatic</p>
+      
+    </li>
+    
+  </ul>
+
+  <h2 class="section-title">Protocols using this operation</h2>
+  
+  <ul class="method-list">
+    
+      
+        
+          
+          <li>
+            <a class="pill pill-protocol" href="/protocols/bacterial-phylogenomic-surveillance/">Bacterial phylogenomic surveillance</a>
+            <span class="pill-note">Step 1 ·
+            
+              <a href="/methods/quality-and-adapter-trimming/">Quality and adapter trimming</a>
+            
+            </span>
+          </li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+      
+        
+          
+          <li>
+            <a class="pill pill-protocol" href="/protocols/fungal-phylogenomic-surveillance/">Fungal phylogenomic surveillance</a>
+            <span class="pill-note">Step 1 ·
+            
+              <a href="/methods/quality-and-adapter-trimming/">Quality and adapter trimming</a>
+            
+            </span>
+          </li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+      
+        
+          
+          <li>
+            <a class="pill pill-protocol" href="/protocols/viral-phylogenomic-surveillance/">Viral phylogenomic surveillance</a>
+            <span class="pill-note">Step 1 ·
+            
+              <a href="/methods/quality-and-adapter-trimming/">Quality and adapter trimming</a>, <a href="/methods/amplicon-primer-trimming/">Amplicon primer trimming</a>
+            
+            </span>
+          </li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </ul>
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 <a href="https://pgcoe.github.io/">Pathogen Genomics Centers of Excellence</a></p>
+    <p class="footer-note">Protocols are built from <strong>operations</strong> (what is done) and <strong>methods</strong> (how it is done).</p>
+  </footer>
+  <script src="/assets/js/filter.js" defer></script>
+</body>
+</html>

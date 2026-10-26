@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Methods · Genomic Analysis Protocols · PGCoE Network</title>
+  <meta name="description" content="Specific ways of carrying out an operation. Each method says when to use it, and lists the protocols that use it.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  
+
+  
+  <nav class="network-nav" aria-label="PGCoE Network">
+    
+    <a href="https://pgcoe.github.io/">Home</a>
+    
+    <a href="https://pgcoe.github.io/protocols.html">Sequencing Protocols</a>
+    
+    <a href="https://pgcoe.github.io/workflows.html">Bioinformatics Workflows</a>
+    
+    <a href="https://pgcoe.github.io/response.html">Response and Readiness</a>
+    
+    <a href="https://pgcoe.github.io/dataviz.html">Data and Visualization</a>
+    
+    <a href="https://pgcoe.github.io/education.html">Education</a>
+    
+  </nav>
+  
+
+  <header class="hub-bar">
+    <div class="wrap hub-bar-inner">
+      <a class="brand" href="/">Genomic Analysis Protocols</a>
+      <nav class="site-nav" aria-label="Protocol hub">
+        <a class="nav-question" href="/questions/">Questions</a>
+        <a class="nav-protocol" href="/protocols/">Protocols</a>
+        <a class="nav-operation" href="/operations/">Operations</a>
+        <a class="nav-method is-active" href="/methods/">Methods</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <section class="page-head">
+    <div class="wrap page-head-inner">
+      <div class="page-head-text">
+        
+          <p class="eyebrow">Browse</p>
+        
+        <h1>Methods</h1>
+        
+        
+        <p class="lede">Specific ways of carrying out an operation. Each method says when to use it, and lists the protocols that use it.</p>
+      </div>
+      
+      <div class="page-head-graphic">
+        <a href="https://pgcoe.github.io/"><img src="/assets/img/pgcoe-network-graphic-element.png" alt="PGCoE Network"></a>
+      </div>
+      
+    </div>
+  </section>
+
+  <main class="content-band">
+    <div class="wrap">
+      <header class="index-head">
+  <input class="filter" type="search" placeholder="Filter methods or tools…" data-filter-target="#method-groups" aria-label="Filter methods">
+</header>
+
+<div id="method-groups">
+  
+  
+  
+  
+  <section class="method-group" data-group>
+    <h2 class="group-title"><a class="link-operation" href="/operations/read-preprocessing/">Read preprocessing</a></h2>
+    <ul class="card-list">
+      
+      <li class="card card-method" data-search="amplicon primer trimming remove primer sequence from amplicon-based reads using a primer scheme. read preprocessing ivar trim">
+        <a class="card-title" href="/methods/amplicon-primer-trimming/">Amplicon primer trimming</a>
+        <p>Remove primer sequence from amplicon-based reads using a primer scheme.</p>
+        
+        <p class="impl-inline">iVar trim</p>
+        
+      </li>
+      
+      <li class="card card-method" data-search="quality and adapter trimming trim adapter sequence and low-quality bases from reads. read preprocessing fastp trimmomatic">
+        <a class="card-title" href="/methods/quality-and-adapter-trimming/">Quality and adapter trimming</a>
+        <p>Trim adapter sequence and low-quality bases from reads.</p>
+        
+        <p class="impl-inline">fastp · Trimmomatic</p>
+        
+      </li>
+      
+    </ul>
+  </section>
+  
+  
+  
+  
+  <section class="method-group" data-group>
+    <h2 class="group-title"><a class="link-operation" href="/operations/site-masking/">Site masking</a></h2>
+    <ul class="card-list">
+      
+      <li class="card card-method" data-search="custom masking mask regions you define yourself in a bed file, such as genes known to be unreliable for your species. site masking bedtools">
+        <a class="card-title" href="/methods/custom-masking/">Custom masking</a>
+        <p>Mask regions you define yourself in a BED file, such as genes known to be unreliable for your species.</p>
+        
+        <p class="impl-inline">BEDTools</p>
+        
+      </li>
+      
+      <li class="card card-method" data-search="mobile element masking mask prophages, insertion sequences, and other mobile elements in a bacterial reference. site masking phastest isescan">
+        <a class="card-title" href="/methods/mobile-element-masking/">Mobile element masking</a>
+        <p>Mask prophages, insertion sequences, and other mobile elements in a bacterial reference.</p>
+        
+        <p class="impl-inline">PHASTEST · ISEScan</p>
+        
+      </li>
+      
+      <li class="card card-method" data-search="repeat and paralog masking mask repetitive and duplicated regions of a reference so reads cannot map ambiguously. site masking mummer (nucmer self-alignment) repeatmasker">
+        <a class="card-title" href="/methods/repeat-and-paralog-masking/">Repeat and paralog masking</a>
+        <p>Mask repetitive and duplicated regions of a reference so reads cannot map ambiguously.</p>
+        
+        <p class="impl-inline">MUMmer (nucmer self-alignment) · RepeatMasker</p>
+        
+      </li>
+      
+    </ul>
+  </section>
+  
+  
+  
+  
+  <section class="method-group" data-group>
+    <h2 class="group-title"><a class="link-operation" href="/operations/genome-assembly-and-variant-calling/">Genome assembly and variant calling</a></h2>
+    <ul class="card-list">
+      
+      <li class="card card-method" data-search="de novo assembly assemble each sample's genome from its reads alone, without a reference. genome assembly and variant calling spades (rnaviralspades) megahit quast (assembly assessment)">
+        <a class="card-title" href="/methods/de-novo-assembly/">De novo assembly</a>
+        <p>Assemble each sample's genome from its reads alone, without a reference.</p>
+        
+        <p class="impl-inline">SPAdes (rnaviralSPAdes) · MEGAHIT · QUAST (assembly assessment)</p>
+        
+      </li>
+      
+      <li class="card card-method" data-search="reference-based snp calling map reads to a reference, call snps, and combine samples into a core snp alignment of positions present in every sample. genome assembly and variant calling snippy cfsan snp pipeline">
+        <a class="card-title" href="/methods/reference-based-snp-calling/">Reference-based SNP calling</a>
+        <p>Map reads to a reference, call SNPs, and combine samples into a core SNP alignment of positions present in every sample.</p>
+        
+        <p class="impl-inline">Snippy · CFSAN SNP Pipeline</p>
+        
+      </li>
+      
+      <li class="card card-method" data-search="reference-based consensus calling map reads to a reference and write a complete consensus sequence for each sample, including indels. genome assembly and variant calling ivar consensus">
+        <a class="card-title" href="/methods/reference-based-consensus-calling/">Reference-based consensus calling</a>
+        <p>Map reads to a reference and write a complete consensus sequence for each sample, including indels.</p>
+        
+        <p class="impl-inline">iVar consensus</p>
+        
+      </li>
+      
+      <li class="card card-method" data-search="reference-free snp calling identify snps shared across samples directly from split k-mers, without a reference genome. genome assembly and variant calling ska">
+        <a class="card-title" href="/methods/reference-free-snp-calling/">Reference-free SNP calling</a>
+        <p>Identify SNPs shared across samples directly from split k-mers, without a reference genome.</p>
+        
+        <p class="impl-inline">SKA</p>
+        
+      </li>
+      
+    </ul>
+  </section>
+  
+  
+  
+  
+  <section class="method-group" data-group>
+    <h2 class="group-title"><a class="link-operation" href="/operations/genome-alignment/">Genome alignment</a></h2>
+    <ul class="card-list">
+      
+      <li class="card card-method" data-search="multiple sequence alignment align per-sample genome sequences so equivalent positions line up, optionally anchored to a reference to standardize coordinates. genome alignment mafft nextclade (reference-guided) minimap2 + gofasta (reference-guided)">
+        <a class="card-title" href="/methods/multiple-sequence-alignment/">Multiple sequence alignment</a>
+        <p>Align per-sample genome sequences so equivalent positions line up, optionally anchored to a reference to standardize coordinates.</p>
+        
+        <p class="impl-inline">MAFFT · Nextclade (reference-guided) · minimap2 + gofasta (reference-guided)</p>
+        
+      </li>
+      
+    </ul>
+  </section>
+  
+  
+  
+  
+  <section class="method-group" data-group>
+    <h2 class="group-title"><a class="link-operation" href="/operations/recombination-filtering/">Recombination filtering</a></h2>
+    <ul class="card-list">
+      
+      <li class="card card-method" data-search="clonal frame inference model recombination along a fixed tree with a hidden markov model and infer the clonal genealogy. recombination filtering clonalframeml">
+        <a class="card-title" href="/methods/clonal-frame-inference/">Clonal frame inference</a>
+        <p>Model recombination along a fixed tree with a hidden Markov model and infer the clonal genealogy.</p>
+        
+        <p class="impl-inline">ClonalFrameML</p>
+        
+      </li>
+      
+      <li class="card card-method" data-search="iterative recombination detection alternate between tree building and detecting regions of elevated snp density until the result converges. recombination filtering gubbins">
+        <a class="card-title" href="/methods/iterative-recombination-detection/">Iterative recombination detection</a>
+        <p>Alternate between tree building and detecting regions of elevated SNP density until the result converges.</p>
+        
+        <p class="impl-inline">Gubbins</p>
+        
+      </li>
+      
+    </ul>
+  </section>
+  
+  
+  
+  
+  <section class="method-group" data-group>
+    <h2 class="group-title"><a class="link-operation" href="/operations/phylogenetic-inference/">Phylogenetic inference</a></h2>
+    <ul class="card-list">
+      
+      <li class="card card-method" data-search="bayesian phylogeny jointly estimate a time-scaled tree, molecular clock, and population model, with uncertainty on every estimate. phylogenetic inference beast x beast 2">
+        <a class="card-title" href="/methods/bayesian-phylogeny/">Bayesian phylogeny</a>
+        <p>Jointly estimate a time-scaled tree, molecular clock, and population model, with uncertainty on every estimate.</p>
+        
+        <p class="impl-inline">BEAST X · BEAST 2</p>
+        
+      </li>
+      
+      <li class="card card-method" data-search="maximum likelihood phylogeny find the tree that best explains the alignment under a substitution model, with branch lengths in substitutions per site. phylogenetic inference iq-tree raxml-ng">
+        <a class="card-title" href="/methods/maximum-likelihood-phylogeny/">Maximum likelihood phylogeny</a>
+        <p>Find the tree that best explains the alignment under a substitution model, with branch lengths in substitutions per site.</p>
+        
+        <p class="impl-inline">IQ-TREE · RAxML-NG</p>
+        
+      </li>
+      
+      <li class="card card-method" data-search="time-scaled phylogeny rescale an existing tree, usually a maximum likelihood tree, so branch lengths are in time and ancestral nodes are dated. phylogenetic inference treetime lsd2 (in iq-tree)">
+        <a class="card-title" href="/methods/time-scaled-phylogeny/">Time-scaled phylogeny</a>
+        <p>Rescale an existing tree, usually a maximum likelihood tree, so branch lengths are in time and ancestral nodes are dated.</p>
+        
+        <p class="impl-inline">TreeTime · LSD2 (in IQ-TREE)</p>
+        
+      </li>
+      
+    </ul>
+  </section>
+  
+  
+</div>
+<p class="muted filter-empty" hidden>No methods match.</p>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 <a href="https://pgcoe.github.io/">Pathogen Genomics Centers of Excellence</a></p>
+    <p class="footer-note">Protocols are built from <strong>operations</strong> (what is done) and <strong>methods</strong> (how it is done).</p>
+  </footer>
+  <script src="/assets/js/filter.js" defer></script>
+</body>
+</html>

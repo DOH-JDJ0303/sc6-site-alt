@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Genomic Analysis Protocols · PGCoE Network</title>
+  <meta name="description" content="Step-by-step protocols for population-level genomic analysis, built from shared operations and swappable methods.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  
+
+  
+  <nav class="network-nav" aria-label="PGCoE Network">
+    
+    <a href="https://pgcoe.github.io/">Home</a>
+    
+    <a href="https://pgcoe.github.io/protocols.html">Sequencing Protocols</a>
+    
+    <a href="https://pgcoe.github.io/workflows.html">Bioinformatics Workflows</a>
+    
+    <a href="https://pgcoe.github.io/response.html">Response and Readiness</a>
+    
+    <a href="https://pgcoe.github.io/dataviz.html">Data and Visualization</a>
+    
+    <a href="https://pgcoe.github.io/education.html">Education</a>
+    
+  </nav>
+  
+
+  <header class="hub-bar">
+    <div class="wrap hub-bar-inner">
+      <a class="brand" href="/">Genomic Analysis Protocols</a>
+      <nav class="site-nav" aria-label="Protocol hub">
+        <a class="nav-question" href="/questions/">Questions</a>
+        <a class="nav-protocol" href="/protocols/">Protocols</a>
+        <a class="nav-operation" href="/operations/">Operations</a>
+        <a class="nav-method" href="/methods/">Methods</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <section class="page-head">
+    <div class="wrap page-head-inner">
+      <div class="page-head-text">
+        
+          
+        
+        <h1>Genomic Analysis Protocols</h1>
+        
+        
+        <p class="lede">Step-by-step protocols for population-level genomic analysis, built from shared operations and swappable methods.</p>
+      </div>
+      
+      <div class="page-head-graphic">
+        <a href="https://pgcoe.github.io/"><img src="/assets/img/pgcoe-network-graphic-element.png" alt="PGCoE Network"></a>
+      </div>
+      
+    </div>
+  </section>
+
+  <main class="content-band">
+    <div class="wrap">
+      <section class="ask">
+  <form class="ask-form" action="/questions/" method="get" role="search">
+    <label class="ask-label" for="home-q">What do you need to find out?</label>
+    <div class="ask-row">
+      <input class="filter filter-large" id="home-q" name="q" type="search" placeholder="For example: are these cases related?">
+      <button class="export-btn" type="submit">Find protocols</button>
+    </div>
+  </form>
+  
+  <ul class="ask-examples">
+    <li><a href="/questions/related-cases/">Are these cases related to each other?</a></li><li><a href="/questions/outbreak-timing/">When did this outbreak start, or when was the pathogen introduced?</a></li><li><a href="/questions/introductions/">Was this introduced once, or several times?</a></li><li><a href="/questions/resistance-spread/">Is drug resistance spreading between cases?</a></li>
+  </ul>
+  <a class="find-link" href="/questions/">All 5 questions →</a>
+</section>
+
+<h2 class="section-title">How the site is organized</h2>
+<section class="model">
+  <a class="model-card model-protocol" href="/protocols/">
+    <span class="model-count">3</span>
+    <span class="model-name">Protocols</span>
+    <span class="model-desc">An ordered set of operations for a specific goal, such as surveillance of a pathogen group. Steps can restrict which methods are allowed.</span>
+  </a>
+  <span class="model-arrow" aria-hidden="true">uses</span>
+  <a class="model-card model-operation" href="/operations/">
+    <span class="model-count">6</span>
+    <span class="model-name">Operations</span>
+    <span class="model-desc">A general analytical step defined by what it does, like genome alignment or phylogenetic inference.</span>
+  </a>
+  <span class="model-arrow" aria-hidden="true">done by</span>
+  <a class="model-card model-method" href="/methods/">
+    <span class="model-count">15</span>
+    <span class="model-name">Methods</span>
+    <span class="model-desc">A specific, swappable way to carry out an operation, with its implementations. Each method links back to the protocols that use it.</span>
+  </a>
+</section>
+
+<section>
+  <h2 class="section-title">Protocols</h2>
+  <ul class="card-list">
+    
+    
+    <li class="card card-protocol">
+      <a class="card-title" href="/protocols/bacterial-phylogenomic-surveillance/">Bacterial phylogenomic surveillance</a>
+      <p>Determine how bacterial isolates are related to one another from whole-genome SNP phylogenies, for cluster detection and outbreak investigation.</p>
+      <ol class="chain">
+        
+        
+        <li>Read preprocessing</li>
+        
+        
+        <li class="is-optional" title="Optional step">Site masking (optional)</li>
+        
+        
+        <li>Genome assembly and variant calling</li>
+        
+        
+        <li class="is-optional" title="Optional step">Recombination filtering (optional)</li>
+        
+        
+        <li>Phylogenetic inference</li>
+        
+      </ol>
+    </li>
+    
+    <li class="card card-protocol">
+      <a class="card-title" href="/protocols/fungal-phylogenomic-surveillance/">Fungal phylogenomic surveillance</a>
+      <p>Determine how fungal isolates are related to one another from whole-genome SNP phylogenies, for cluster detection and outbreak investigation.</p>
+      <ol class="chain">
+        
+        
+        <li>Read preprocessing</li>
+        
+        
+        <li class="is-optional" title="Optional step">Site masking (optional)</li>
+        
+        
+        <li>Genome assembly and variant calling</li>
+        
+        
+        <li>Phylogenetic inference</li>
+        
+      </ol>
+    </li>
+    
+    <li class="card card-protocol">
+      <a class="card-title" href="/protocols/viral-phylogenomic-surveillance/">Viral phylogenomic surveillance</a>
+      <p>Determine how viral genomes are related to one another from whole-genome phylogenies, for lineage tracking, introductions, and transmission, including segmented viruses.</p>
+      <ol class="chain">
+        
+        
+        <li>Read preprocessing</li>
+        
+        
+        <li>Genome assembly and variant calling</li>
+        
+        
+        <li>Genome alignment</li>
+        
+        
+        <li>Phylogenetic inference</li>
+        
+      </ol>
+    </li>
+    
+  </ul>
+</section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 <a href="https://pgcoe.github.io/">Pathogen Genomics Centers of Excellence</a></p>
+    <p class="footer-note">Protocols are built from <strong>operations</strong> (what is done) and <strong>methods</strong> (how it is done).</p>
+  </footer>
+  <script src="/assets/js/filter.js" defer></script>
+</body>
+</html>

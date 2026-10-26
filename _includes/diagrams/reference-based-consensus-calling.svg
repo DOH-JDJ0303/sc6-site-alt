@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 236" role="img" aria-labelledby="reference-based-consensus-calling-title reference-based-consensus-calling-desc" class="diagram-svg">
+  <title id="reference-based-consensus-calling-title">Reference-based consensus calling: reads are stacked on a reference and the majority base at each position becomes the sample's consensus.</title>
+  <desc id="reference-based-consensus-calling-desc">Four reads are mapped to a 16-base reference. At one position three of four reads carry C instead of T, so the consensus calls C. Reads share a one-base deletion, which the consensus keeps. The last two positions have no coverage and are written as N.</desc>
+  <text x="20" y="26" font-family="Raleway, Lato, Arial, sans-serif" font-size="14" font-weight="700" fill="#055A5E" text-anchor="start">1. Map reads to the reference</text>
+  <text x="106" y="59" font-family="Raleway, Lato, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#055A5E" text-anchor="end">Reference</text>
+  <rect x="119" y="44" width="22" height="20" rx="2" fill="#055A5E" stroke="none" stroke-width="1"/>
+  <text x="130.0" y="59" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#FFFFFF" text-anchor="middle">A</text>
+  <rect x="143" y="44" width="22" height="20" rx="2" fill="#055A5E" stroke="none" stroke-width="1"/>
+  <text x="154.0" y="59" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#FFFFFF" text-anchor="middle">C</text>
+  <rect x="167" y="44" width="22" height="20" rx="2" fill="#055A5E" stroke="none" stroke-width="1"/>
+  <text x="178.0" y="59" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#FFFFFF" text-anchor="middle">G</text>
+  <rect x="191" y="44" width="22" height="20" rx="2" fill="#055A5E" stroke="none" stroke-width="1"/>
+  <text x="202.0" y="59" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#FFFFFF" text-anchor="middle">T</text>
+  <rect x="215" y="44" width="22" height="20" rx="2" fill="#055A5E" stroke="none" stroke-width="1"/>
+  <text x="226.0" y="59" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#FFFFFF" text-anchor="middle">A</text>
+  <rect x="239" y="44" width="22" height="20" rx="2" fill="#055A5E" stroke="none" stroke-width="1"/>
+  <text x="250.0" y="59" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#FFFFFF" text-anchor="middle">C</text>
+  <rect x="263" y="44" width="22" height="20" rx="2" fill="#055A5E" stroke="none" stroke-width="1"/>
+  <text x="274.0" y="59" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#FFFFFF" text-anchor="middle">G</text>
+  <rect x="287" y="44" width="22" height="20" rx="2" fill="#055A5E" stroke="none" stroke-width="1"/>
+  <text x="298.0" y="59" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#FFFFFF" text-anchor="middle">T</text>
+  <rect x="311" y="44" width="22" height="20" rx="2" fill="#055A5E" stroke="none" stroke-width="1"/>
+  <text x="322.0" y="59" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#FFFFFF" text-anchor="middle">T</text>
+  <rect x="335" y="44" width="22" height="20" rx="2" fill="#055A5E" stroke="none" stroke-width="1"/>
+  <text x="346.0" y="59" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#FFFFFF" text-anchor="middle">A</text>
+  <rect x="359" y="44" width="22" height="20" rx="2" fill="#055A5E" stroke="none" stroke-width="1"/>
+  <text x="370.0" y="59" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#FFFFFF" text-anchor="middle">C</text>
+  <rect x="383" y="44" width="22" height="20" rx="2" fill="#055A5E" stroke="none" stroke-width="1"/>
+  <text x="394.0" y="59" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#FFFFFF" text-anchor="middle">G</text>
+  <rect x="407" y="44" width="22" height="20" rx="2" fill="#055A5E" stroke="none" stroke-width="1"/>
+  <text x="418.0" y="59" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#FFFFFF" text-anchor="middle">A</text>
+  <rect x="431" y="44" width="22" height="20" rx="2" fill="#055A5E" stroke="none" stroke-width="1"/>
+  <text x="442.0" y="59" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#FFFFFF" text-anchor="middle">T</text>
+  <rect x="455" y="44" width="22" height="20" rx="2" fill="#055A5E" stroke="none" stroke-width="1"/>
+  <text x="466.0" y="59" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#FFFFFF" text-anchor="middle">C</text>
+  <rect x="479" y="44" width="22" height="20" rx="2" fill="#055A5E" stroke="none" stroke-width="1"/>
+  <text x="490.0" y="59" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#FFFFFF" text-anchor="middle">G</text>
+  <text x="106" y="87" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="400" fill="#4B5D5F" text-anchor="end">Read 1</text>
+  <rect x="119" y="72" width="190" height="20" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="130.0" y="87" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="154.0" y="87" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="178.0" y="87" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="202.0" y="87" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="226.0" y="87" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="250.0" y="87" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="274.0" y="87" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <rect x="288" y="73" width="20" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="298.0" y="87" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#95560A" text-anchor="middle">C</text>
+  <text x="106" y="111" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="400" fill="#4B5D5F" text-anchor="end">Read 2</text>
+  <rect x="167" y="96" width="214" height="20" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="178.0" y="111" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="202.0" y="111" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="226.0" y="111" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="250.0" y="111" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="274.0" y="111" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <rect x="288" y="97" width="20" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="298.0" y="111" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#95560A" text-anchor="middle">C</text>
+  <text x="322.0" y="111" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="346.0" y="111" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="370.0" y="111" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="106" y="135" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="400" fill="#4B5D5F" text-anchor="end">Read 3</text>
+  <rect x="239" y="120" width="214" height="20" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="250.0" y="135" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="274.0" y="135" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <rect x="288" y="121" width="20" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="298.0" y="135" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#95560A" text-anchor="middle">C</text>
+  <text x="322.0" y="135" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="346.0" y="135" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="370.0" y="135" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <rect x="384" y="121" width="20" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="394.0" y="135" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#95560A" text-anchor="middle">-</text>
+  <text x="418.0" y="135" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="442.0" y="135" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="106" y="159" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="400" fill="#4B5D5F" text-anchor="end">Read 4</text>
+  <rect x="263" y="144" width="190" height="20" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="274.0" y="159" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="298.0" y="159" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="322.0" y="159" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="346.0" y="159" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="370.0" y="159" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <rect x="384" y="145" width="20" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="394.0" y="159" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#95560A" text-anchor="middle">-</text>
+  <text x="418.0" y="159" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="442.0" y="159" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <rect x="286" y="40" width="24" height="178" rx="4" fill="none" stroke="#95560A" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <rect x="382" y="40" width="24" height="178" rx="4" fill="none" stroke="#95560A" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <text x="20" y="196" font-family="Raleway, Lato, Arial, sans-serif" font-size="14" font-weight="700" fill="#055A5E" text-anchor="start">2. Call the majority base</text>
+  <text x="106" y="225" font-family="Raleway, Lato, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#95560A" text-anchor="end">Consensus</text>
+  <rect x="119" y="210" width="382" height="20" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="130.0" y="225" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="154.0" y="225" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="178.0" y="225" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="202.0" y="225" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="226.0" y="225" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="250.0" y="225" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="274.0" y="225" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <rect x="288" y="211" width="20" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="298.0" y="225" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#95560A" text-anchor="middle">C</text>
+  <text x="322.0" y="225" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="346.0" y="225" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="370.0" y="225" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <rect x="384" y="211" width="20" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="394.0" y="225" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#95560A" text-anchor="middle">-</text>
+  <text x="418.0" y="225" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="442.0" y="225" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <rect x="456" y="211" width="20" height="18" rx="2" fill="#E9EEEF" stroke="none" stroke-width="1"/>
+  <text x="466.0" y="225" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#7C8B8D" text-anchor="middle">N</text>
+  <rect x="480" y="211" width="20" height="18" rx="2" fill="#E9EEEF" stroke="none" stroke-width="1"/>
+  <text x="490.0" y="225" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#7C8B8D" text-anchor="middle">N</text>
+  <text x="528" y="94" font-family="Lato, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#95560A" text-anchor="start">3 of 4 reads show C,</text>
+  <text x="528" y="110" font-family="Lato, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1B1B1B" text-anchor="start">so the consensus is C</text>
+  <text x="528" y="142" font-family="Lato, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#95560A" text-anchor="start">Reads share a deletion,</text>
+  <text x="528" y="158" font-family="Lato, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1B1B1B" text-anchor="start">so the consensus keeps it</text>
+  <text x="528" y="214" font-family="Lato, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#7C8B8D" text-anchor="start">No reads cover the end,</text>
+  <text x="528" y="230" font-family="Lato, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1B1B1B" text-anchor="start">so those bases are N</text>
+</svg>

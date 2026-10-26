@@ -1,0 +1,24 @@
+{% comment %}
+  The protocols that answer a question for one group of pathogens.
+  include.route    one entry of a question's `routes`
+  include.compact  true for the one-line version on the questions index
+  A route's `protocols` entries are a protocol slug, { protocol: slug, role: text },
+  or { planned: name, role: text } for a protocol not yet on the site.
+{% endcomment %}{% assign r = include.route %}{% assign n = r.protocols | size %}{% if include.compact %}<span class="route-inline">{% for item in r.protocols %}{% if item.planned %}<span class="pill pill-planned" title="Planned protocol">{{ item.planned }}</span>{% else %}{% assign rslug = item.protocol | default: item %}{% assign rp = site.protocols | where: "slug", rslug | first %}{% if rp %}<a class="pill pill-protocol" href="{{ rp.url | relative_url }}">{{ rp.title }}</a>{% else %}<span class="pill missing">Unknown protocol: <code>{{ rslug }}</code></span>{% endif %}{% endif %}{% unless forloop.last %}<span class="route-plus" aria-label="together with">+</span>{% endunless %}{% endfor %}</span>{% else %}
+{% if n > 1 %}<p class="label">Use these protocols together</p>{% endif %}
+<ol class="route-protocols{% if n > 1 %} is-together{% endif %}">
+  {% for item in r.protocols %}
+  <li>
+    {% if item.planned %}
+      <span class="pill pill-planned">{{ item.planned }}</span><span class="planned-note">Planned protocol, not yet available</span>
+    {% else %}
+      {% assign rslug = item.protocol | default: item %}
+      {% assign rp = site.protocols | where: "slug", rslug | first %}
+      {% if rp %}<a class="pill pill-protocol" href="{{ rp.url | relative_url }}">{{ rp.title }}</a>{% else %}<span class="pill missing">Unknown protocol: <code>{{ rslug }}</code></span>{% endif %}
+    {% endif %}
+    {% if item.role %}<p class="route-role">{{ item.role }}</p>{% endif %}
+  </li>
+  {% endfor %}
+</ol>
+{% if r.note %}<div class="route-note prose">{{ r.note | markdownify }}</div>{% endif %}
+{% endif %}

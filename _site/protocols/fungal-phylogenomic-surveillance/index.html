@@ -1,0 +1,951 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fungal phylogenomic surveillance · Genomic Analysis Protocols · PGCoE Network</title>
+  <meta name="description" content="Determine how fungal isolates are related to one another from whole-genome SNP phylogenies, for cluster detection and outbreak investigation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  
+
+  
+  <nav class="network-nav" aria-label="PGCoE Network">
+    
+    <a href="https://pgcoe.github.io/">Home</a>
+    
+    <a href="https://pgcoe.github.io/protocols.html">Sequencing Protocols</a>
+    
+    <a href="https://pgcoe.github.io/workflows.html">Bioinformatics Workflows</a>
+    
+    <a href="https://pgcoe.github.io/response.html">Response and Readiness</a>
+    
+    <a href="https://pgcoe.github.io/dataviz.html">Data and Visualization</a>
+    
+    <a href="https://pgcoe.github.io/education.html">Education</a>
+    
+  </nav>
+  
+
+  <header class="hub-bar">
+    <div class="wrap hub-bar-inner">
+      <a class="brand" href="/">Genomic Analysis Protocols</a>
+      <nav class="site-nav" aria-label="Protocol hub">
+        <a class="nav-question" href="/questions/">Questions</a>
+        <a class="nav-protocol is-active" href="/protocols/">Protocols</a>
+        <a class="nav-operation" href="/operations/">Operations</a>
+        <a class="nav-method" href="/methods/">Methods</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <section class="page-head">
+    <div class="wrap page-head-inner">
+      <div class="page-head-text">
+        
+          <p class="eyebrow eyebrow-protocol"><a href="/protocols/">Protocol</a></p>
+        
+        <h1>Fungal phylogenomic surveillance</h1>
+        
+        
+        <p class="lede">Determine how fungal isolates are related to one another from whole-genome SNP phylogenies, for cluster detection and outbreak investigation.</p>
+      </div>
+      
+      <div class="page-head-graphic">
+        <a href="https://pgcoe.github.io/"><img src="/assets/img/pgcoe-network-graphic-element.png" alt="PGCoE Network"></a>
+      </div>
+      
+    </div>
+  </section>
+
+  <main class="content-band">
+    <div class="wrap">
+      <article class="entry entry-protocol">
+
+  
+  <p class="tags">
+    <span class="tag">Fungi</span>
+  </p>
+  
+
+  <div class="prose"><p>This protocol compares whole genomes to measure relatedness between isolates. It is distinct from gene-targeted surveillance, such as detecting antifungal resistance mutations. Fungal genomes are larger and more repetitive than bacterial genomes, so masking duplicated regions of the reference is the key organism-specific step.</p>
+</div>
+
+  
+  
+  
+  
+  
+  
+  <div class="meta-card answers-card">
+    <p class="label">Helps answer</p>
+    <ul class="answers-list"><li><a href="/questions/related-cases/">Are these cases related to each other?</a></li><li><a href="/questions/outbreak-timing/">When did this outbreak start, or when was the pathogen introduced?</a></li><li><a href="/questions/introductions/">Was this introduced once, or several times?</a></li><li><a href="/questions/resistance-spread/">Is drug resistance spreading between cases?</a> <span class="pill-note">used with another protocol</span></li></ul>
+  </div>
+  
+
+  
+  <div class="meta-card inputs-card">
+    <p class="label">Starting inputs</p>
+    <p class="dtype-line"><span class="dtype">Raw reads</span>, <span class="dtype">Reference genome</span>, <span class="dtype">Collection dates</span>
+</p>
+  </div>
+  
+
+  <div class="section-title steps-head">
+    <h2>Steps</h2>
+    <button type="button" class="reset-path" hidden>Reset choices</button>
+  </div>
+  <p class="builder-help" hidden>Choose a method at each step. Later steps only offer methods whose required inputs are produced by your earlier choices.</p>
+
+  <ol class="steps" id="protocol-steps" data-inputs='["raw-reads","reference-genome","collection-dates"]'>
+    
+    
+    
+    
+    
+    
+    <li class="step is-multiple" data-step="1" data-operation="read-preprocessing" data-multiple="true">
+      <div class="step-head">
+        <span class="step-num">1</span>
+        <div>
+          
+          <h3 class="step-title"><a class="link-operation" href="/operations/read-preprocessing/">Read preprocessing</a></h3>
+          <p class="step-summary">Remove adapters, primers, and low-quality sequence so downstream steps work from clean reads.</p>
+          
+        </div>
+      </div>
+
+      
+
+      <div class="step-methods">
+        
+        
+          
+          
+            
+            
+          
+          <p class="label">Specified method</p>
+        
+        
+
+        <ul class="method-options">
+          
+          <li class="method-option"
+              data-method="quality-and-adapter-trimming"
+              data-title="Quality and adapter trimming"
+              data-requires='["raw-reads"]'
+              data-produces='["clean-reads"]'>
+            <label class="option-pick">
+              <input class="method-radio" type="checkbox" name="step-1" value="quality-and-adapter-trimming">
+              <span class="option-title">Quality and adapter trimming</span>
+            </label>
+            <a class="option-link" href="/methods/quality-and-adapter-trimming/">Details</a>
+            <p class="option-summary">Trim adapter sequence and low-quality bases from reads.</p>
+            
+            <p class="option-io">
+              <span class="io-key">Needs</span> <span class="dtype">Raw reads</span>
+
+              <span class="io-sep">→</span> <span class="io-key">Produces</span> <span class="dtype">Clean reads</span>
+
+            </p>
+            
+            
+            <p class="option-status" hidden></p>
+          </li>
+          
+          
+        </ul>
+        <p class="step-status" hidden></p>
+      </div>
+    </li>
+    
+    
+    
+    
+    
+    
+    <li class="step is-optional is-multiple" data-step="2" data-operation="site-masking" data-optional="true" data-multiple="true">
+      <div class="step-head">
+        <span class="step-num">2</span>
+        <div>
+          
+          <h3 class="step-title"><a class="link-operation" href="/operations/site-masking/">Site masking</a> <span class="badge-optional">Optional</span></h3>
+          <p class="step-summary">Exclude genomic regions whose variation would mislead downstream comparison.</p>
+          
+        </div>
+      </div>
+
+      <div class="step-notes prose"><p>Gene duplication is common in fungal genomes, so repeat and paralog masking is recommended for most species.</p>
+</div>
+
+      <div class="step-methods">
+        
+        
+          
+          
+            
+            
+          
+            
+            
+          
+          <p class="label">Specified methods (select one or more)</p>
+        
+        <p class="multi-help">These methods can be combined. Selected methods are applied in the order listed, and a method can use the output of one selected above it.</p>
+
+        <ul class="method-options">
+          
+          <li class="method-option"
+              data-method="repeat-and-paralog-masking"
+              data-title="Repeat and paralog masking"
+              data-requires='["reference-genome"]'
+              data-produces='["mask-regions"]'>
+            <label class="option-pick">
+              <input class="method-radio" type="checkbox" name="step-2" value="repeat-and-paralog-masking">
+              <span class="option-title">Repeat and paralog masking</span>
+            </label>
+            <a class="option-link" href="/methods/repeat-and-paralog-masking/">Details</a>
+            <p class="option-summary">Mask repetitive and duplicated regions of a reference so reads cannot map ambiguously.</p>
+            
+            <p class="option-io">
+              <span class="io-key">Needs</span> <span class="dtype">Reference genome</span>
+
+              <span class="io-sep">→</span> <span class="io-key">Produces</span> <span class="dtype">Mask regions</span>
+
+            </p>
+            
+            
+<div class="guidance guidance-compact">
+  
+  <div class="guidance-col guidance-use">
+    <p class="guidance-label">Use when</p>
+    <ul><li>The genome contains gene families, duplicated genes, or other repeats, as is common in fungi.</li><li>Variant calls cluster in regions with unusually high or uneven coverage.</li></ul>
+  </div>
+  
+  
+  
+  <div class="guidance-col guidance-combine">
+    <p class="guidance-label">Combine with</p>
+    <ul>
+      
+      
+      <li><a href="/methods/mobile-element-masking/">Mobile element masking</a>: Add it for bacteria, whose horizontally transferred elements are not necessarily repeated in the reference.</li>
+      
+      
+      <li><a href="/methods/custom-masking/">Custom masking</a>: Add your own BED file for species-specific regions that prediction tools do not find.</li>
+      
+    </ul>
+  </div>
+  
+</div>
+
+
+            <p class="option-status" hidden></p>
+          </li>
+          
+          <li class="method-option"
+              data-method="custom-masking"
+              data-title="Custom masking"
+              data-requires='["reference-genome"]'
+              data-produces='["mask-regions"]'>
+            <label class="option-pick">
+              <input class="method-radio" type="checkbox" name="step-2" value="custom-masking">
+              <span class="option-title">Custom masking</span>
+            </label>
+            <a class="option-link" href="/methods/custom-masking/">Details</a>
+            <p class="option-summary">Mask regions you define yourself in a BED file, such as genes known to be unreliable for your species.</p>
+            
+            <p class="option-io">
+              <span class="io-key">Needs</span> <span class="dtype">Reference genome</span>
+
+              <span class="io-sep">→</span> <span class="io-key">Produces</span> <span class="dtype">Mask regions</span>
+
+            </p>
+            
+            
+<div class="guidance guidance-compact">
+  
+  <div class="guidance-col guidance-use">
+    <p class="guidance-label">Use when</p>
+    <ul><li>Published analyses of your species exclude specific genes or regions, such as PE/PPE genes in Mycobacterium tuberculosis.</li><li>Your own data show regions with consistently poor coverage, mapping quality, or excess variant calls.</li><li>You need to reproduce another lab&#39;s analysis exactly, using the same mask they used.</li></ul>
+  </div>
+  
+  
+  <div class="guidance-col guidance-avoid">
+    <p class="guidance-label">Skip this method when</p>
+    <ul>
+      
+      
+        <li>The regions can be found reproducibly with a prediction tool, which is easier to rerun when the reference changes.</li>
+      
+      
+    </ul>
+  </div>
+  
+  
+  <div class="guidance-col guidance-combine">
+    <p class="guidance-label">Combine with</p>
+    <ul>
+      
+      
+      <li><a href="/methods/mobile-element-masking/">Mobile element masking</a>: Use both when you have species-specific regions in addition to predicted mobile elements.</li>
+      
+      
+      <li><a href="/methods/repeat-and-paralog-masking/">Repeat and paralog masking</a>: Use both when you have species-specific regions in addition to repeats found by self-alignment.</li>
+      
+    </ul>
+  </div>
+  
+</div>
+
+
+            <p class="option-status" hidden></p>
+          </li>
+          
+          
+          <li class="method-option option-skip" data-method="-" data-title="Skipped" data-requires="[]" data-produces="[]">
+            <label class="option-pick">
+              <input class="method-radio" type="checkbox" name="step-2" value="-">
+              <span class="option-title">Skip this step</span>
+            </label>
+            <p class="option-summary">Continue without this step. Later steps can't use anything it would have produced.</p>
+            <p class="option-status" hidden></p>
+          </li>
+          
+        </ul>
+        <p class="step-status" hidden></p>
+      </div>
+    </li>
+    
+    
+    
+    
+    
+    
+    <li class="step" data-step="3" data-operation="genome-assembly-and-variant-calling">
+      <div class="step-head">
+        <span class="step-num">3</span>
+        <div>
+          
+          <h3 class="step-title"><a class="link-operation" href="/operations/genome-assembly-and-variant-calling/">Genome assembly and variant calling</a></h3>
+          <p class="step-summary">Reconstruct each sample's genome, or the differences between samples, from its sequencing reads.</p>
+          
+        </div>
+      </div>
+
+      <div class="step-notes prose"><p>For diploid species, use a ploidy-aware variant caller and decide how heterozygous sites will be represented.</p>
+</div>
+
+      <div class="step-methods">
+        
+        
+          
+          
+            
+            
+          
+            
+            
+          
+          <p class="label">Specified methods (choose one)</p>
+        
+        
+
+        <ul class="method-options">
+          
+          <li class="method-option"
+              data-method="reference-based-snp-calling"
+              data-title="Reference-based SNP calling"
+              data-requires='["clean-reads","reference-genome"]'
+              data-produces='["full-alignment","snp-alignment"]'>
+            <label class="option-pick">
+              <input class="method-radio" type="radio" name="step-3" value="reference-based-snp-calling">
+              <span class="option-title">Reference-based SNP calling</span>
+            </label>
+            <a class="option-link" href="/methods/reference-based-snp-calling/">Details</a>
+            <p class="option-summary">Map reads to a reference, call SNPs, and combine samples into a core SNP alignment of positions present in every sample.</p>
+            
+            <p class="option-io">
+              <span class="io-key">Needs</span> <span class="dtype">Clean reads</span>, <span class="dtype">Reference genome</span>
+
+              <span class="io-sep">→</span> <span class="io-key">Produces</span> <span class="dtype">Full genome alignment</span>, <span class="dtype">SNP-only alignment</span>
+
+            </p>
+            
+            
+<div class="guidance guidance-compact">
+  
+  <div class="guidance-col guidance-use">
+    <p class="guidance-label">Use when</p>
+    <ul><li>The genome is large, as with bacteria and fungi, and differences between samples are mostly SNPs.</li><li>A closed reference from the same lineage as your samples is available.</li><li>A later step needs genome positions, such as recombination filtering or reporting variants by reference coordinate.</li><li>You need reproducible SNP distances for outbreak or cluster definitions.</li></ul>
+  </div>
+  
+  
+  <div class="guidance-col guidance-avoid">
+    <p class="guidance-label">Use another method when</p>
+    <ul>
+      
+      
+        
+        <li>Indels are informative and genomes are small enough to compare in full, as with most viruses. <span class="guidance-alt">Use <a href="/methods/reference-based-consensus-calling/">Reference-based consensus calling</a> instead.</span></li>
+      
+      
+      
+        
+        <li>No closely related reference exists, or samples span lineages diverse enough that much of each genome fails to map. <span class="guidance-alt">Use <a href="/methods/reference-free-snp-calling/">Reference-free SNP calling</a> instead.</span></li>
+      
+      
+      
+        <li>The organism is diploid and no ploidy-aware caller is used, since heterozygous sites will be miscalled.</li>
+      
+      
+    </ul>
+  </div>
+  
+  
+</div>
+
+
+            <p class="option-status" hidden></p>
+          </li>
+          
+          <li class="method-option"
+              data-method="reference-free-snp-calling"
+              data-title="Reference-free SNP calling"
+              data-requires='["clean-reads"]'
+              data-produces='["snp-alignment"]'>
+            <label class="option-pick">
+              <input class="method-radio" type="radio" name="step-3" value="reference-free-snp-calling">
+              <span class="option-title">Reference-free SNP calling</span>
+            </label>
+            <a class="option-link" href="/methods/reference-free-snp-calling/">Details</a>
+            <p class="option-summary">Identify SNPs shared across samples directly from split k-mers, without a reference genome.</p>
+            
+            <p class="option-io">
+              <span class="io-key">Needs</span> <span class="dtype">Clean reads</span>
+
+              <span class="io-sep">→</span> <span class="io-key">Produces</span> <span class="dtype">SNP-only alignment</span>
+
+            </p>
+            
+            
+<div class="guidance guidance-compact">
+  
+  <div class="guidance-col guidance-use">
+    <p class="guidance-label">Use when</p>
+    <ul><li>No suitable reference genome exists for your samples.</li><li>Samples span lineages diverse enough that a single reference would introduce mapping bias.</li><li>You need fast SNP distances for screening or a first look at a new collection.</li></ul>
+  </div>
+  
+  
+  <div class="guidance-col guidance-avoid">
+    <p class="guidance-label">Use another method when</p>
+    <ul>
+      
+      
+        
+        <li>A later step needs genome positions, such as recombination filtering, because only variable sites are kept. <span class="guidance-alt">Use <a href="/methods/reference-based-snp-calling/">Reference-based SNP calling</a> instead.</span></li>
+      
+      
+      
+        
+        <li>Indels carry signal you want to keep. <span class="guidance-alt">Use <a href="/methods/reference-based-consensus-calling/">Reference-based consensus calling</a> instead.</span></li>
+      
+      
+    </ul>
+  </div>
+  
+  
+</div>
+
+
+            <p class="option-status" hidden></p>
+          </li>
+          
+          
+        </ul>
+        <p class="step-status" hidden></p>
+      </div>
+    </li>
+    
+    
+    
+    
+    
+    
+    <li class="step is-multiple" data-step="4" data-operation="phylogenetic-inference" data-multiple="true">
+      <div class="step-head">
+        <span class="step-num">4</span>
+        <div>
+          
+          <h3 class="step-title"><a class="link-operation" href="/operations/phylogenetic-inference/">Phylogenetic inference</a></h3>
+          <p class="step-summary">Reconstruct the evolutionary relationships among samples from an alignment.</p>
+          
+        </div>
+      </div>
+
+      
+
+      <div class="step-methods">
+        
+        
+          
+          
+            
+            
+          
+            
+            
+          
+          <p class="label">Specified methods (select one or more)</p>
+        
+        <p class="multi-help">These methods can be combined. Selected methods are applied in the order listed, and a method can use the output of one selected above it.</p>
+
+        <ul class="method-options">
+          
+          <li class="method-option"
+              data-method="maximum-likelihood-phylogeny"
+              data-title="Maximum likelihood phylogeny"
+              data-requires='[["recombination-free-alignment","full-alignment","snp-alignment"]]'
+              data-produces='["tree"]'>
+            <label class="option-pick">
+              <input class="method-radio" type="checkbox" name="step-4" value="maximum-likelihood-phylogeny">
+              <span class="option-title">Maximum likelihood phylogeny</span>
+            </label>
+            <a class="option-link" href="/methods/maximum-likelihood-phylogeny/">Details</a>
+            <p class="option-summary">Find the tree that best explains the alignment under a substitution model, with branch lengths in substitutions per site.</p>
+            
+            <p class="option-io">
+              <span class="io-key">Needs</span> <span class="dtype">Recombination-filtered alignment <em>or</em> Full genome alignment <em>or</em> SNP-only alignment</span>
+
+              <span class="io-sep">→</span> <span class="io-key">Produces</span> <span class="dtype">Phylogenetic tree</span>
+
+            </p>
+            
+            
+<div class="guidance guidance-compact">
+  
+  <div class="guidance-col guidance-use">
+    <p class="guidance-label">Use when</p>
+    <ul><li>You need a tree for clustering, population structure, or placing new samples. This is the default choice.</li><li>Collection dates are missing or unreliable.</li><li>You want a fast result with branch support values, even for thousands of genomes.</li></ul>
+  </div>
+  
+  
+  
+  <div class="guidance-col guidance-combine">
+    <p class="guidance-label">Combine with</p>
+    <ul>
+      
+      
+      <li><a href="/methods/time-scaled-phylogeny/">Time-scaled phylogeny</a>: Apply it afterward to convert this tree&#39;s branch lengths into time when collection dates are available.</li>
+      
+    </ul>
+  </div>
+  
+</div>
+
+
+            <p class="option-status" hidden></p>
+          </li>
+          
+          <li class="method-option"
+              data-method="time-scaled-phylogeny"
+              data-title="Time-scaled phylogeny"
+              data-requires='["tree","collection-dates"]'
+              data-produces='["dated-tree"]'>
+            <label class="option-pick">
+              <input class="method-radio" type="checkbox" name="step-4" value="time-scaled-phylogeny">
+              <span class="option-title">Time-scaled phylogeny</span>
+            </label>
+            <a class="option-link" href="/methods/time-scaled-phylogeny/">Details</a>
+            <p class="option-summary">Rescale an existing tree, usually a maximum likelihood tree, so branch lengths are in time and ancestral nodes are dated.</p>
+            
+            <p class="option-io">
+              <span class="io-key">Needs</span> <span class="dtype">Phylogenetic tree</span>, <span class="dtype">Collection dates</span>
+
+              <span class="io-sep">→</span> <span class="io-key">Produces</span> <span class="dtype">Time-scaled tree</span>
+
+            </p>
+            
+            
+<div class="guidance guidance-compact">
+  
+  <div class="guidance-col guidance-use">
+    <p class="guidance-label">Use when</p>
+    <ul><li>You need dates for events, such as introductions, common ancestors, or transmission windows.</li><li>You already have a tree, such as a maximum likelihood tree, and accurate collection dates for most samples.</li><li>The dataset is too large for a full Bayesian analysis, or results are needed quickly.</li></ul>
+  </div>
+  
+  
+  <div class="guidance-col guidance-avoid">
+    <p class="guidance-label">Skip this method when</p>
+    <ul>
+      
+      
+        <li>Dates are missing or imprecise, or a root-to-tip regression shows little temporal signal.</li>
+      
+      
+      
+        <li>Samples were collected over a period too short for measurable evolution, so dates would be poorly constrained.</li>
+      
+      
+      
+        
+        <li>You need full uncertainty on the tree and dates, or phylodynamic estimates such as growth rates. <span class="guidance-alt">Use <a href="/methods/bayesian-phylogeny/">Bayesian phylogeny</a> instead.</span></li>
+      
+      
+    </ul>
+  </div>
+  
+  
+  <div class="guidance-col guidance-combine">
+    <p class="guidance-label">Combine with</p>
+    <ul>
+      
+      
+      <li><a href="/methods/maximum-likelihood-phylogeny/">Maximum likelihood phylogeny</a>: Build the maximum likelihood tree first; this method takes it as input.</li>
+      
+    </ul>
+  </div>
+  
+</div>
+
+
+            <p class="option-status" hidden></p>
+          </li>
+          
+          
+        </ul>
+        <p class="step-status" hidden></p>
+      </div>
+    </li>
+    
+  </ol>
+
+  <section class="path-summary" hidden>
+    <h2 class="section-title">Your selected path</h2>
+    <ol class="path-list" aria-live="polite"></ol>
+    <p class="label">Data produced</p>
+    <p class="dtype-line path-outputs"></p>
+
+    <div class="export-panel">
+      <p class="label">Export this path</p>
+      <p class="export-note" hidden></p>
+      <div class="export-actions">
+        <button type="button" class="export-btn" data-export="print">Print / Save as PDF</button>
+        <button type="button" class="export-btn" data-export="markdown">Download Markdown</button>
+        <button type="button" class="export-btn" data-export="json">Download JSON</button>
+        <button type="button" class="export-btn export-btn-quiet" data-export="link">Copy link</button>
+      </div>
+      <p class="export-feedback" role="status"></p>
+    </div>
+  </section>
+</article>
+
+
+<script type="application/json" id="protocol-data">
+{
+  "slug": "fungal-phylogenomic-surveillance",
+  "title": "Fungal phylogenomic surveillance",
+  "summary": "Determine how fungal isolates are related to one another from whole-genome SNP phylogenies, for cluster detection and outbreak investigation.",
+  "organisms": ["Fungi"],
+  "inputs": ["raw-reads","reference-genome","collection-dates"],
+  "intro_html": "<p>This protocol compares whole genomes to measure relatedness between isolates. It is distinct from gene-targeted surveillance, such as detecting antifungal resistance mutations. Fungal genomes are larger and more repetitive than bacterial genomes, so masking duplicated regions of the reference is the key organism-specific step.</p>",
+  "site": {
+    "title": "Genomic Analysis Protocols",
+    "built": "2026-10-26T12:53:33-07:00",
+    "revision": null
+  },
+  "steps": [
+    {
+      "operation": "read-preprocessing",
+      "optional": false,
+      "multiple": true,
+      "notes": null,
+      "notes_html": null
+    },{
+      "operation": "site-masking",
+      "optional": true,
+      "multiple": true,
+      "notes": "Gene duplication is common in fungal genomes, so repeat and paralog masking is recommended for most species.",
+      "notes_html": "<p>Gene duplication is common in fungal genomes, so repeat and paralog masking is recommended for most species.</p>"
+    },{
+      "operation": "genome-assembly-and-variant-calling",
+      "optional": false,
+      "multiple": false,
+      "notes": "For diploid species, use a ploidy-aware variant caller and decide how heterozygous sites will be represented.",
+      "notes_html": "<p>For diploid species, use a ploidy-aware variant caller and decide how heterozygous sites will be represented.</p>"
+    },{
+      "operation": "phylogenetic-inference",
+      "optional": false,
+      "multiple": true,
+      "notes": null,
+      "notes_html": null
+    }
+  ],
+  "operations": {
+    "genome-alignment": {
+      "title": "Genome alignment",
+      "summary": "Arrange per-sample genome sequences so that equivalent positions line up across every sample.",
+      "url": "/operations/genome-alignment/",
+      "multiple": false
+    },"genome-assembly-and-variant-calling": {
+      "title": "Genome assembly and variant calling",
+      "summary": "Reconstruct each sample's genome, or the differences between samples, from its sequencing reads.",
+      "url": "/operations/genome-assembly-and-variant-calling/",
+      "multiple": false
+    },"phylogenetic-inference": {
+      "title": "Phylogenetic inference",
+      "summary": "Reconstruct the evolutionary relationships among samples from an alignment.",
+      "url": "/operations/phylogenetic-inference/",
+      "multiple": true
+    },"read-preprocessing": {
+      "title": "Read preprocessing",
+      "summary": "Remove adapters, primers, and low-quality sequence so downstream steps work from clean reads.",
+      "url": "/operations/read-preprocessing/",
+      "multiple": true
+    },"recombination-filtering": {
+      "title": "Recombination filtering",
+      "summary": "Identify and remove variation introduced by recombination so the remaining signal reflects vertical descent.",
+      "url": "/operations/recombination-filtering/",
+      "multiple": false
+    },"site-masking": {
+      "title": "Site masking",
+      "summary": "Exclude genomic regions whose variation would mislead downstream comparison.",
+      "url": "/operations/site-masking/",
+      "multiple": true
+    }
+  },
+  "methods": {
+    "amplicon-primer-trimming": {
+      "title": "Amplicon primer trimming",
+      "operation": "read-preprocessing",
+      "summary": "Remove primer sequence from amplicon-based reads using a primer scheme.",
+      "url": "/methods/amplicon-primer-trimming/",
+      "description_html": "<p>Primer-binding sites reflect the primer sequence, not the sample, so primer sequence must be removed before calling variants. Reads are mapped to the reference, and primer positions from the scheme are soft-clipped.</p>",
+      "implementations": [{"name":"iVar trim","url":"https://github.com/andersen-lab/ivar"}],
+      "requires": [["raw-reads","clean-reads"],"primer-scheme","reference-genome"],
+      "produces": ["clean-reads"],
+      "use_when": ["The library was made with tiled amplicons, such as ARTIC-style schemes.","You have the BED file for the exact primer scheme and version used."],
+      "avoid_when": ["The library is shotgun, so there are no primers to remove.","The primer scheme or its version is unknown, since trimming with the wrong scheme leaves primer sequence behind."],
+      "combine_with": [{"use":"quality-and-adapter-trimming","why":"Apply it first to remove adapters and low-quality bases, which primer trimming does not fully address."}],
+      "diagram_caption": null,
+      "diagram_svg": null
+    },"bayesian-phylogeny": {
+      "title": "Bayesian phylogeny",
+      "operation": "phylogenetic-inference",
+      "summary": "Jointly estimate a time-scaled tree, molecular clock, and population model, with uncertainty on every estimate.",
+      "url": "/methods/bayesian-phylogeny/",
+      "description_html": "<p>Trees, clock rates, and population parameters are sampled together with Markov chain Monte Carlo (MCMC), so the results describe a range of plausible histories rather than a single tree. Summarize the posterior trees as a maximum clade credibility tree for display.</p>\n\n<p>Runs can take hours to days. Check convergence before interpreting results: effective sample sizes above 200 for key parameters, with independent runs that agree.</p>",
+      "implementations": [{"name":"BEAST X","url":"https://beast.community/"},{"name":"BEAST 2","url":"https://www.beast2.org/"}],
+      "requires": [["recombination-free-alignment","full-alignment","snp-alignment"],"collection-dates"],
+      "produces": ["dated-tree"],
+      "use_when": ["You need credible intervals on dates, such as when a lineage was introduced.","You want phylodynamic estimates, such as population growth, reproduction numbers, or migration between locations.","The dataset is small enough to run in reasonable time, typically hundreds to a few thousand short genomes, or a subsample of a larger collection."],
+      "avoid_when": [{"when":"The dataset is large or results are needed routinely and quickly.","use":"time-scaled-phylogeny"},{"when":"Dates are missing or there is little temporal signal.","use":"maximum-likelihood-phylogeny"}],
+      "combine_with": null,
+      "diagram_caption": null,
+      "diagram_svg": null
+    },"clonal-frame-inference": {
+      "title": "Clonal frame inference",
+      "operation": "recombination-filtering",
+      "summary": "Model recombination along a fixed tree with a hidden Markov model and infer the clonal genealogy.",
+      "url": "/methods/clonal-frame-inference/",
+      "description_html": "<p>The method takes an existing tree and alignment and estimates which regions on each branch were imported by recombination, along with rate parameters. Imported regions can then be removed to produce a filtered alignment.</p>",
+      "implementations": [{"name":"ClonalFrameML","url":"https://github.com/xavierdidelot/ClonalFrameML"}],
+      "requires": ["full-alignment","tree"],
+      "produces": ["recombination-free-alignment"],
+      "use_when": ["You need estimates of recombination parameters, such as the rate of recombination relative to mutation.","A tree for the samples already exists from an earlier step."],
+      "avoid_when": [{"when":"No tree exists yet, or you want filtering and a tree from a single step.","use":"iterative-recombination-detection"}],
+      "combine_with": null,
+      "diagram_caption": null,
+      "diagram_svg": null
+    },"custom-masking": {
+      "title": "Custom masking",
+      "operation": "site-masking",
+      "summary": "Mask regions you define yourself in a BED file, such as genes known to be unreliable for your species.",
+      "url": "/methods/custom-masking/",
+      "description_html": "<p>A custom mask is a BED file listing reference regions to exclude. It is combined with any other masks before variant calling or alignment.</p>\n\n<h3 id=\"preparing-the-bed-file\">Preparing the BED file</h3>\n\n<p>A BED file is plain text with one region per line and tab-separated columns:</p>\n\n<div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>chrom       start   end     name\ncontig_1    1200    3450    hypervariable_gene_A\ncontig_1    98000   101250  low_coverage_region\n</code></pre></div></div>\n\n<p>The column names are shown for clarity only; do not put a header line in the file. The values are illustrative, so use the sequence names and coordinates of your own reference.</p>\n\n<ul>\n  <li><strong><code class=\"language-plaintext highlighter-rouge\">chrom</code></strong> must match the sequence name in the reference FASTA header exactly. This is the text after <code class=\"language-plaintext highlighter-rouge\">&gt;</code>, up to the first space. Check with <code class=\"language-plaintext highlighter-rouge\">grep '&gt;' reference.fasta</code>.</li>\n  <li><strong><code class=\"language-plaintext highlighter-rouge\">start</code></strong> is 0-based and <strong><code class=\"language-plaintext highlighter-rouge\">end</code></strong> is exclusive. To mask positions 101 to 200 as numbered in a genome browser or GFF file, write <code class=\"language-plaintext highlighter-rouge\">100</code> and <code class=\"language-plaintext highlighter-rouge\">200</code>.</li>\n  <li><strong><code class=\"language-plaintext highlighter-rouge\">name</code></strong> is optional but recommended, so the mask documents why each region is excluded.</li>\n</ul>\n\n<p>Regions can come from several sources:</p>\n\n<ul>\n  <li><strong>From an annotation.</strong> Extract genes by name from the reference’s GFF file, converting GFF’s 1-based start to BED’s 0-based start (see the example below).</li>\n  <li><strong>From coverage.</strong> Find regions with low depth across samples, for example with <code class=\"language-plaintext highlighter-rouge\">bedtools genomecov -bga</code> followed by filtering for depth below your threshold.</li>\n  <li><strong>From the literature.</strong> Enter published coordinates, converting them to your reference if they were reported on a different one.</li>\n</ul>\n\n<p>For example, to mask every gene whose attributes match a name pattern (replace the pattern with your genes of interest):</p>\n\n<div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>awk -F'\\t' '$3==\"gene\" &amp;&amp; $9 ~ /PE_PGRS|PPE/ {print $1\"\\t\"$4-1\"\\t\"$5}' reference.gff &gt; custom.bed\n</code></pre></div></div>\n\n<p>Before use, sort and merge the file so overlapping regions are combined. When using more than one masking method, merge all masks into one file:</p>\n\n<div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>cat custom.bed mobile_elements.bed | sort -k1,1 -k2,2n | bedtools merge &gt; mask.bed\n</code></pre></div></div>\n\n<p>Keep the mask under version control alongside the protocol, and record which reference version its coordinates refer to.</p>",
+      "implementations": [{"name":"BEDTools","url":"https://bedtools.readthedocs.io/"}],
+      "requires": ["reference-genome"],
+      "produces": ["mask-regions"],
+      "use_when": ["Published analyses of your species exclude specific genes or regions, such as PE/PPE genes in Mycobacterium tuberculosis.","Your own data show regions with consistently poor coverage, mapping quality, or excess variant calls.","You need to reproduce another lab's analysis exactly, using the same mask they used."],
+      "avoid_when": ["The regions can be found reproducibly with a prediction tool, which is easier to rerun when the reference changes."],
+      "combine_with": [{"use":"mobile-element-masking","why":"Use both when you have species-specific regions in addition to predicted mobile elements."},{"use":"repeat-and-paralog-masking","why":"Use both when you have species-specific regions in addition to repeats found by self-alignment."}],
+      "diagram_caption": null,
+      "diagram_svg": null
+    },"de-novo-assembly": {
+      "title": "De novo assembly",
+      "operation": "genome-assembly-and-variant-calling",
+      "summary": "Assemble each sample's genome from its reads alone, without a reference.",
+      "url": "/methods/de-novo-assembly/",
+      "description_html": "<p>Reads are assembled into contigs by finding overlaps between them, so the result does not depend on a reference genome.</p>\n\n<h3 id=\"curating-contigs-before-alignment\">Curating contigs before alignment</h3>\n\n<p>Assemblies usually need manual curation before they can be aligned:</p>\n\n<ol>\n  <li><strong>Check completeness.</strong> Compare contig lengths and coverage against the expected genome size. Tools such as QUAST report N50, total length, and misassemblies.</li>\n  <li><strong>Remove contaminants and artifacts.</strong> Discard short, low-coverage contigs and any that match host or other organisms.</li>\n  <li><strong>Order and orient contigs.</strong> Place contigs in a consistent order and strand, for example by matching them to a related genome. For segmented viruses, assign each contig to its segment.</li>\n  <li><strong>Trim ends.</strong> Remove low-coverage or adapter-containing sequence at contig ends.</li>\n  <li><strong>Produce one sequence per sample (or per segment)</strong> for the genome alignment step.</li>\n</ol>",
+      "implementations": [{"name":"SPAdes (rnaviralSPAdes)","url":"https://github.com/ablab/spades"},{"name":"MEGAHIT","url":"https://github.com/voutcn/megahit"},{"name":"QUAST (assembly assessment)","url":"https://github.com/ablab/quast"}],
+      "requires": ["clean-reads"],
+      "produces": ["genome-assemblies"],
+      "use_when": ["The sample is a pure isolate, such as a cultured virus, so all reads come from a single genome.","No reference is close enough to map reads reliably, or the reference may be missing regions present in your samples.","You want to detect insertions, rearrangements, or novel sequence that reference mapping would miss."],
+      "avoid_when": [{"when":"The sample is clinical or otherwise mixed, since reads from host, other organisms, or co-infections end up in the assembly.","use":"reference-based-consensus-calling"},{"when":"Coverage is low or uneven, as is common with amplicon dropouts, which fragments the assembly.","use":"reference-based-consensus-calling"}],
+      "combine_with": null,
+      "diagram_caption": "Reads are joined wherever their ends share sequence, building longer contigs without a reference. An assembly usually produces several contigs that need curating before alignment.",
+      "diagram_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 830 262\" role=\"img\" aria-labelledby=\"de-novo-assembly-title de-novo-assembly-desc\" class=\"diagram-svg\">\n  <title id=\"de-novo-assembly-title\">De novo assembly: overlapping reads are joined into longer contigs without using a reference genome.</title>\n  <desc id=\"de-novo-assembly-desc\">Short reads with no reference are compared to find shared sequence at their ends. Overlapping reads are joined into a longer contig. An assembly usually yields several contigs, which must be ordered, oriented, and trimmed before alignment.</desc>\n  <text x=\"20\" y=\"26\" font-family=\"Raleway, Lato, Arial, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#055A5E\" text-anchor=\"start\">1. Reads, no reference</text>\n  <rect x=\"31\" y=\"50\" width=\"138\" height=\"16\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <text x=\"40.0\" y=\"61\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <text x=\"60.0\" y=\"61\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"80.0\" y=\"61\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"100.0\" y=\"61\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"120.0\" y=\"61\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"140.0\" y=\"61\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <text x=\"160.0\" y=\"61\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <rect x=\"63\" y=\"96\" width=\"138\" height=\"16\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <text x=\"72.0\" y=\"107\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"92.0\" y=\"107\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"112.0\" y=\"107\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <text x=\"132.0\" y=\"107\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"152.0\" y=\"107\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"172.0\" y=\"107\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"192.0\" y=\"107\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <rect x=\"19\" y=\"142\" width=\"138\" height=\"16\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <text x=\"28.0\" y=\"153\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"48.0\" y=\"153\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"68.0\" y=\"153\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"88.0\" y=\"153\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <text x=\"108.0\" y=\"153\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"128.0\" y=\"153\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"148.0\" y=\"153\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <rect x=\"51\" y=\"188\" width=\"138\" height=\"16\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <text x=\"60.0\" y=\"199\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"80.0\" y=\"199\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"100.0\" y=\"199\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"120.0\" y=\"199\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <text x=\"140.0\" y=\"199\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"160.0\" y=\"199\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"180.0\" y=\"199\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <line x1=\"214\" y1=\"132\" x2=\"266\" y2=\"132\" stroke=\"#027B84\" stroke-width=\"2\"/>\n  <polygon points=\"274,132 264,127 264,137\" fill=\"#027B84\"/>\n  <text x=\"244.0\" y=\"108\" font-family=\"Raleway, Lato, Arial, sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"#027B84\" text-anchor=\"middle\">find</text>\n  <text x=\"244.0\" y=\"122\" font-family=\"Raleway, Lato, Arial, sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"#027B84\" text-anchor=\"middle\">overlaps</text>\n  <text x=\"292\" y=\"26\" font-family=\"Raleway, Lato, Arial, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#055A5E\" text-anchor=\"start\">2. Overlap reads</text>\n  <rect x=\"293\" y=\"50\" width=\"138\" height=\"16\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <text x=\"302.0\" y=\"61\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"322.0\" y=\"61\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"342.0\" y=\"61\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <text x=\"362.0\" y=\"61\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"382.0\" y=\"61\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"402.0\" y=\"61\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"422.0\" y=\"61\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <rect x=\"353\" y=\"76\" width=\"138\" height=\"16\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <text x=\"362.0\" y=\"87\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"382.0\" y=\"87\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"402.0\" y=\"87\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"422.0\" y=\"87\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <text x=\"442.0\" y=\"87\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"462.0\" y=\"87\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"482.0\" y=\"87\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <rect x=\"352\" y=\"51\" width=\"80\" height=\"42\" rx=\"3\" fill=\"none\" stroke=\"#95560A\" stroke-width=\"1.2\" stroke-dasharray=\"3 3\"/>\n  <rect x=\"413\" y=\"102\" width=\"138\" height=\"16\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <text x=\"422.0\" y=\"113\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <text x=\"442.0\" y=\"113\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"462.0\" y=\"113\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"482.0\" y=\"113\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"502.0\" y=\"113\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"522.0\" y=\"113\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <text x=\"542.0\" y=\"113\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <rect x=\"412\" y=\"77\" width=\"80\" height=\"42\" rx=\"3\" fill=\"none\" stroke=\"#95560A\" stroke-width=\"1.2\" stroke-dasharray=\"3 3\"/>\n  <rect x=\"453\" y=\"128\" width=\"138\" height=\"16\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <text x=\"462.0\" y=\"139\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"482.0\" y=\"139\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"502.0\" y=\"139\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"522.0\" y=\"139\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <text x=\"542.0\" y=\"139\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"562.0\" y=\"139\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"582.0\" y=\"139\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <rect x=\"452\" y=\"103\" width=\"100\" height=\"42\" rx=\"3\" fill=\"none\" stroke=\"#95560A\" stroke-width=\"1.2\" stroke-dasharray=\"3 3\"/>\n  <text x=\"282\" y=\"183\" font-family=\"Raleway, Lato, Arial, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"end\">Contig</text>\n  <rect x=\"293\" y=\"170\" width=\"18\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"302.0\" y=\"183\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">A</text>\n  <rect x=\"313\" y=\"170\" width=\"18\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"322.0\" y=\"183\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">C</text>\n  <rect x=\"333\" y=\"170\" width=\"18\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"342.0\" y=\"183\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">G</text>\n  <rect x=\"353\" y=\"170\" width=\"18\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"362.0\" y=\"183\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">T</text>\n  <rect x=\"373\" y=\"170\" width=\"18\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"382.0\" y=\"183\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">T</text>\n  <rect x=\"393\" y=\"170\" width=\"18\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"402.0\" y=\"183\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">A</text>\n  <rect x=\"413\" y=\"170\" width=\"18\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"422.0\" y=\"183\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">G</text>\n  <rect x=\"433\" y=\"170\" width=\"18\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"442.0\" y=\"183\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">C</text>\n  <rect x=\"453\" y=\"170\" width=\"18\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"462.0\" y=\"183\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">C</text>\n  <rect x=\"473\" y=\"170\" width=\"18\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"482.0\" y=\"183\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">A</text>\n  <rect x=\"493\" y=\"170\" width=\"18\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"502.0\" y=\"183\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">T</text>\n  <rect x=\"513\" y=\"170\" width=\"18\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"522.0\" y=\"183\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">G</text>\n  <rect x=\"533\" y=\"170\" width=\"18\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"542.0\" y=\"183\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">A</text>\n  <rect x=\"553\" y=\"170\" width=\"18\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"562.0\" y=\"183\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">C</text>\n  <rect x=\"573\" y=\"170\" width=\"18\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"582.0\" y=\"183\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"12\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">T</text>\n  <line x1=\"602\" y1=\"132\" x2=\"648\" y2=\"132\" stroke=\"#027B84\" stroke-width=\"2\"/>\n  <polygon points=\"656,132 646,127 646,137\" fill=\"#027B84\"/>\n  <text x=\"629.0\" y=\"122\" font-family=\"Raleway, Lato, Arial, sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"#027B84\" text-anchor=\"middle\">curate</text>\n  <text x=\"668\" y=\"26\" font-family=\"Raleway, Lato, Arial, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#055A5E\" text-anchor=\"start\">3. Contigs</text>\n  <rect x=\"668\" y=\"52\" width=\"92\" height=\"16\" rx=\"4\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"768\" y=\"64\" font-family=\"Lato, Arial, sans-serif\" font-size=\"11.5\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"start\">contig 1</text>\n  <rect x=\"668\" y=\"86\" width=\"40\" height=\"16\" rx=\"4\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"716\" y=\"98\" font-family=\"Lato, Arial, sans-serif\" font-size=\"11.5\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"start\">contig 2</text>\n  <rect x=\"668\" y=\"120\" width=\"64\" height=\"16\" rx=\"4\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"740\" y=\"132\" font-family=\"Lato, Arial, sans-serif\" font-size=\"11.5\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"start\">contig 3</text>\n  <text x=\"668\" y=\"172\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"#1B1B1B\" text-anchor=\"start\">Order, orient, and</text>\n  <text x=\"668\" y=\"188\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"#1B1B1B\" text-anchor=\"start\">trim contigs before</text>\n  <text x=\"668\" y=\"204\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"#1B1B1B\" text-anchor=\"start\">alignment</text>\n</svg>"
+    },"iterative-recombination-detection": {
+      "title": "Iterative recombination detection",
+      "operation": "recombination-filtering",
+      "summary": "Alternate between tree building and detecting regions of elevated SNP density until the result converges.",
+      "url": "/methods/iterative-recombination-detection/",
+      "description_html": "<p>Recombinant regions appear as clusters of substitutions on a branch. This method repeatedly builds a tree, flags those clusters, masks them, and rebuilds until no new regions are found.</p>",
+      "implementations": [{"name":"Gubbins","url":"https://github.com/nickjcroucher/gubbins"}],
+      "requires": ["full-alignment"],
+      "produces": ["recombination-free-alignment","tree"],
+      "use_when": ["Samples are closely related, such as a single lineage or outbreak sharing a recent common ancestor.","You want a recombination-filtered alignment and a starting tree in one step.","No tree exists yet for your samples."],
+      "avoid_when": [{"when":"You need estimates of recombination parameters, such as the relative effect of recombination and mutation.","use":"clonal-frame-inference"},"The collection spans many distantly related lineages, where run time grows and detection becomes less reliable."],
+      "combine_with": null,
+      "diagram_caption": null,
+      "diagram_svg": null
+    },"maximum-likelihood-phylogeny": {
+      "title": "Maximum likelihood phylogeny",
+      "operation": "phylogenetic-inference",
+      "summary": "Find the tree that best explains the alignment under a substitution model, with branch lengths in substitutions per site.",
+      "url": "/methods/maximum-likelihood-phylogeny/",
+      "description_html": "<p>The method is fast, well validated, and supports model selection and bootstrap support values. When the alignment contains only variable sites, apply an ascertainment bias correction or supply constant-site counts so branch lengths are not overestimated.</p>\n\n<p>The resulting tree is also the usual starting point for a time-scaled phylogeny.</p>",
+      "implementations": [{"name":"IQ-TREE","url":"https://iqtree.github.io/"},{"name":"RAxML-NG","url":"https://github.com/amkozlov/raxml-ng"}],
+      "requires": [["recombination-free-alignment","full-alignment","snp-alignment"]],
+      "produces": ["tree"],
+      "use_when": ["You need a tree for clustering, population structure, or placing new samples. This is the default choice.","Collection dates are missing or unreliable.","You want a fast result with branch support values, even for thousands of genomes."],
+      "avoid_when": null,
+      "combine_with": [{"use":"time-scaled-phylogeny","why":"Apply it afterward to convert this tree's branch lengths into time when collection dates are available."}],
+      "diagram_caption": null,
+      "diagram_svg": null
+    },"mobile-element-masking": {
+      "title": "Mobile element masking",
+      "operation": "site-masking",
+      "summary": "Mask prophages, insertion sequences, and other mobile elements in a bacterial reference.",
+      "url": "/methods/mobile-element-masking/",
+      "description_html": "<p>Mobile elements move horizontally between lineages, so variation within them does not track the clonal history of the chromosome. Their coordinates are predicted on the reference and excluded from comparison.</p>",
+      "implementations": [{"name":"PHASTEST","url":"https://phastest.ca/"},{"name":"ISEScan","url":"https://github.com/xiezhq-hermann/isescan"}],
+      "requires": ["reference-genome"],
+      "produces": ["mask-regions"],
+      "use_when": ["The organism is a bacterium whose genomes carry prophages, insertion sequences, or other horizontally acquired elements.","You want SNP distances and trees to reflect the chromosome's clonal history."],
+      "avoid_when": null,
+      "combine_with": [{"use":"repeat-and-paralog-masking","why":"Add it when the reference also contains repeats such as rRNA operons or duplicated genes, which cause ambiguous read mapping."},{"use":"custom-masking","why":"Add your own BED file for species-specific regions that prediction tools do not find."}],
+      "diagram_caption": null,
+      "diagram_svg": null
+    },"multiple-sequence-alignment": {
+      "title": "Multiple sequence alignment",
+      "operation": "genome-alignment",
+      "summary": "Align per-sample genome sequences so equivalent positions line up, optionally anchored to a reference to standardize coordinates.",
+      "url": "/methods/multiple-sequence-alignment/",
+      "description_html": "<p>All sequences are placed in a shared set of columns so differences between samples can be counted and modeled. For segmented genomes, align each segment separately so segments with different histories are not merged.</p>\n\n<h3 id=\"joint-or-reference-guided-alignment\">Joint or reference-guided alignment</h3>\n\n<p>The alignment can be built in two ways. Choose based on dataset size and whether insertions matter.</p>\n\n<ul>\n  <li><strong>Joint alignment</strong> (for example, MAFFT): all sequences are aligned to each other. Every indel is kept, including insertions not present in any reference. This works well for diverse sequences and small to moderate datasets.</li>\n  <li><strong>Reference-guided alignment</strong> (for example, Nextclade, minimap2 with gofasta, or MAFFT with <code class=\"language-plaintext highlighter-rouge\">--keeplength --addfragments</code>): each sequence is aligned to a reference, so all sequences share the reference’s coordinates. New samples can be added without realigning existing ones, and mutations can be reported in standard nomenclature. Insertions relative to the reference are removed from the alignment and reported separately.</li>\n</ul>\n\n<p>For routine surveillance of a single virus with a well-established reference, reference-guided alignment is usually the better choice. If insertions are informative or no single reference represents the collection, use a joint alignment.</p>",
+      "implementations": [{"name":"MAFFT","url":"https://mafft.cbrc.jp/alignment/software/"},{"name":"Nextclade (reference-guided)","url":"https://github.com/nextstrain/nextclade"},{"name":"minimap2 + gofasta (reference-guided)","url":"https://github.com/virus-evolution/gofasta"}],
+      "requires": [["consensus-genomes","genome-assemblies"]],
+      "produces": ["full-alignment"],
+      "use_when": ["You have one genome sequence per sample (or per segment), from consensus calling or curated de novo assemblies.","Indels should be kept in the alignment.","You want positions reported in standard reference coordinates. Use the reference-guided mode described below."],
+      "avoid_when": null,
+      "combine_with": null,
+      "diagram_caption": null,
+      "diagram_svg": null
+    },"quality-and-adapter-trimming": {
+      "title": "Quality and adapter trimming",
+      "operation": "read-preprocessing",
+      "summary": "Trim adapter sequence and low-quality bases from reads.",
+      "url": "/methods/quality-and-adapter-trimming/",
+      "description_html": "<p>Reads are scanned for adapter sequence, trimmed with a sliding quality window, and discarded if they fall below a minimum length. When combined with primer trimming, apply quality and adapter trimming first.</p>",
+      "implementations": [{"name":"fastp","url":"https://github.com/OpenGene/fastp"},{"name":"Trimmomatic","url":"https://github.com/usadellab/Trimmomatic"}],
+      "requires": ["raw-reads"],
+      "produces": ["clean-reads"],
+      "use_when": ["Reads may contain adapter sequence, which is true of almost all Illumina libraries.","Base quality drops toward read ends or varies between runs.","The library is shotgun (whole-genome or metagenomic) or amplicon-based. Apply it in both cases."],
+      "avoid_when": null,
+      "combine_with": [{"use":"amplicon-primer-trimming","why":"Required in addition for amplicon libraries, because quality trimming does not remove primer sequence."}],
+      "diagram_caption": null,
+      "diagram_svg": null
+    },"reference-based-consensus-calling": {
+      "title": "Reference-based consensus calling",
+      "operation": "genome-assembly-and-variant-calling",
+      "summary": "Map reads to a reference and write a complete consensus sequence for each sample, including indels.",
+      "url": "/methods/reference-based-consensus-calling/",
+      "description_html": "<p>Reads are mapped to a reference, and the consensus base is called wherever depth and allele frequency pass set thresholds. Low-coverage positions are written as N so missing data is not mistaken for a reference match. For segmented viruses, a consensus is generated per segment.</p>\n\n<p>The output is one unaligned sequence per sample. Because sequences can differ in length where indels occur, they need a genome alignment step before tree building.</p>",
+      "implementations": [{"name":"iVar consensus","url":"https://github.com/andersen-lab/ivar"}],
+      "requires": ["clean-reads","reference-genome"],
+      "produces": ["consensus-genomes"],
+      "use_when": ["The genome is small enough to compare as complete sequences, as with most viruses.","Indels carry signal you want to keep, such as deletions that define lineages.","You need a genome sequence per sample to share or submit to public databases.","The library is amplicon-based or otherwise sequenced to high, even depth."],
+      "avoid_when": [{"when":"The genome is large (bacteria, fungi), so complete per-sample sequences are impractical to align and most positions are identical.","use":"reference-based-snp-calling"},{"when":"The sample is a pure isolate and no reference is close enough to map reads reliably, or the reference may be missing regions present in your samples.","use":"de-novo-assembly"},"Within-sample diversity is the question, such as mixed infections or minor variants, since a consensus keeps only the majority base."],
+      "combine_with": null,
+      "diagram_caption": "Reads are stacked on the reference, and the majority base at each position becomes the consensus. Shared deletions are kept, and positions with no coverage are written as N.",
+      "diagram_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 760 236\" role=\"img\" aria-labelledby=\"reference-based-consensus-calling-title reference-based-consensus-calling-desc\" class=\"diagram-svg\">\n  <title id=\"reference-based-consensus-calling-title\">Reference-based consensus calling: reads are stacked on a reference and the majority base at each position becomes the sample's consensus.</title>\n  <desc id=\"reference-based-consensus-calling-desc\">Four reads are mapped to a 16-base reference. At one position three of four reads carry C instead of T, so the consensus calls C. Reads share a one-base deletion, which the consensus keeps. The last two positions have no coverage and are written as N.</desc>\n  <text x=\"20\" y=\"26\" font-family=\"Raleway, Lato, Arial, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#055A5E\" text-anchor=\"start\">1. Map reads to the reference</text>\n  <text x=\"106\" y=\"59\" font-family=\"Raleway, Lato, Arial, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"#055A5E\" text-anchor=\"end\">Reference</text>\n  <rect x=\"119\" y=\"44\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"130.0\" y=\"59\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">A</text>\n  <rect x=\"143\" y=\"44\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"154.0\" y=\"59\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">C</text>\n  <rect x=\"167\" y=\"44\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"178.0\" y=\"59\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">G</text>\n  <rect x=\"191\" y=\"44\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"202.0\" y=\"59\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">T</text>\n  <rect x=\"215\" y=\"44\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"226.0\" y=\"59\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">A</text>\n  <rect x=\"239\" y=\"44\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"250.0\" y=\"59\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">C</text>\n  <rect x=\"263\" y=\"44\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"274.0\" y=\"59\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">G</text>\n  <rect x=\"287\" y=\"44\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"298.0\" y=\"59\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">T</text>\n  <rect x=\"311\" y=\"44\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"322.0\" y=\"59\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">T</text>\n  <rect x=\"335\" y=\"44\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"346.0\" y=\"59\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">A</text>\n  <rect x=\"359\" y=\"44\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"370.0\" y=\"59\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">C</text>\n  <rect x=\"383\" y=\"44\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"394.0\" y=\"59\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">G</text>\n  <rect x=\"407\" y=\"44\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"418.0\" y=\"59\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">A</text>\n  <rect x=\"431\" y=\"44\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"442.0\" y=\"59\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">T</text>\n  <rect x=\"455\" y=\"44\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"466.0\" y=\"59\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">C</text>\n  <rect x=\"479\" y=\"44\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"490.0\" y=\"59\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">G</text>\n  <text x=\"106\" y=\"87\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"end\">Read 1</text>\n  <rect x=\"119\" y=\"72\" width=\"190\" height=\"20\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <text x=\"130.0\" y=\"87\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"154.0\" y=\"87\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"178.0\" y=\"87\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <text x=\"202.0\" y=\"87\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"226.0\" y=\"87\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"250.0\" y=\"87\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"274.0\" y=\"87\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <rect x=\"288\" y=\"73\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"298.0\" y=\"87\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">C</text>\n  <text x=\"106\" y=\"111\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"end\">Read 2</text>\n  <rect x=\"167\" y=\"96\" width=\"214\" height=\"20\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <text x=\"178.0\" y=\"111\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <text x=\"202.0\" y=\"111\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"226.0\" y=\"111\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"250.0\" y=\"111\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"274.0\" y=\"111\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <rect x=\"288\" y=\"97\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"298.0\" y=\"111\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">C</text>\n  <text x=\"322.0\" y=\"111\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"346.0\" y=\"111\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"370.0\" y=\"111\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"106\" y=\"135\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"end\">Read 3</text>\n  <rect x=\"239\" y=\"120\" width=\"214\" height=\"20\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <text x=\"250.0\" y=\"135\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"274.0\" y=\"135\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <rect x=\"288\" y=\"121\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"298.0\" y=\"135\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">C</text>\n  <text x=\"322.0\" y=\"135\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"346.0\" y=\"135\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"370.0\" y=\"135\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <rect x=\"384\" y=\"121\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"394.0\" y=\"135\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">-</text>\n  <text x=\"418.0\" y=\"135\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"442.0\" y=\"135\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"106\" y=\"159\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"end\">Read 4</text>\n  <rect x=\"263\" y=\"144\" width=\"190\" height=\"20\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <text x=\"274.0\" y=\"159\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <text x=\"298.0\" y=\"159\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"322.0\" y=\"159\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"346.0\" y=\"159\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"370.0\" y=\"159\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <rect x=\"384\" y=\"145\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"394.0\" y=\"159\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">-</text>\n  <text x=\"418.0\" y=\"159\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"442.0\" y=\"159\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <rect x=\"286\" y=\"40\" width=\"24\" height=\"178\" rx=\"4\" fill=\"none\" stroke=\"#95560A\" stroke-width=\"1.2\" stroke-dasharray=\"3 3\"/>\n  <rect x=\"382\" y=\"40\" width=\"24\" height=\"178\" rx=\"4\" fill=\"none\" stroke=\"#95560A\" stroke-width=\"1.2\" stroke-dasharray=\"3 3\"/>\n  <text x=\"20\" y=\"196\" font-family=\"Raleway, Lato, Arial, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#055A5E\" text-anchor=\"start\">2. Call the majority base</text>\n  <text x=\"106\" y=\"225\" font-family=\"Raleway, Lato, Arial, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"end\">Consensus</text>\n  <rect x=\"119\" y=\"210\" width=\"382\" height=\"20\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <text x=\"130.0\" y=\"225\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"154.0\" y=\"225\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"178.0\" y=\"225\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <text x=\"202.0\" y=\"225\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"226.0\" y=\"225\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"250.0\" y=\"225\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"274.0\" y=\"225\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <rect x=\"288\" y=\"211\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"298.0\" y=\"225\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">C</text>\n  <text x=\"322.0\" y=\"225\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"346.0\" y=\"225\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"370.0\" y=\"225\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <rect x=\"384\" y=\"211\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"394.0\" y=\"225\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">-</text>\n  <text x=\"418.0\" y=\"225\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"442.0\" y=\"225\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <rect x=\"456\" y=\"211\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#E9EEEF\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"466.0\" y=\"225\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#7C8B8D\" text-anchor=\"middle\">N</text>\n  <rect x=\"480\" y=\"211\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#E9EEEF\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"490.0\" y=\"225\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#7C8B8D\" text-anchor=\"middle\">N</text>\n  <text x=\"528\" y=\"94\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"start\">3 of 4 reads show C,</text>\n  <text x=\"528\" y=\"110\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12.5\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"start\">so the consensus is C</text>\n  <text x=\"528\" y=\"142\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"start\">Reads share a deletion,</text>\n  <text x=\"528\" y=\"158\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12.5\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"start\">so the consensus keeps it</text>\n  <text x=\"528\" y=\"214\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"#7C8B8D\" text-anchor=\"start\">No reads cover the end,</text>\n  <text x=\"528\" y=\"230\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12.5\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"start\">so those bases are N</text>\n</svg>"
+    },"reference-based-snp-calling": {
+      "title": "Reference-based SNP calling",
+      "operation": "genome-assembly-and-variant-calling",
+      "summary": "Map reads to a reference, call SNPs, and combine samples into a core SNP alignment of positions present in every sample.",
+      "url": "/methods/reference-based-snp-calling/",
+      "description_html": "<p>Each sample’s reads are mapped to the reference and SNPs are called. Sample calls are then combined in reference coordinates, keeping only positions covered in every sample (the core genome). Results depend on the reference: a closely related one maximizes the core genome and the number of informative sites.</p>\n\n<p>The method produces the alignment directly, so no separate genome alignment step is needed. It outputs both the full-length alignment, which recombination detection needs, and a SNP-only alignment, which is faster for tree building.</p>\n\n<h3 id=\"a-note-on-snp-and-snv\">A note on SNP and SNV</h3>\n\n<p>Strictly, a single-nucleotide polymorphism (SNP) is a variant common in a population, while a single-nucleotide variant (SNV) is any single-base difference, however rare. The differences called here are SNVs in that strict sense. This site uses SNP because it is the established term in microbial genomic epidemiology, as in “core SNP alignment”, “SNP distance”, and “SNP threshold”, and in the names of tools such as Snippy and the CFSAN SNP Pipeline.</p>",
+      "implementations": [{"name":"Snippy","url":"https://github.com/tseemann/snippy"},{"name":"CFSAN SNP Pipeline","url":"https://github.com/CFSAN-Biostatistics/snp-pipeline"}],
+      "requires": ["clean-reads","reference-genome"],
+      "produces": ["full-alignment","snp-alignment"],
+      "use_when": ["The genome is large, as with bacteria and fungi, and differences between samples are mostly SNPs.","A closed reference from the same lineage as your samples is available.","A later step needs genome positions, such as recombination filtering or reporting variants by reference coordinate.","You need reproducible SNP distances for outbreak or cluster definitions."],
+      "avoid_when": [{"when":"Indels are informative and genomes are small enough to compare in full, as with most viruses.","use":"reference-based-consensus-calling"},{"when":"No closely related reference exists, or samples span lineages diverse enough that much of each genome fails to map.","use":"reference-free-snp-calling"},"The organism is diploid and no ploidy-aware caller is used, since heterozygous sites will be miscalled."],
+      "combine_with": null,
+      "diagram_caption": "Each sample is compared with the reference. Positions missing in any sample are dropped from the core, and the variable positions that remain form the SNP alignment.",
+      "diagram_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 760 252\" role=\"img\" aria-labelledby=\"reference-based-snp-calling-title reference-based-snp-calling-desc\" class=\"diagram-svg\">\n  <title id=\"reference-based-snp-calling-title\">Reference-based SNP calling: each sample's SNPs are called against a reference, positions missing in any sample are dropped, and the remaining variable positions form the SNP alignment.</title>\n  <desc id=\"reference-based-snp-calling-desc\">Three samples are compared with a 16-base reference. Positions where any sample has no coverage are excluded from the core, which also drops a SNP that only one sample carried there. The three variable positions left in the core form the SNP alignment.</desc>\n  <text x=\"20\" y=\"26\" font-family=\"Raleway, Lato, Arial, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#055A5E\" text-anchor=\"start\">1. Call SNPs in each sample against the reference</text>\n  <rect x=\"118\" y=\"56\" width=\"24\" height=\"110\" rx=\"3\" fill=\"#E9EEEF\" stroke=\"none\" stroke-width=\"1\"/>\n  <rect x=\"142\" y=\"56\" width=\"24\" height=\"110\" rx=\"3\" fill=\"#E9EEEF\" stroke=\"none\" stroke-width=\"1\"/>\n  <rect x=\"454\" y=\"56\" width=\"24\" height=\"110\" rx=\"3\" fill=\"#E9EEEF\" stroke=\"none\" stroke-width=\"1\"/>\n  <rect x=\"478\" y=\"56\" width=\"24\" height=\"110\" rx=\"3\" fill=\"#E9EEEF\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"142\" y=\"182\" font-family=\"Raleway, Lato, Arial, sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"#7C8B8D\" text-anchor=\"middle\">not in core</text>\n  <text x=\"478\" y=\"182\" font-family=\"Raleway, Lato, Arial, sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"#7C8B8D\" text-anchor=\"middle\">not in core</text>\n  <text x=\"106\" y=\"75\" font-family=\"Raleway, Lato, Arial, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"#055A5E\" text-anchor=\"end\">Reference</text>\n  <rect x=\"119\" y=\"60\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"130.0\" y=\"75\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">A</text>\n  <rect x=\"143\" y=\"60\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"154.0\" y=\"75\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">C</text>\n  <rect x=\"167\" y=\"60\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"178.0\" y=\"75\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">G</text>\n  <rect x=\"191\" y=\"60\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"202.0\" y=\"75\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">T</text>\n  <rect x=\"215\" y=\"60\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"226.0\" y=\"75\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">A</text>\n  <rect x=\"239\" y=\"60\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"250.0\" y=\"75\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">C</text>\n  <rect x=\"263\" y=\"60\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"274.0\" y=\"75\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">G</text>\n  <rect x=\"287\" y=\"60\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"298.0\" y=\"75\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">T</text>\n  <rect x=\"311\" y=\"60\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"322.0\" y=\"75\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">T</text>\n  <rect x=\"335\" y=\"60\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"346.0\" y=\"75\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">A</text>\n  <rect x=\"359\" y=\"60\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"370.0\" y=\"75\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">C</text>\n  <rect x=\"383\" y=\"60\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"394.0\" y=\"75\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">G</text>\n  <rect x=\"407\" y=\"60\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"418.0\" y=\"75\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">A</text>\n  <rect x=\"431\" y=\"60\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"442.0\" y=\"75\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">T</text>\n  <rect x=\"455\" y=\"60\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"466.0\" y=\"75\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">C</text>\n  <rect x=\"479\" y=\"60\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"490.0\" y=\"75\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">G</text>\n  <text x=\"106\" y=\"103\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"end\">Sample A</text>\n  <rect x=\"119\" y=\"88\" width=\"382\" height=\"20\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <text x=\"130.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <rect x=\"144\" y=\"89\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"154.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">T</text>\n  <text x=\"178.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"202.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"226.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"250.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"274.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <rect x=\"288\" y=\"89\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"298.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">C</text>\n  <text x=\"322.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"346.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"370.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"394.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"418.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"442.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"466.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"490.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"106\" y=\"127\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"end\">Sample B</text>\n  <rect x=\"119\" y=\"112\" width=\"382\" height=\"20\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <rect x=\"120\" y=\"113\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#E9EEEF\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"130.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#7C8B8D\" text-anchor=\"middle\">N</text>\n  <rect x=\"144\" y=\"113\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#E9EEEF\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"154.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#7C8B8D\" text-anchor=\"middle\">N</text>\n  <text x=\"178.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"202.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"226.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"250.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"274.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <rect x=\"288\" y=\"113\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"298.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">C</text>\n  <text x=\"322.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"346.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"370.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"394.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"418.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <rect x=\"432\" y=\"113\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"442.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">A</text>\n  <text x=\"466.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"490.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"106\" y=\"151\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"end\">Sample C</text>\n  <rect x=\"119\" y=\"136\" width=\"382\" height=\"20\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <text x=\"130.0\" y=\"151\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"154.0\" y=\"151\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"178.0\" y=\"151\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"202.0\" y=\"151\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <rect x=\"216\" y=\"137\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"226.0\" y=\"151\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">G</text>\n  <text x=\"250.0\" y=\"151\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"274.0\" y=\"151\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"298.0\" y=\"151\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"322.0\" y=\"151\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"346.0\" y=\"151\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"370.0\" y=\"151\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"394.0\" y=\"151\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"418.0\" y=\"151\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <text x=\"442.0\" y=\"151\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#9AA7A8\" text-anchor=\"middle\">.</text>\n  <rect x=\"456\" y=\"137\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#E9EEEF\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"466.0\" y=\"151\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#7C8B8D\" text-anchor=\"middle\">N</text>\n  <rect x=\"480\" y=\"137\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#E9EEEF\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"490.0\" y=\"151\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#7C8B8D\" text-anchor=\"middle\">N</text>\n  <text x=\"262\" y=\"182\" font-family=\"Lato, Arial, sans-serif\" font-size=\"11.5\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"middle\">· = matches reference</text>\n  <text x=\"370.0\" y=\"182\" font-family=\"Lato, Arial, sans-serif\" font-size=\"11.5\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"middle\">N = no coverage</text>\n  <line x1=\"518\" y1=\"124.80000000000001\" x2=\"606\" y2=\"124.80000000000001\" stroke=\"#027B84\" stroke-width=\"2\"/>\n  <polygon points=\"614,124.80000000000001 604,119.80000000000001 604,129.8\" fill=\"#027B84\"/>\n  <text x=\"566.0\" y=\"100.80000000000001\" font-family=\"Raleway, Lato, Arial, sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"#027B84\" text-anchor=\"middle\">keep variable</text>\n  <text x=\"566.0\" y=\"114.80000000000001\" font-family=\"Raleway, Lato, Arial, sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"#027B84\" text-anchor=\"middle\">core sites</text>\n  <text x=\"642\" y=\"26\" font-family=\"Raleway, Lato, Arial, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#055A5E\" text-anchor=\"start\">2. SNP alignment</text>\n  <text x=\"654.0\" y=\"52\" font-family=\"Lato, Arial, sans-serif\" font-size=\"11\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"middle\">5</text>\n  <text x=\"678.0\" y=\"52\" font-family=\"Lato, Arial, sans-serif\" font-size=\"11\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"middle\">8</text>\n  <text x=\"702.0\" y=\"52\" font-family=\"Lato, Arial, sans-serif\" font-size=\"11\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"middle\">14</text>\n  <rect x=\"643\" y=\"60\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"654.0\" y=\"75\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">A</text>\n  <rect x=\"667\" y=\"60\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"678.0\" y=\"75\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">T</text>\n  <rect x=\"691\" y=\"60\" width=\"22\" height=\"20\" rx=\"2\" fill=\"#055A5E\" stroke=\"none\" stroke-width=\"1\"/>\n  <text x=\"702.0\" y=\"75\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#FFFFFF\" text-anchor=\"middle\">T</text>\n  <rect x=\"643\" y=\"88\" width=\"70\" height=\"20\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <text x=\"654.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <rect x=\"668\" y=\"89\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"678.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">C</text>\n  <text x=\"702.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <rect x=\"643\" y=\"112\" width=\"70\" height=\"20\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <text x=\"654.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <rect x=\"668\" y=\"113\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"678.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">C</text>\n  <rect x=\"692\" y=\"113\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"702.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">A</text>\n  <rect x=\"643\" y=\"136\" width=\"70\" height=\"20\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <rect x=\"644\" y=\"137\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"654.0\" y=\"151\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">G</text>\n  <text x=\"678.0\" y=\"151\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"702.0\" y=\"151\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"678.0\" y=\"182\" font-family=\"Lato, Arial, sans-serif\" font-size=\"11\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"middle\">position</text>\n</svg>"
+    },"reference-free-snp-calling": {
+      "title": "Reference-free SNP calling",
+      "operation": "genome-assembly-and-variant-calling",
+      "summary": "Identify SNPs shared across samples directly from split k-mers, without a reference genome.",
+      "url": "/methods/reference-free-snp-calling/",
+      "description_html": "<p>Variation is detected from split k-mers, which are k-mers that match across samples except at their middle base. SNPs are found directly by comparing samples, so results do not depend on choosing a reference.</p>\n\n<p>The output is an alignment of variable sites only. It is ready for tree building, but it carries no genome positions and does not capture indels. Because positions are unknown, recombination filtering cannot be applied afterward.</p>",
+      "implementations": [{"name":"SKA","url":"https://github.com/bacpop/ska.rust"}],
+      "requires": ["clean-reads"],
+      "produces": ["snp-alignment"],
+      "use_when": ["No suitable reference genome exists for your samples.","Samples span lineages diverse enough that a single reference would introduce mapping bias.","You need fast SNP distances for screening or a first look at a new collection."],
+      "avoid_when": [{"when":"A later step needs genome positions, such as recombination filtering, because only variable sites are kept.","use":"reference-based-snp-calling"},{"when":"Indels carry signal you want to keep.","use":"reference-based-consensus-calling"}],
+      "combine_with": null,
+      "diagram_caption": "Split k-mers with identical flanks are matched across samples. Their middle bases become the columns of the SNP alignment, with no reference and no genome positions.",
+      "diagram_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 760 316\" role=\"img\" aria-labelledby=\"reference-free-snp-calling-title reference-free-snp-calling-desc\" class=\"diagram-svg\">\n  <title id=\"reference-free-snp-calling-title\">Reference-free SNP calling: split k-mers whose flanking sequence matches across samples are grouped, and the middle base of each becomes one column of the SNP alignment.</title>\n  <desc id=\"reference-free-snp-calling-desc\">Each sample is broken into split k-mers: two flanks that must match exactly and a middle base that may differ. Split k-mers with the same flanks are grouped across samples, and their middle bases become the columns of the SNP alignment, with no reference genome and no genome positions.</desc>\n  <text x=\"20\" y=\"26\" font-family=\"Raleway, Lato, Arial, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#055A5E\" text-anchor=\"start\">1. Match split k-mers across samples</text>\n  <text x=\"118\" y=\"56\" font-family=\"Raleway, Lato, Arial, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"#055A5E\" text-anchor=\"start\">Split k-mer 1</text>\n  <text x=\"106\" y=\"79\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"end\">Sample A</text>\n  <rect x=\"119\" y=\"64\" width=\"166\" height=\"20\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <text x=\"130.0\" y=\"79\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"154.0\" y=\"79\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"178.0\" y=\"79\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <text x=\"202.0\" y=\"79\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"226.0\" y=\"79\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"250.0\" y=\"79\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"274.0\" y=\"79\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <rect x=\"191\" y=\"64\" width=\"22\" height=\"20\" rx=\"2\" fill=\"none\" stroke=\"#95560A\" stroke-width=\"1.4\"/>\n  <text x=\"106\" y=\"103\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"end\">Sample B</text>\n  <rect x=\"119\" y=\"88\" width=\"166\" height=\"20\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <text x=\"130.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"154.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"178.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <rect x=\"192\" y=\"89\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"202.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">C</text>\n  <text x=\"226.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"250.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"274.0\" y=\"103\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <rect x=\"191\" y=\"88\" width=\"22\" height=\"20\" rx=\"2\" fill=\"none\" stroke=\"#95560A\" stroke-width=\"1.4\"/>\n  <text x=\"106\" y=\"127\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"end\">Sample C</text>\n  <rect x=\"119\" y=\"112\" width=\"166\" height=\"20\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <text x=\"130.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"154.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"178.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <text x=\"202.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"226.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"250.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"274.0\" y=\"127\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <rect x=\"191\" y=\"112\" width=\"22\" height=\"20\" rx=\"2\" fill=\"none\" stroke=\"#95560A\" stroke-width=\"1.4\"/>\n  <text x=\"118\" y=\"162\" font-family=\"Raleway, Lato, Arial, sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"#055A5E\" text-anchor=\"start\">Split k-mer 2</text>\n  <text x=\"106\" y=\"185\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"end\">Sample A</text>\n  <rect x=\"119\" y=\"170\" width=\"166\" height=\"20\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <text x=\"130.0\" y=\"185\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <text x=\"154.0\" y=\"185\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <text x=\"178.0\" y=\"185\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"202.0\" y=\"185\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"226.0\" y=\"185\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"250.0\" y=\"185\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"274.0\" y=\"185\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <rect x=\"191\" y=\"170\" width=\"22\" height=\"20\" rx=\"2\" fill=\"none\" stroke=\"#95560A\" stroke-width=\"1.4\"/>\n  <text x=\"106\" y=\"209\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"end\">Sample B</text>\n  <rect x=\"119\" y=\"194\" width=\"166\" height=\"20\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <text x=\"130.0\" y=\"209\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <text x=\"154.0\" y=\"209\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <text x=\"178.0\" y=\"209\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"202.0\" y=\"209\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"226.0\" y=\"209\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"250.0\" y=\"209\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"274.0\" y=\"209\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <rect x=\"191\" y=\"194\" width=\"22\" height=\"20\" rx=\"2\" fill=\"none\" stroke=\"#95560A\" stroke-width=\"1.4\"/>\n  <text x=\"106\" y=\"233\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"end\">Sample C</text>\n  <rect x=\"119\" y=\"218\" width=\"166\" height=\"20\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <text x=\"130.0\" y=\"233\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <text x=\"154.0\" y=\"233\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">G</text>\n  <text x=\"178.0\" y=\"233\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <rect x=\"192\" y=\"219\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"202.0\" y=\"233\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">G</text>\n  <text x=\"226.0\" y=\"233\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">C</text>\n  <text x=\"250.0\" y=\"233\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"274.0\" y=\"233\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <rect x=\"191\" y=\"218\" width=\"22\" height=\"20\" rx=\"2\" fill=\"none\" stroke=\"#95560A\" stroke-width=\"1.4\"/>\n  <text x=\"154.0\" y=\"260\" font-family=\"Lato, Arial, sans-serif\" font-size=\"11.5\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"middle\">flank</text>\n  <text x=\"202.0\" y=\"260\" font-family=\"Raleway, Lato, Arial, sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">middle</text>\n  <text x=\"250.0\" y=\"260\" font-family=\"Lato, Arial, sans-serif\" font-size=\"11.5\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"middle\">flank</text>\n  <line x1=\"316\" y1=\"102.0\" x2=\"428\" y2=\"102.0\" stroke=\"#027B84\" stroke-width=\"2\"/>\n  <polygon points=\"436,102.0 426,97.0 426,107.0\" fill=\"#027B84\"/>\n  <text x=\"376.0\" y=\"78.0\" font-family=\"Raleway, Lato, Arial, sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"#027B84\" text-anchor=\"middle\">collect the</text>\n  <text x=\"376.0\" y=\"92.0\" font-family=\"Raleway, Lato, Arial, sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"#027B84\" text-anchor=\"middle\">middle bases</text>\n  <text x=\"536\" y=\"26\" font-family=\"Raleway, Lato, Arial, sans-serif\" font-size=\"14\" font-weight=\"700\" fill=\"#055A5E\" text-anchor=\"start\">2. SNP alignment</text>\n  <text x=\"548.0\" y=\"58\" font-family=\"Lato, Arial, sans-serif\" font-size=\"11\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"middle\">k1</text>\n  <text x=\"572.0\" y=\"58\" font-family=\"Lato, Arial, sans-serif\" font-size=\"11\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"middle\">k2</text>\n  <text x=\"524\" y=\"81\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"end\">Sample A</text>\n  <rect x=\"537\" y=\"66\" width=\"46\" height=\"20\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <text x=\"548.0\" y=\"81\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <text x=\"572.0\" y=\"81\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"524\" y=\"105\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"end\">Sample B</text>\n  <rect x=\"537\" y=\"90\" width=\"46\" height=\"20\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <rect x=\"538\" y=\"91\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"548.0\" y=\"105\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">C</text>\n  <text x=\"572.0\" y=\"105\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">A</text>\n  <text x=\"524\" y=\"129\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"end\">Sample C</text>\n  <rect x=\"537\" y=\"114\" width=\"46\" height=\"20\" rx=\"4\" fill=\"#E3F5F9\" stroke=\"#9ED8E6\" stroke-width=\"1\"/>\n  <text x=\"548.0\" y=\"129\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"400\" fill=\"#1B1B1B\" text-anchor=\"middle\">T</text>\n  <rect x=\"562\" y=\"115\" width=\"20\" height=\"18\" rx=\"2\" fill=\"#F7E8D4\" stroke=\"#95560A\" stroke-width=\"1\"/>\n  <text x=\"572.0\" y=\"129\" font-family=\"ui-monospace, Menlo, Consolas, monospace\" font-size=\"13\" font-weight=\"700\" fill=\"#95560A\" text-anchor=\"middle\">G</text>\n  <text x=\"444\" y=\"168\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"start\">No reference is used, so the</text>\n  <text x=\"444\" y=\"184\" font-family=\"Lato, Arial, sans-serif\" font-size=\"12\" font-weight=\"400\" fill=\"#4B5D5F\" text-anchor=\"start\">columns have no genome position.</text>\n</svg>"
+    },"repeat-and-paralog-masking": {
+      "title": "Repeat and paralog masking",
+      "operation": "site-masking",
+      "summary": "Mask repetitive and duplicated regions of a reference so reads cannot map ambiguously.",
+      "url": "/methods/repeat-and-paralog-masking/",
+      "description_html": "<p>Aligning the reference against itself reveals regions that occur more than once. Masking them prevents reads from duplicated genes being placed at the wrong copy, which would otherwise create false variant calls.</p>",
+      "implementations": [{"name":"MUMmer (nucmer self-alignment)","url":"https://github.com/mummer4/mummer"},{"name":"RepeatMasker","url":"https://www.repeatmasker.org/"}],
+      "requires": ["reference-genome"],
+      "produces": ["mask-regions"],
+      "use_when": ["The genome contains gene families, duplicated genes, or other repeats, as is common in fungi.","Variant calls cluster in regions with unusually high or uneven coverage."],
+      "avoid_when": null,
+      "combine_with": [{"use":"mobile-element-masking","why":"Add it for bacteria, whose horizontally transferred elements are not necessarily repeated in the reference."},{"use":"custom-masking","why":"Add your own BED file for species-specific regions that prediction tools do not find."}],
+      "diagram_caption": null,
+      "diagram_svg": null
+    },"time-scaled-phylogeny": {
+      "title": "Time-scaled phylogeny",
+      "operation": "phylogenetic-inference",
+      "summary": "Rescale an existing tree, usually a maximum likelihood tree, so branch lengths are in time and ancestral nodes are dated.",
+      "url": "/methods/time-scaled-phylogeny/",
+      "description_html": "<p>Sampling dates calibrate a molecular clock, which converts substitution branch lengths into time. The tree topology comes from the input tree. Only branch lengths, the root position, and node dates are estimated, which makes this much faster than Bayesian dating.</p>\n\n<p>Check for temporal signal first: plot root-to-tip distance against sampling date and confirm a clear positive relationship before interpreting dates. For recombining bacteria, use a tree built from a recombination-filtered alignment.</p>",
+      "implementations": [{"name":"TreeTime","url":"https://github.com/neherlab/treetime"},{"name":"LSD2 (in IQ-TREE)","url":"https://github.com/tothuhien/lsd2"}],
+      "requires": ["tree","collection-dates"],
+      "produces": ["dated-tree"],
+      "use_when": ["You need dates for events, such as introductions, common ancestors, or transmission windows.","You already have a tree, such as a maximum likelihood tree, and accurate collection dates for most samples.","The dataset is too large for a full Bayesian analysis, or results are needed quickly."],
+      "avoid_when": ["Dates are missing or imprecise, or a root-to-tip regression shows little temporal signal.","Samples were collected over a period too short for measurable evolution, so dates would be poorly constrained.",{"when":"You need full uncertainty on the tree and dates, or phylodynamic estimates such as growth rates.","use":"bayesian-phylogeny"}],
+      "combine_with": [{"use":"maximum-likelihood-phylogeny","why":"Build the maximum likelihood tree first; this method takes it as input."}],
+      "diagram_caption": null,
+      "diagram_svg": null
+    }
+  }
+}
+</script>
+<script type="application/json" id="data-types">{"raw-reads":{"name":"Raw reads","description":"Unprocessed sequencing reads (FASTQ)."},"primer-scheme":{"name":"Primer scheme","description":"Primer coordinates for an amplicon library (BED)."},"reference-genome":{"name":"Reference genome","description":"A closely related assembled genome (FASTA)."},"collection-dates":{"name":"Collection dates","description":"Sampling date for each sample."},"clean-reads":{"name":"Clean reads","description":"Reads after trimming and quality filtering (FASTQ)."},"mask-regions":{"name":"Mask regions","description":"Reference coordinates to exclude from comparison (BED)."},"consensus-genomes":{"name":"Consensus genomes","description":"One consensus sequence per sample (FASTA)."},"genome-assemblies":{"name":"Genome assemblies","description":"De novo assembled contigs per sample (FASTA), curated before alignment."},"full-alignment":{"name":"Full genome alignment","description":"Alignment including invariant sites, so genome positions are preserved."},"snp-alignment":{"name":"SNP-only alignment","description":"Alignment of variable sites only."},"recombination-free-alignment":{"name":"Recombination-filtered alignment","description":"Alignment with recombinant regions removed."},"tree":{"name":"Phylogenetic tree","description":"Tree with branch lengths in substitutions per site (Newick)."},"dated-tree":{"name":"Time-scaled tree","description":"Tree with branch lengths in time and dated nodes."}}</script>
+<script src="/assets/js/protocol-builder.js" defer></script>
+<script src="/assets/js/protocol-export.js" defer></script>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 <a href="https://pgcoe.github.io/">Pathogen Genomics Centers of Excellence</a></p>
+    <p class="footer-note">Protocols are built from <strong>operations</strong> (what is done) and <strong>methods</strong> (how it is done).</p>
+  </footer>
+  <script src="/assets/js/filter.js" defer></script>
+</body>
+</html>

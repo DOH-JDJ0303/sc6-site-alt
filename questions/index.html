@@ -1,0 +1,41 @@
+---
+title: Questions
+eyebrow: Start here
+lede: >-
+  Start from the question you need to answer. Each question points to the
+  protocol for your pathogen, or to protocols that work together.
+section: questions
+---
+{% assign groups = "" | split: "" %}
+{% for q in site.questions %}{% for r in q.routes %}{% unless groups contains r.organisms %}{% assign groups = groups | push: r.organisms %}{% endunless %}{% endfor %}{% endfor %}
+
+<section class="question-search" id="question-search">
+  <label class="label" for="q">Search by question</label>
+  <input class="filter filter-large" id="q" name="q" type="search" autocomplete="off"
+         placeholder="For example: are these cases related?">
+  <div class="org-filter" role="group" aria-label="Filter by pathogen group">
+    <button type="button" class="chip is-active" data-org="">All pathogens</button>
+    {% for g in groups %}<button type="button" class="chip" data-org="{{ g | downcase }}">{{ g }}</button>{% endfor %}
+  </div>
+  <p class="search-status" aria-live="polite"></p>
+</section>
+
+{% assign questions = site.questions | sort: "order" %}
+<ul class="card-list" id="question-list">
+  {% for q in questions %}
+  {% capture qsearch %}{{ q.title }} {{ q.summary }} {{ q.aliases | join: ' ' }}{% for r in q.routes %} {{ r.organisms }}{% for item in r.protocols %}{% if item.planned %} {{ item.planned }}{% else %}{% assign s = item.protocol | default: item %}{% assign pp = site.protocols | where: "slug", s | first %} {{ pp.title }}{% endif %}{% endfor %}{% endfor %}{% endcapture %}
+  {% capture qorgs %}{% for r in q.routes %}{{ r.organisms | downcase }}|{% endfor %}{% endcapture %}
+  <li class="card card-question" data-search="{{ qsearch | downcase | strip_newlines | escape }}" data-orgs="{{ qorgs }}" data-title="{{ q.title | downcase | escape }}">
+    <a class="card-title" href="{{ q.url | relative_url }}">{{ q.title }}</a>
+    {% if q.summary %}<p>{{ q.summary }}</p>{% endif %}
+    <ul class="route-list">
+      {% for r in q.routes %}
+      <li data-org="{{ r.organisms | downcase }}"><span class="route-org">{{ r.organisms }}</span>{% include route-protocols.html route=r compact=true %}</li>
+      {% endfor %}
+    </ul>
+  </li>
+  {% endfor %}
+</ul>
+<p class="muted search-empty" hidden>No questions match. Try different words, or <a href="{{ '/protocols/' | relative_url }}">browse all protocols</a>.</p>
+
+<script src="{{ '/assets/js/questions.js' | relative_url }}" defer></script>

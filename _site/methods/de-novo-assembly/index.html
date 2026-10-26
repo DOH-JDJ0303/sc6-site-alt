@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>De novo assembly · Genomic Analysis Protocols · PGCoE Network</title>
+  <meta name="description" content="Assemble each sample's genome from its reads alone, without a reference.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  
+
+  
+  <nav class="network-nav" aria-label="PGCoE Network">
+    
+    <a href="https://pgcoe.github.io/">Home</a>
+    
+    <a href="https://pgcoe.github.io/protocols.html">Sequencing Protocols</a>
+    
+    <a href="https://pgcoe.github.io/workflows.html">Bioinformatics Workflows</a>
+    
+    <a href="https://pgcoe.github.io/response.html">Response and Readiness</a>
+    
+    <a href="https://pgcoe.github.io/dataviz.html">Data and Visualization</a>
+    
+    <a href="https://pgcoe.github.io/education.html">Education</a>
+    
+  </nav>
+  
+
+  <header class="hub-bar">
+    <div class="wrap hub-bar-inner">
+      <a class="brand" href="/">Genomic Analysis Protocols</a>
+      <nav class="site-nav" aria-label="Protocol hub">
+        <a class="nav-question" href="/questions/">Questions</a>
+        <a class="nav-protocol" href="/protocols/">Protocols</a>
+        <a class="nav-operation" href="/operations/">Operations</a>
+        <a class="nav-method is-active" href="/methods/">Methods</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <section class="page-head">
+    <div class="wrap page-head-inner">
+      <div class="page-head-text">
+        
+          
+          <p class="eyebrow eyebrow-method"><a href="/methods/">Method</a><span class="sep">/</span><a class="link-operation" href="/operations/genome-assembly-and-variant-calling/">Genome assembly and variant calling</a></p>
+        
+        <h1>De novo assembly</h1>
+        
+        
+        <p class="lede">Assemble each sample's genome from its reads alone, without a reference.</p>
+      </div>
+      
+      <div class="page-head-graphic">
+        <a href="https://pgcoe.github.io/"><img src="/assets/img/pgcoe-network-graphic-element.png" alt="PGCoE Network"></a>
+      </div>
+      
+    </div>
+  </section>
+
+  <main class="content-band">
+    <div class="wrap">
+      
+<article class="entry entry-method">
+
+  
+  <h2 class="section-title section-title-first">When to use this method</h2>
+  
+<div class="guidance">
+  
+  <div class="guidance-col guidance-use">
+    <p class="guidance-label">Use when</p>
+    <ul><li>The sample is a pure isolate, such as a cultured virus, so all reads come from a single genome.</li><li>No reference is close enough to map reads reliably, or the reference may be missing regions present in your samples.</li><li>You want to detect insertions, rearrangements, or novel sequence that reference mapping would miss.</li></ul>
+  </div>
+  
+  
+  <div class="guidance-col guidance-avoid">
+    <p class="guidance-label">Use another method when</p>
+    <ul>
+      
+      
+        
+        <li>The sample is clinical or otherwise mixed, since reads from host, other organisms, or co-infections end up in the assembly. <span class="guidance-alt">Use <a href="/methods/reference-based-consensus-calling/">Reference-based consensus calling</a> instead.</span></li>
+      
+      
+      
+        
+        <li>Coverage is low or uneven, as is common with amplicon dropouts, which fragments the assembly. <span class="guidance-alt">Use <a href="/methods/reference-based-consensus-calling/">Reference-based consensus calling</a> instead.</span></li>
+      
+      
+    </ul>
+  </div>
+  
+  
+</div>
+
+
+  
+
+  <div class="meta-grid">
+    <div class="meta-card">
+      <p class="label">Operation</p>
+      
+      <a class="pill pill-operation" href="/operations/genome-assembly-and-variant-calling/">Genome assembly and variant calling</a>
+      
+    </div>
+    
+    <div class="meta-card">
+      <p class="label">Implementations</p>
+      <ul class="impl-list">
+        
+        <li><a href="https://github.com/ablab/spades">SPAdes (rnaviralSPAdes)</a></li>
+        
+        <li><a href="https://github.com/voutcn/megahit">MEGAHIT</a></li>
+        
+        <li><a href="https://github.com/ablab/quast">QUAST (assembly assessment)</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <div class="meta-card">
+      <p class="label">Needs</p>
+      <p class="dtype-line"><span class="dtype">Clean reads</span>
+</p>
+    </div>
+    
+    
+    <div class="meta-card">
+      <p class="label">Produces</p>
+      <p class="dtype-line"><span class="dtype">Genome assemblies</span>
+</p>
+    </div>
+    
+  </div>
+
+  
+  <h2 class="section-title">How it works</h2>
+  
+<figure class="method-diagram">
+  <div class="diagram-scroll"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 830 262" role="img" aria-labelledby="de-novo-assembly-title de-novo-assembly-desc" class="diagram-svg">
+  <title id="de-novo-assembly-title">De novo assembly: overlapping reads are joined into longer contigs without using a reference genome.</title>
+  <desc id="de-novo-assembly-desc">Short reads with no reference are compared to find shared sequence at their ends. Overlapping reads are joined into a longer contig. An assembly usually yields several contigs, which must be ordered, oriented, and trimmed before alignment.</desc>
+  <text x="20" y="26" font-family="Raleway, Lato, Arial, sans-serif" font-size="14" font-weight="700" fill="#055A5E" text-anchor="start">1. Reads, no reference</text>
+  <rect x="31" y="50" width="138" height="16" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="40.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="60.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="80.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="100.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="120.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="140.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="160.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <rect x="63" y="96" width="138" height="16" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="72.0" y="107" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="92.0" y="107" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="112.0" y="107" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="132.0" y="107" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="152.0" y="107" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="172.0" y="107" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="192.0" y="107" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <rect x="19" y="142" width="138" height="16" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="28.0" y="153" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="48.0" y="153" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="68.0" y="153" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="88.0" y="153" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="108.0" y="153" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="128.0" y="153" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="148.0" y="153" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <rect x="51" y="188" width="138" height="16" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="60.0" y="199" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="80.0" y="199" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="100.0" y="199" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="120.0" y="199" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="140.0" y="199" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="160.0" y="199" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="180.0" y="199" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <line x1="214" y1="132" x2="266" y2="132" stroke="#027B84" stroke-width="2"/>
+  <polygon points="274,132 264,127 264,137" fill="#027B84"/>
+  <text x="244.0" y="108" font-family="Raleway, Lato, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#027B84" text-anchor="middle">find</text>
+  <text x="244.0" y="122" font-family="Raleway, Lato, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#027B84" text-anchor="middle">overlaps</text>
+  <text x="292" y="26" font-family="Raleway, Lato, Arial, sans-serif" font-size="14" font-weight="700" fill="#055A5E" text-anchor="start">2. Overlap reads</text>
+  <rect x="293" y="50" width="138" height="16" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="302.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="322.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="342.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="362.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="382.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="402.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="422.0" y="61" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <rect x="353" y="76" width="138" height="16" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="362.0" y="87" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="382.0" y="87" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="402.0" y="87" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="422.0" y="87" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="442.0" y="87" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="462.0" y="87" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="482.0" y="87" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <rect x="352" y="51" width="80" height="42" rx="3" fill="none" stroke="#95560A" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <rect x="413" y="102" width="138" height="16" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="422.0" y="113" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="442.0" y="113" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="462.0" y="113" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="482.0" y="113" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="502.0" y="113" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="522.0" y="113" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="542.0" y="113" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <rect x="412" y="77" width="80" height="42" rx="3" fill="none" stroke="#95560A" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <rect x="453" y="128" width="138" height="16" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="462.0" y="139" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="482.0" y="139" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="502.0" y="139" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="522.0" y="139" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="542.0" y="139" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="562.0" y="139" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="582.0" y="139" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <rect x="452" y="103" width="100" height="42" rx="3" fill="none" stroke="#95560A" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <text x="282" y="183" font-family="Raleway, Lato, Arial, sans-serif" font-size="12" font-weight="700" fill="#95560A" text-anchor="end">Contig</text>
+  <rect x="293" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="302.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">A</text>
+  <rect x="313" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="322.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">C</text>
+  <rect x="333" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="342.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">G</text>
+  <rect x="353" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="362.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">T</text>
+  <rect x="373" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="382.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">T</text>
+  <rect x="393" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="402.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">A</text>
+  <rect x="413" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="422.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">G</text>
+  <rect x="433" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="442.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">C</text>
+  <rect x="453" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="462.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">C</text>
+  <rect x="473" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="482.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">A</text>
+  <rect x="493" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="502.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">T</text>
+  <rect x="513" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="522.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">G</text>
+  <rect x="533" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="542.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">A</text>
+  <rect x="553" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="562.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">C</text>
+  <rect x="573" y="170" width="18" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="582.0" y="183" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#95560A" text-anchor="middle">T</text>
+  <line x1="602" y1="132" x2="648" y2="132" stroke="#027B84" stroke-width="2"/>
+  <polygon points="656,132 646,127 646,137" fill="#027B84"/>
+  <text x="629.0" y="122" font-family="Raleway, Lato, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#027B84" text-anchor="middle">curate</text>
+  <text x="668" y="26" font-family="Raleway, Lato, Arial, sans-serif" font-size="14" font-weight="700" fill="#055A5E" text-anchor="start">3. Contigs</text>
+  <rect x="668" y="52" width="92" height="16" rx="4" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="768" y="64" font-family="Lato, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#4B5D5F" text-anchor="start">contig 1</text>
+  <rect x="668" y="86" width="40" height="16" rx="4" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="716" y="98" font-family="Lato, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#4B5D5F" text-anchor="start">contig 2</text>
+  <rect x="668" y="120" width="64" height="16" rx="4" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="740" y="132" font-family="Lato, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#4B5D5F" text-anchor="start">contig 3</text>
+  <text x="668" y="172" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="700" fill="#1B1B1B" text-anchor="start">Order, orient, and</text>
+  <text x="668" y="188" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="700" fill="#1B1B1B" text-anchor="start">trim contigs before</text>
+  <text x="668" y="204" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="700" fill="#1B1B1B" text-anchor="start">alignment</text>
+</svg>
+</div>
+  <figcaption>Reads are joined wherever their ends share sequence, building longer contigs without a reference. An assembly usually produces several contigs that need curating before alignment.</figcaption>
+</figure>
+
+  
+
+  <div class="prose"><p>Reads are assembled into contigs by finding overlaps between them, so the result does not depend on a reference genome.</p>
+
+<h3 id="curating-contigs-before-alignment">Curating contigs before alignment</h3>
+
+<p>Assemblies usually need manual curation before they can be aligned:</p>
+
+<ol>
+  <li><strong>Check completeness.</strong> Compare contig lengths and coverage against the expected genome size. Tools such as QUAST report N50, total length, and misassemblies.</li>
+  <li><strong>Remove contaminants and artifacts.</strong> Discard short, low-coverage contigs and any that match host or other organisms.</li>
+  <li><strong>Order and orient contigs.</strong> Place contigs in a consistent order and strand, for example by matching them to a related genome. For segmented viruses, assign each contig to its segment.</li>
+  <li><strong>Trim ends.</strong> Remove low-coverage or adapter-containing sequence at contig ends.</li>
+  <li><strong>Produce one sequence per sample (or per segment)</strong> for the genome alignment step.</li>
+</ol>
+</div>
+
+  
+  
+  
+  
+
+  <h2 class="section-title">Used by protocols</h2>
+  
+    
+    <p class="label">Specified by</p>
+    <ul class="method-list"><li><a class="pill pill-protocol" href="/protocols/viral-phylogenomic-surveillance/">Viral phylogenomic surveillance</a><span class="pill-note">Step 2</span></li></ul>
+    
+    
+  
+
+  
+  
+  
+  <h2 class="section-title">Alternative methods</h2>
+  <ul class="method-list">
+    
+    <li><a class="pill pill-method" href="/methods/reference-based-snp-calling/">Reference-based SNP calling</a><span class="pill-note">Map reads to a reference, call SNPs, and combine samples into a core SNP alignment of positions present in every sample.</span></li>
+    
+    <li><a class="pill pill-method" href="/methods/reference-based-consensus-calling/">Reference-based consensus calling</a><span class="pill-note">Map reads to a reference and write a complete consensus sequence for each sample, including indels.</span></li>
+    
+    <li><a class="pill pill-method" href="/methods/reference-free-snp-calling/">Reference-free SNP calling</a><span class="pill-note">Identify SNPs shared across samples directly from split k-mers, without a reference genome.</span></li>
+    
+  </ul>
+  <a class="find-link" href="/operations/genome-assembly-and-variant-calling/#choosing">Compare all methods for genome assembly and variant calling →</a>
+  
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 <a href="https://pgcoe.github.io/">Pathogen Genomics Centers of Excellence</a></p>
+    <p class="footer-note">Protocols are built from <strong>operations</strong> (what is done) and <strong>methods</strong> (how it is done).</p>
+  </footer>
+  <script src="/assets/js/filter.js" defer></script>
+</body>
+</html>

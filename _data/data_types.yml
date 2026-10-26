@@ -1,0 +1,42 @@
+# Data types that methods require and produce, and that protocols start with.
+# Keys are referenced from front matter; `name` is what readers see.
+
+raw-reads:
+  name: Raw reads
+  description: Unprocessed sequencing reads (FASTQ).
+primer-scheme:
+  name: Primer scheme
+  description: Primer coordinates for an amplicon library (BED).
+reference-genome:
+  name: Reference genome
+  description: A closely related assembled genome (FASTA).
+collection-dates:
+  name: Collection dates
+  description: Sampling date for each sample.
+clean-reads:
+  name: Clean reads
+  description: Reads after trimming and quality filtering (FASTQ).
+mask-regions:
+  name: Mask regions
+  description: Reference coordinates to exclude from comparison (BED).
+consensus-genomes:
+  name: Consensus genomes
+  description: One consensus sequence per sample (FASTA).
+genome-assemblies:
+  name: Genome assemblies
+  description: De novo assembled contigs per sample (FASTA), curated before alignment.
+full-alignment:
+  name: Full genome alignment
+  description: Alignment including invariant sites, so genome positions are preserved.
+snp-alignment:
+  name: SNP-only alignment
+  description: Alignment of variable sites only.
+recombination-free-alignment:
+  name: Recombination-filtered alignment
+  description: Alignment with recombinant regions removed.
+tree:
+  name: Phylogenetic tree
+  description: Tree with branch lengths in substitutions per site (Newick).
+dated-tree:
+  name: Time-scaled tree
+  description: Tree with branch lengths in time and dated nodes.

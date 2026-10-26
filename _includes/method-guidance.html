@@ -1,0 +1,44 @@
+{% comment %}
+  "When to use" guidance for one method.
+  include.method   the method document
+  include.compact  true for the smaller version used inside protocol steps
+  avoid_when entries are either plain text or { when: text, use: method-slug };
+  the slug becomes a link to the alternative method.
+  combine_with entries are { use: method-slug, why: text } for complementary
+  methods that are applied together rather than instead.
+{% endcomment %}{% assign g = include.method %}{% assign g_op = site.operations | where: "slug", g.operation | first %}{% if g.use_when or g.avoid_when or g.combine_with %}
+<div class="guidance{% if include.compact %} guidance-compact{% endif %}">
+  {% if g.use_when %}
+  <div class="guidance-col guidance-use">
+    <p class="guidance-label">Use when</p>
+    <ul>{% for item in g.use_when %}<li>{{ item | escape }}</li>{% endfor %}</ul>
+  </div>
+  {% endif %}
+  {% if g.avoid_when %}
+  <div class="guidance-col guidance-avoid">
+    <p class="guidance-label">{% if g_op.selection == "multiple" %}Skip this method when{% else %}Use another method when{% endif %}</p>
+    <ul>
+      {% for item in g.avoid_when %}
+      {% if item.when %}
+        {% assign alt = site.methods | where: "slug", item.use | first %}
+        <li>{{ item.when | escape }}{% if alt %} <span class="guidance-alt">Use <a href="{{ alt.url | relative_url }}">{{ alt.title }}</a> instead.</span>{% endif %}</li>
+      {% else %}
+        <li>{{ item | escape }}</li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  {% if g.combine_with %}
+  <div class="guidance-col guidance-combine">
+    <p class="guidance-label">Combine with</p>
+    <ul>
+      {% for item in g.combine_with %}
+      {% assign alt = site.methods | where: "slug", item.use | first %}
+      <li>{% if alt %}<a href="{{ alt.url | relative_url }}">{{ alt.title }}</a>{% else %}<code>{{ item.use }}</code>{% endif %}{% if item.why %}: {{ item.why | escape }}{% endif %}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+</div>
+{% endif %}

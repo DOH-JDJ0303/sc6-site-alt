@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<article class="entry entry-question">
+  {% if content != "" %}<div class="prose question-intro">{{ content }}</div>{% endif %}
+
+  <h2 class="section-title">Which protocol to use</h2>
+  {% assign n_routes = page.routes | size %}
+  {% if n_routes > 1 %}<p class="section-help">Choose the group your pathogen belongs to.</p>{% endif %}
+
+  <div class="routes">
+    {% for r in page.routes %}
+    <section class="route card card-question" id="route-{{ r.organisms | slugify }}">
+      <h3 class="route-title"><span class="route-if">If the pathogen is</span> {{ r.organisms }}</h3>
+      {% include route-protocols.html route=r %}
+    </section>
+    {% endfor %}
+  </div>
+
+  <p class="back-link"><a href="{{ '/questions/' | relative_url }}">← All questions</a></p>
+</article>

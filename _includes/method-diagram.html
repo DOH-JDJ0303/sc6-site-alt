@@ -1,0 +1,9 @@
+{% comment %}
+  Inline diagram for a method. The SVG lives in _includes/diagrams/ and is
+  named by the method's `diagram` front matter; `diagram_caption` states what
+  the picture shows.
+{% endcomment %}{% assign d = include.method %}
+<figure class="method-diagram">
+  <div class="diagram-scroll">{% include diagrams/{{ d.diagram }} %}</div>
+  {% if d.diagram_caption %}<figcaption>{{ d.diagram_caption }}</figcaption>{% endif %}
+</figure>

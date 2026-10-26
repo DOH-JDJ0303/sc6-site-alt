@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Operations · Genomic Analysis Protocols · PGCoE Network</title>
+  <meta name="description" content="General analytical steps, defined by what they accomplish rather than how. Each operation can be carried out by one or more methods.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  
+
+  
+  <nav class="network-nav" aria-label="PGCoE Network">
+    
+    <a href="https://pgcoe.github.io/">Home</a>
+    
+    <a href="https://pgcoe.github.io/protocols.html">Sequencing Protocols</a>
+    
+    <a href="https://pgcoe.github.io/workflows.html">Bioinformatics Workflows</a>
+    
+    <a href="https://pgcoe.github.io/response.html">Response and Readiness</a>
+    
+    <a href="https://pgcoe.github.io/dataviz.html">Data and Visualization</a>
+    
+    <a href="https://pgcoe.github.io/education.html">Education</a>
+    
+  </nav>
+  
+
+  <header class="hub-bar">
+    <div class="wrap hub-bar-inner">
+      <a class="brand" href="/">Genomic Analysis Protocols</a>
+      <nav class="site-nav" aria-label="Protocol hub">
+        <a class="nav-question" href="/questions/">Questions</a>
+        <a class="nav-protocol" href="/protocols/">Protocols</a>
+        <a class="nav-operation is-active" href="/operations/">Operations</a>
+        <a class="nav-method" href="/methods/">Methods</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <section class="page-head">
+    <div class="wrap page-head-inner">
+      <div class="page-head-text">
+        
+          <p class="eyebrow">Browse</p>
+        
+        <h1>Operations</h1>
+        
+        
+        <p class="lede">General analytical steps, defined by what they accomplish rather than how. Each operation can be carried out by one or more methods.</p>
+      </div>
+      
+      <div class="page-head-graphic">
+        <a href="https://pgcoe.github.io/"><img src="/assets/img/pgcoe-network-graphic-element.png" alt="PGCoE Network"></a>
+      </div>
+      
+    </div>
+  </section>
+
+  <main class="content-band">
+    <div class="wrap">
+      <header class="index-head">
+  <input class="filter" type="search" placeholder="Filter operations…" data-filter-target="#operation-list" aria-label="Filter operations">
+</header>
+
+<ul class="card-list" id="operation-list">
+  
+  
+  
+  <li class="card card-operation" data-search="read preprocessing remove adapters, primers, and low-quality sequence so downstream steps work from clean reads. amplicon primer trimming quality and adapter trimming">
+    <a class="card-title" href="/operations/read-preprocessing/">Read preprocessing</a>
+    <p>Remove adapters, primers, and low-quality sequence so downstream steps work from clean reads.</p>
+    <ul class="pill-row">
+      
+      <li><a class="pill pill-method" href="/methods/amplicon-primer-trimming/">Amplicon primer trimming</a></li>
+      
+      <li><a class="pill pill-method" href="/methods/quality-and-adapter-trimming/">Quality and adapter trimming</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  <li class="card card-operation" data-search="site masking exclude genomic regions whose variation would mislead downstream comparison. custom masking mobile element masking repeat and paralog masking">
+    <a class="card-title" href="/operations/site-masking/">Site masking</a>
+    <p>Exclude genomic regions whose variation would mislead downstream comparison.</p>
+    <ul class="pill-row">
+      
+      <li><a class="pill pill-method" href="/methods/custom-masking/">Custom masking</a></li>
+      
+      <li><a class="pill pill-method" href="/methods/mobile-element-masking/">Mobile element masking</a></li>
+      
+      <li><a class="pill pill-method" href="/methods/repeat-and-paralog-masking/">Repeat and paralog masking</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  <li class="card card-operation" data-search="genome assembly and variant calling reconstruct each sample's genome, or the differences between samples, from its sequencing reads. de novo assembly reference-based snp calling reference-based consensus calling reference-free snp calling">
+    <a class="card-title" href="/operations/genome-assembly-and-variant-calling/">Genome assembly and variant calling</a>
+    <p>Reconstruct each sample's genome, or the differences between samples, from its sequencing reads.</p>
+    <ul class="pill-row">
+      
+      <li><a class="pill pill-method" href="/methods/de-novo-assembly/">De novo assembly</a></li>
+      
+      <li><a class="pill pill-method" href="/methods/reference-based-snp-calling/">Reference-based SNP calling</a></li>
+      
+      <li><a class="pill pill-method" href="/methods/reference-based-consensus-calling/">Reference-based consensus calling</a></li>
+      
+      <li><a class="pill pill-method" href="/methods/reference-free-snp-calling/">Reference-free SNP calling</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  <li class="card card-operation" data-search="genome alignment arrange per-sample genome sequences so that equivalent positions line up across every sample. multiple sequence alignment">
+    <a class="card-title" href="/operations/genome-alignment/">Genome alignment</a>
+    <p>Arrange per-sample genome sequences so that equivalent positions line up across every sample.</p>
+    <ul class="pill-row">
+      
+      <li><a class="pill pill-method" href="/methods/multiple-sequence-alignment/">Multiple sequence alignment</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  <li class="card card-operation" data-search="recombination filtering identify and remove variation introduced by recombination so the remaining signal reflects vertical descent. clonal frame inference iterative recombination detection">
+    <a class="card-title" href="/operations/recombination-filtering/">Recombination filtering</a>
+    <p>Identify and remove variation introduced by recombination so the remaining signal reflects vertical descent.</p>
+    <ul class="pill-row">
+      
+      <li><a class="pill pill-method" href="/methods/clonal-frame-inference/">Clonal frame inference</a></li>
+      
+      <li><a class="pill pill-method" href="/methods/iterative-recombination-detection/">Iterative recombination detection</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  <li class="card card-operation" data-search="phylogenetic inference reconstruct the evolutionary relationships among samples from an alignment. bayesian phylogeny maximum likelihood phylogeny time-scaled phylogeny">
+    <a class="card-title" href="/operations/phylogenetic-inference/">Phylogenetic inference</a>
+    <p>Reconstruct the evolutionary relationships among samples from an alignment.</p>
+    <ul class="pill-row">
+      
+      <li><a class="pill pill-method" href="/methods/bayesian-phylogeny/">Bayesian phylogeny</a></li>
+      
+      <li><a class="pill pill-method" href="/methods/maximum-likelihood-phylogeny/">Maximum likelihood phylogeny</a></li>
+      
+      <li><a class="pill pill-method" href="/methods/time-scaled-phylogeny/">Time-scaled phylogeny</a></li>
+      
+    </ul>
+  </li>
+  
+</ul>
+<p class="muted filter-empty" hidden>No operations match.</p>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 <a href="https://pgcoe.github.io/">Pathogen Genomics Centers of Excellence</a></p>
+    <p class="footer-note">Protocols are built from <strong>operations</strong> (what is done) and <strong>methods</strong> (how it is done).</p>
+  </footer>
+  <script src="/assets/js/filter.js" defer></script>
+</body>
+</html>

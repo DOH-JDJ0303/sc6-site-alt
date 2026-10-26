@@ -1,0 +1,5 @@
+{% comment %}
+  Renders a requires/produces list as readable names.
+  include.items: list whose entries are a data-type key, or a list of keys
+  meaning "any one of these".
+{% endcomment %}{% for item in include.items %}{% assign alts = item | join: "|" | split: "|" %}<span class="dtype">{% for k in alts %}{% assign dt = site.data.data_types[k] %}{{ dt.name | default: k }}{% unless forloop.last %} <em>or</em> {% endunless %}{% endfor %}</span>{% unless forloop.last %}, {% endunless %}{% endfor %}

@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phylogenetic inference · Genomic Analysis Protocols · PGCoE Network</title>
+  <meta name="description" content="Reconstruct the evolutionary relationships among samples from an alignment.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  
+
+  
+  <nav class="network-nav" aria-label="PGCoE Network">
+    
+    <a href="https://pgcoe.github.io/">Home</a>
+    
+    <a href="https://pgcoe.github.io/protocols.html">Sequencing Protocols</a>
+    
+    <a href="https://pgcoe.github.io/workflows.html">Bioinformatics Workflows</a>
+    
+    <a href="https://pgcoe.github.io/response.html">Response and Readiness</a>
+    
+    <a href="https://pgcoe.github.io/dataviz.html">Data and Visualization</a>
+    
+    <a href="https://pgcoe.github.io/education.html">Education</a>
+    
+  </nav>
+  
+
+  <header class="hub-bar">
+    <div class="wrap hub-bar-inner">
+      <a class="brand" href="/">Genomic Analysis Protocols</a>
+      <nav class="site-nav" aria-label="Protocol hub">
+        <a class="nav-question" href="/questions/">Questions</a>
+        <a class="nav-protocol" href="/protocols/">Protocols</a>
+        <a class="nav-operation is-active" href="/operations/">Operations</a>
+        <a class="nav-method" href="/methods/">Methods</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <section class="page-head">
+    <div class="wrap page-head-inner">
+      <div class="page-head-text">
+        
+          <p class="eyebrow eyebrow-operation"><a href="/operations/">Operation</a></p>
+        
+        <h1>Phylogenetic inference</h1>
+        
+        
+        <p class="lede">Reconstruct the evolutionary relationships among samples from an alignment.</p>
+      </div>
+      
+      <div class="page-head-graphic">
+        <a href="https://pgcoe.github.io/"><img src="/assets/img/pgcoe-network-graphic-element.png" alt="PGCoE Network"></a>
+      </div>
+      
+    </div>
+  </section>
+
+  <main class="content-band">
+    <div class="wrap">
+      
+<article class="entry entry-operation">
+
+  
+  <div class="meta-grid">
+    
+    <div class="meta-card">
+      <p class="label">Inputs</p>
+      <ul class="io-list"><li>Whole-genome alignment (optionally masked or filtered)</li><li>Collection dates (method-dependent)</li></ul>
+    </div>
+    
+    
+    <div class="meta-card">
+      <p class="label">Outputs</p>
+      <ul class="io-list"><li>Phylogenetic tree (Newick)</li><li>Time-scaled tree (method-dependent)</li></ul>
+    </div>
+    
+  </div>
+  
+
+  <div class="prose"><p>The resulting tree is the main product for interpreting population structure, identifying clusters, and placing new samples in context. More than one method can be applied in sequence, so a tree from one method can be the starting point for another.</p>
+</div>
+
+  
+  <h2 class="section-title" id="choosing">Choosing methods <span class="count">3</span></h2>
+  <p class="section-help">These methods address different problems and can be combined. Apply each one whose conditions match your data.</p>
+  
+  <ul class="card-list">
+    
+    <li class="card card-method" id="method-bayesian-phylogeny">
+      <a class="card-title" href="/methods/bayesian-phylogeny/">Bayesian phylogeny</a>
+      <p>Jointly estimate a time-scaled tree, molecular clock, and population model, with uncertainty on every estimate.</p>
+      
+<div class="guidance">
+  
+  <div class="guidance-col guidance-use">
+    <p class="guidance-label">Use when</p>
+    <ul><li>You need credible intervals on dates, such as when a lineage was introduced.</li><li>You want phylodynamic estimates, such as population growth, reproduction numbers, or migration between locations.</li><li>The dataset is small enough to run in reasonable time, typically hundreds to a few thousand short genomes, or a subsample of a larger collection.</li></ul>
+  </div>
+  
+  
+  <div class="guidance-col guidance-avoid">
+    <p class="guidance-label">Skip this method when</p>
+    <ul>
+      
+      
+        
+        <li>The dataset is large or results are needed routinely and quickly. <span class="guidance-alt">Use <a href="/methods/time-scaled-phylogeny/">Time-scaled phylogeny</a> instead.</span></li>
+      
+      
+      
+        
+        <li>Dates are missing or there is little temporal signal. <span class="guidance-alt">Use <a href="/methods/maximum-likelihood-phylogeny/">Maximum likelihood phylogeny</a> instead.</span></li>
+      
+      
+    </ul>
+  </div>
+  
+  
+</div>
+
+
+      
+      <p class="impl-inline">BEAST X · BEAST 2</p>
+      
+    </li>
+    
+    <li class="card card-method" id="method-maximum-likelihood-phylogeny">
+      <a class="card-title" href="/methods/maximum-likelihood-phylogeny/">Maximum likelihood phylogeny</a>
+      <p>Find the tree that best explains the alignment under a substitution model, with branch lengths in substitutions per site.</p>
+      
+<div class="guidance">
+  
+  <div class="guidance-col guidance-use">
+    <p class="guidance-label">Use when</p>
+    <ul><li>You need a tree for clustering, population structure, or placing new samples. This is the default choice.</li><li>Collection dates are missing or unreliable.</li><li>You want a fast result with branch support values, even for thousands of genomes.</li></ul>
+  </div>
+  
+  
+  
+  <div class="guidance-col guidance-combine">
+    <p class="guidance-label">Combine with</p>
+    <ul>
+      
+      
+      <li><a href="/methods/time-scaled-phylogeny/">Time-scaled phylogeny</a>: Apply it afterward to convert this tree&#39;s branch lengths into time when collection dates are available.</li>
+      
+    </ul>
+  </div>
+  
+</div>
+
+
+      
+      <p class="impl-inline">IQ-TREE · RAxML-NG</p>
+      
+    </li>
+    
+    <li class="card card-method" id="method-time-scaled-phylogeny">
+      <a class="card-title" href="/methods/time-scaled-phylogeny/">Time-scaled phylogeny</a>
+      <p>Rescale an existing tree, usually a maximum likelihood tree, so branch lengths are in time and ancestral nodes are dated.</p>
+      
+<div class="guidance">
+  
+  <div class="guidance-col guidance-use">
+    <p class="guidance-label">Use when</p>
+    <ul><li>You need dates for events, such as introductions, common ancestors, or transmission windows.</li><li>You already have a tree, such as a maximum likelihood tree, and accurate collection dates for most samples.</li><li>The dataset is too large for a full Bayesian analysis, or results are needed quickly.</li></ul>
+  </div>
+  
+  
+  <div class="guidance-col guidance-avoid">
+    <p class="guidance-label">Skip this method when</p>
+    <ul>
+      
+      
+        <li>Dates are missing or imprecise, or a root-to-tip regression shows little temporal signal.</li>
+      
+      
+      
+        <li>Samples were collected over a period too short for measurable evolution, so dates would be poorly constrained.</li>
+      
+      
+      
+        
+        <li>You need full uncertainty on the tree and dates, or phylodynamic estimates such as growth rates. <span class="guidance-alt">Use <a href="/methods/bayesian-phylogeny/">Bayesian phylogeny</a> instead.</span></li>
+      
+      
+    </ul>
+  </div>
+  
+  
+  <div class="guidance-col guidance-combine">
+    <p class="guidance-label">Combine with</p>
+    <ul>
+      
+      
+      <li><a href="/methods/maximum-likelihood-phylogeny/">Maximum likelihood phylogeny</a>: Build the maximum likelihood tree first; this method takes it as input.</li>
+      
+    </ul>
+  </div>
+  
+</div>
+
+
+      
+      <p class="impl-inline">TreeTime · LSD2 (in IQ-TREE)</p>
+      
+    </li>
+    
+  </ul>
+
+  <h2 class="section-title">Protocols using this operation</h2>
+  
+  <ul class="method-list">
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+          <li>
+            <a class="pill pill-protocol" href="/protocols/bacterial-phylogenomic-surveillance/">Bacterial phylogenomic surveillance</a>
+            <span class="pill-note">Step 5 ·
+            
+              <a href="/methods/maximum-likelihood-phylogeny/">Maximum likelihood phylogeny</a>, <a href="/methods/time-scaled-phylogeny/">Time-scaled phylogeny</a>
+            
+            </span>
+          </li>
+        
+      
+    
+      
+        
+      
+        
+      
+        
+      
+        
+          
+          <li>
+            <a class="pill pill-protocol" href="/protocols/fungal-phylogenomic-surveillance/">Fungal phylogenomic surveillance</a>
+            <span class="pill-note">Step 4 ·
+            
+              <a href="/methods/maximum-likelihood-phylogeny/">Maximum likelihood phylogeny</a>, <a href="/methods/time-scaled-phylogeny/">Time-scaled phylogeny</a>
+            
+            </span>
+          </li>
+        
+      
+    
+      
+        
+      
+        
+      
+        
+      
+        
+          
+          <li>
+            <a class="pill pill-protocol" href="/protocols/viral-phylogenomic-surveillance/">Viral phylogenomic surveillance</a>
+            <span class="pill-note">Step 4 ·
+            
+              <a href="/methods/maximum-likelihood-phylogeny/">Maximum likelihood phylogeny</a>, <a href="/methods/time-scaled-phylogeny/">Time-scaled phylogeny</a>, <a href="/methods/bayesian-phylogeny/">Bayesian phylogeny</a>
+            
+            </span>
+          </li>
+        
+      
+    
+  </ul>
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 <a href="https://pgcoe.github.io/">Pathogen Genomics Centers of Excellence</a></p>
+    <p class="footer-note">Protocols are built from <strong>operations</strong> (what is done) and <strong>methods</strong> (how it is done).</p>
+  </footer>
+  <script src="/assets/js/filter.js" defer></script>
+</body>
+</html>

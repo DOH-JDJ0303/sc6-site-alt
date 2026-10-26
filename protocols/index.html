@@ -1,0 +1,28 @@
+---
+title: Protocols
+eyebrow: Browse
+lede: >-
+  End-to-end procedures for a specific goal. Each protocol is an ordered set of operations, optionally restricted to particular methods.
+section: protocols
+---
+<header class="index-head">
+  <input class="filter" type="search" placeholder="Filter protocols…" data-filter-target="#protocol-list" aria-label="Filter protocols">
+</header>
+
+<ul class="card-list" id="protocol-list">
+  {% assign protocols = site.protocols | sort: "title" %}
+  {% for p in protocols %}
+  <li class="card card-protocol" data-search="{{ p.title | downcase }} {{ p.summary | downcase }} {{ p.organisms | join: ' ' | downcase }}">
+    <a class="card-title" href="{{ p.url | relative_url }}">{{ p.title }}</a>
+    {% if p.summary %}<p>{{ p.summary }}</p>{% endif %}
+    {% if p.organisms %}<p class="tags">{% for o in p.organisms %}<span class="tag">{{ o }}</span>{% endfor %}</p>{% endif %}
+    <ol class="chain">
+      {% for step in p.steps %}
+      {% assign op = site.operations | where: "slug", step.operation | first %}
+      <li{% if step.optional %} class="is-optional" title="Optional step"{% endif %}>{{ op.title | default: step.operation }}{% if step.optional %} (optional){% endif %}</li>
+      {% endfor %}
+    </ol>
+  </li>
+  {% endfor %}
+</ul>
+<p class="muted filter-empty" hidden>No protocols match.</p>

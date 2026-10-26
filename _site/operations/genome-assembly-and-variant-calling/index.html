@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Genome assembly and variant calling · Genomic Analysis Protocols · PGCoE Network</title>
+  <meta name="description" content="Reconstruct each sample's genome, or the differences between samples, from its sequencing reads.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  
+
+  
+  <nav class="network-nav" aria-label="PGCoE Network">
+    
+    <a href="https://pgcoe.github.io/">Home</a>
+    
+    <a href="https://pgcoe.github.io/protocols.html">Sequencing Protocols</a>
+    
+    <a href="https://pgcoe.github.io/workflows.html">Bioinformatics Workflows</a>
+    
+    <a href="https://pgcoe.github.io/response.html">Response and Readiness</a>
+    
+    <a href="https://pgcoe.github.io/dataviz.html">Data and Visualization</a>
+    
+    <a href="https://pgcoe.github.io/education.html">Education</a>
+    
+  </nav>
+  
+
+  <header class="hub-bar">
+    <div class="wrap hub-bar-inner">
+      <a class="brand" href="/">Genomic Analysis Protocols</a>
+      <nav class="site-nav" aria-label="Protocol hub">
+        <a class="nav-question" href="/questions/">Questions</a>
+        <a class="nav-protocol" href="/protocols/">Protocols</a>
+        <a class="nav-operation is-active" href="/operations/">Operations</a>
+        <a class="nav-method" href="/methods/">Methods</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <section class="page-head">
+    <div class="wrap page-head-inner">
+      <div class="page-head-text">
+        
+          <p class="eyebrow eyebrow-operation"><a href="/operations/">Operation</a></p>
+        
+        <h1>Genome assembly and variant calling</h1>
+        
+        
+        <p class="lede">Reconstruct each sample's genome, or the differences between samples, from its sequencing reads.</p>
+      </div>
+      
+      <div class="page-head-graphic">
+        <a href="https://pgcoe.github.io/"><img src="/assets/img/pgcoe-network-graphic-element.png" alt="PGCoE Network"></a>
+      </div>
+      
+    </div>
+  </section>
+
+  <main class="content-band">
+    <div class="wrap">
+      
+<article class="entry entry-operation">
+
+  
+  <div class="meta-grid">
+    
+    <div class="meta-card">
+      <p class="label">Inputs</p>
+      <ul class="io-list"><li>Clean reads</li><li>Reference genome (method-dependent)</li></ul>
+    </div>
+    
+    
+    <div class="meta-card">
+      <p class="label">Outputs</p>
+      <ul class="io-list"><li>Per-sample genomes</li><li>or an alignment of variable sites across samples</li></ul>
+    </div>
+    
+  </div>
+  
+
+  <div class="prose"><p>This is where sequencing reads become sequence-level comparisons between samples. Every downstream comparison, including distances, clusters, and trees, depends on which differences are detected here and how missing or ambiguous positions are recorded.</p>
+</div>
+
+  
+  <h2 class="section-title" id="choosing">Choosing a method <span class="count">4</span></h2>
+  <p class="section-help">Each method below says when to use it and when another method fits better.</p>
+  
+  <ul class="card-list">
+    
+    <li class="card card-method" id="method-de-novo-assembly">
+      <a class="card-title" href="/methods/de-novo-assembly/">De novo assembly</a>
+      <p>Assemble each sample's genome from its reads alone, without a reference.</p>
+      
+<div class="guidance">
+  
+  <div class="guidance-col guidance-use">
+    <p class="guidance-label">Use when</p>
+    <ul><li>The sample is a pure isolate, such as a cultured virus, so all reads come from a single genome.</li><li>No reference is close enough to map reads reliably, or the reference may be missing regions present in your samples.</li><li>You want to detect insertions, rearrangements, or novel sequence that reference mapping would miss.</li></ul>
+  </div>
+  
+  
+  <div class="guidance-col guidance-avoid">
+    <p class="guidance-label">Use another method when</p>
+    <ul>
+      
+      
+        
+        <li>The sample is clinical or otherwise mixed, since reads from host, other organisms, or co-infections end up in the assembly. <span class="guidance-alt">Use <a href="/methods/reference-based-consensus-calling/">Reference-based consensus calling</a> instead.</span></li>
+      
+      
+      
+        
+        <li>Coverage is low or uneven, as is common with amplicon dropouts, which fragments the assembly. <span class="guidance-alt">Use <a href="/methods/reference-based-consensus-calling/">Reference-based consensus calling</a> instead.</span></li>
+      
+      
+    </ul>
+  </div>
+  
+  
+</div>
+
+
+      
+      <p class="impl-inline">SPAdes (rnaviralSPAdes) · MEGAHIT · QUAST (assembly assessment)</p>
+      
+    </li>
+    
+    <li class="card card-method" id="method-reference-based-snp-calling">
+      <a class="card-title" href="/methods/reference-based-snp-calling/">Reference-based SNP calling</a>
+      <p>Map reads to a reference, call SNPs, and combine samples into a core SNP alignment of positions present in every sample.</p>
+      
+<div class="guidance">
+  
+  <div class="guidance-col guidance-use">
+    <p class="guidance-label">Use when</p>
+    <ul><li>The genome is large, as with bacteria and fungi, and differences between samples are mostly SNPs.</li><li>A closed reference from the same lineage as your samples is available.</li><li>A later step needs genome positions, such as recombination filtering or reporting variants by reference coordinate.</li><li>You need reproducible SNP distances for outbreak or cluster definitions.</li></ul>
+  </div>
+  
+  
+  <div class="guidance-col guidance-avoid">
+    <p class="guidance-label">Use another method when</p>
+    <ul>
+      
+      
+        
+        <li>Indels are informative and genomes are small enough to compare in full, as with most viruses. <span class="guidance-alt">Use <a href="/methods/reference-based-consensus-calling/">Reference-based consensus calling</a> instead.</span></li>
+      
+      
+      
+        
+        <li>No closely related reference exists, or samples span lineages diverse enough that much of each genome fails to map. <span class="guidance-alt">Use <a href="/methods/reference-free-snp-calling/">Reference-free SNP calling</a> instead.</span></li>
+      
+      
+      
+        <li>The organism is diploid and no ploidy-aware caller is used, since heterozygous sites will be miscalled.</li>
+      
+      
+    </ul>
+  </div>
+  
+  
+</div>
+
+
+      
+      <p class="impl-inline">Snippy · CFSAN SNP Pipeline</p>
+      
+    </li>
+    
+    <li class="card card-method" id="method-reference-based-consensus-calling">
+      <a class="card-title" href="/methods/reference-based-consensus-calling/">Reference-based consensus calling</a>
+      <p>Map reads to a reference and write a complete consensus sequence for each sample, including indels.</p>
+      
+<div class="guidance">
+  
+  <div class="guidance-col guidance-use">
+    <p class="guidance-label">Use when</p>
+    <ul><li>The genome is small enough to compare as complete sequences, as with most viruses.</li><li>Indels carry signal you want to keep, such as deletions that define lineages.</li><li>You need a genome sequence per sample to share or submit to public databases.</li><li>The library is amplicon-based or otherwise sequenced to high, even depth.</li></ul>
+  </div>
+  
+  
+  <div class="guidance-col guidance-avoid">
+    <p class="guidance-label">Use another method when</p>
+    <ul>
+      
+      
+        
+        <li>The genome is large (bacteria, fungi), so complete per-sample sequences are impractical to align and most positions are identical. <span class="guidance-alt">Use <a href="/methods/reference-based-snp-calling/">Reference-based SNP calling</a> instead.</span></li>
+      
+      
+      
+        
+        <li>The sample is a pure isolate and no reference is close enough to map reads reliably, or the reference may be missing regions present in your samples. <span class="guidance-alt">Use <a href="/methods/de-novo-assembly/">De novo assembly</a> instead.</span></li>
+      
+      
+      
+        <li>Within-sample diversity is the question, such as mixed infections or minor variants, since a consensus keeps only the majority base.</li>
+      
+      
+    </ul>
+  </div>
+  
+  
+</div>
+
+
+      
+      <p class="impl-inline">iVar consensus</p>
+      
+    </li>
+    
+    <li class="card card-method" id="method-reference-free-snp-calling">
+      <a class="card-title" href="/methods/reference-free-snp-calling/">Reference-free SNP calling</a>
+      <p>Identify SNPs shared across samples directly from split k-mers, without a reference genome.</p>
+      
+<div class="guidance">
+  
+  <div class="guidance-col guidance-use">
+    <p class="guidance-label">Use when</p>
+    <ul><li>No suitable reference genome exists for your samples.</li><li>Samples span lineages diverse enough that a single reference would introduce mapping bias.</li><li>You need fast SNP distances for screening or a first look at a new collection.</li></ul>
+  </div>
+  
+  
+  <div class="guidance-col guidance-avoid">
+    <p class="guidance-label">Use another method when</p>
+    <ul>
+      
+      
+        
+        <li>A later step needs genome positions, such as recombination filtering, because only variable sites are kept. <span class="guidance-alt">Use <a href="/methods/reference-based-snp-calling/">Reference-based SNP calling</a> instead.</span></li>
+      
+      
+      
+        
+        <li>Indels carry signal you want to keep. <span class="guidance-alt">Use <a href="/methods/reference-based-consensus-calling/">Reference-based consensus calling</a> instead.</span></li>
+      
+      
+    </ul>
+  </div>
+  
+  
+</div>
+
+
+      
+      <p class="impl-inline">SKA</p>
+      
+    </li>
+    
+  </ul>
+
+  <h2 class="section-title">Protocols using this operation</h2>
+  
+  <ul class="method-list">
+    
+      
+        
+      
+        
+      
+        
+          
+          <li>
+            <a class="pill pill-protocol" href="/protocols/bacterial-phylogenomic-surveillance/">Bacterial phylogenomic surveillance</a>
+            <span class="pill-note">Step 3 ·
+            
+              <a href="/methods/reference-based-snp-calling/">Reference-based SNP calling</a>, <a href="/methods/reference-free-snp-calling/">Reference-free SNP calling</a>
+            
+            </span>
+          </li>
+        
+      
+        
+      
+        
+      
+    
+      
+        
+      
+        
+      
+        
+          
+          <li>
+            <a class="pill pill-protocol" href="/protocols/fungal-phylogenomic-surveillance/">Fungal phylogenomic surveillance</a>
+            <span class="pill-note">Step 3 ·
+            
+              <a href="/methods/reference-based-snp-calling/">Reference-based SNP calling</a>, <a href="/methods/reference-free-snp-calling/">Reference-free SNP calling</a>
+            
+            </span>
+          </li>
+        
+      
+        
+      
+    
+      
+        
+      
+        
+          
+          <li>
+            <a class="pill pill-protocol" href="/protocols/viral-phylogenomic-surveillance/">Viral phylogenomic surveillance</a>
+            <span class="pill-note">Step 2 ·
+            
+              <a href="/methods/reference-based-consensus-calling/">Reference-based consensus calling</a>, <a href="/methods/de-novo-assembly/">De novo assembly</a>
+            
+            </span>
+          </li>
+        
+      
+        
+      
+        
+      
+    
+  </ul>
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 <a href="https://pgcoe.github.io/">Pathogen Genomics Centers of Excellence</a></p>
+    <p class="footer-note">Protocols are built from <strong>operations</strong> (what is done) and <strong>methods</strong> (how it is done).</p>
+  </footer>
+  <script src="/assets/js/filter.js" defer></script>
+</body>
+</html>

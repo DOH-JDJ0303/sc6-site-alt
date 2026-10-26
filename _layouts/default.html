@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title and page.url != "/" %}{{ page.title }} · {% endif %}{{ site.title }}{% if site.network.name %} · {{ site.network.name }}{% endif %}</title>
+  <meta name="description" content="{{ page.summary | default: page.lede | default: site.description | strip_html | strip_newlines }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+  {% assign section = page.collection | default: page.section %}
+
+  {% if site.network.links %}
+  <nav class="network-nav" aria-label="{{ site.network.name | default: 'Network' }}">
+    {% for link in site.network.links %}
+    <a href="{{ link.url }}"{% if link.active %} class="is-active"{% endif %}>{{ link.title }}</a>
+    {% endfor %}
+  </nav>
+  {% endif %}
+
+  <header class="hub-bar">
+    <div class="wrap hub-bar-inner">
+      <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <nav class="site-nav" aria-label="Protocol hub">
+        <a class="nav-question{% if section == 'questions' %} is-active{% endif %}" href="{{ '/questions/' | relative_url }}">Questions</a>
+        <a class="nav-protocol{% if section == 'protocols' %} is-active{% endif %}" href="{{ '/protocols/' | relative_url }}">Protocols</a>
+        <a class="nav-operation{% if section == 'operations' %} is-active{% endif %}" href="{{ '/operations/' | relative_url }}">Operations</a>
+        <a class="nav-method{% if section == 'methods' %} is-active{% endif %}" href="{{ '/methods/' | relative_url }}">Methods</a>
+      </nav>
+    </div>
+  </header>
+
+  {% comment %} White title band, matching the PGCoE page header. {% endcomment %}
+  <section class="page-head">
+    <div class="wrap page-head-inner">
+      <div class="page-head-text">
+        {% case page.collection %}
+        {% when "questions" %}
+          <p class="eyebrow eyebrow-question"><a href="{{ '/questions/' | relative_url }}">Question</a></p>
+        {% when "protocols" %}
+          <p class="eyebrow eyebrow-protocol"><a href="{{ '/protocols/' | relative_url }}">Protocol</a></p>
+        {% when "operations" %}
+          <p class="eyebrow eyebrow-operation"><a href="{{ '/operations/' | relative_url }}">Operation</a></p>
+        {% when "methods" %}
+          {% assign head_op = site.operations | where: "slug", page.operation | first %}
+          <p class="eyebrow eyebrow-method"><a href="{{ '/methods/' | relative_url }}">Method</a>{% if head_op %}<span class="sep">/</span><a class="link-operation" href="{{ head_op.url | relative_url }}">{{ head_op.title }}</a>{% endif %}</p>
+        {% else %}
+          {% if page.eyebrow %}<p class="eyebrow">{{ page.eyebrow }}</p>{% endif %}
+        {% endcase %}
+        <h1>{% if page.url == "/" %}{{ site.title }}{% else %}{{ page.title }}{% endif %}</h1>
+        {% assign lede = page.summary | default: page.lede %}
+        {% if page.url == "/" %}{% assign lede = site.description %}{% endif %}
+        {% if lede %}<p class="lede">{{ lede }}</p>{% endif %}
+      </div>
+      {% if site.network.graphic %}
+      <div class="page-head-graphic">
+        <a href="{{ site.network.url }}"><img src="{{ site.network.graphic | relative_url }}" alt="{{ site.network.name }}"></a>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+
+  <main class="content-band">
+    <div class="wrap">
+      {{ content }}
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; {{ site.time | date: "%Y" }} {% if site.network.url %}<a href="{{ site.network.url }}">{{ site.network.footer | default: site.network.name }}</a>{% else %}{{ site.network.footer | default: site.title }}{% endif %}</p>
+    <p class="footer-note">Protocols are built from <strong>operations</strong> (what is done) and <strong>methods</strong> (how it is done).</p>
+  </footer>
+  <script src="{{ '/assets/js/filter.js' | relative_url }}" defer></script>
+</body>
+</html>

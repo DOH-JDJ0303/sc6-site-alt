@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Iterative recombination detection · Genomic Analysis Protocols · PGCoE Network</title>
+  <meta name="description" content="Alternate between tree building and detecting regions of elevated SNP density until the result converges.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  
+
+  
+  <nav class="network-nav" aria-label="PGCoE Network">
+    
+    <a href="https://pgcoe.github.io/">Home</a>
+    
+    <a href="https://pgcoe.github.io/protocols.html">Sequencing Protocols</a>
+    
+    <a href="https://pgcoe.github.io/workflows.html">Bioinformatics Workflows</a>
+    
+    <a href="https://pgcoe.github.io/response.html">Response and Readiness</a>
+    
+    <a href="https://pgcoe.github.io/dataviz.html">Data and Visualization</a>
+    
+    <a href="https://pgcoe.github.io/education.html">Education</a>
+    
+  </nav>
+  
+
+  <header class="hub-bar">
+    <div class="wrap hub-bar-inner">
+      <a class="brand" href="/">Genomic Analysis Protocols</a>
+      <nav class="site-nav" aria-label="Protocol hub">
+        <a class="nav-question" href="/questions/">Questions</a>
+        <a class="nav-protocol" href="/protocols/">Protocols</a>
+        <a class="nav-operation" href="/operations/">Operations</a>
+        <a class="nav-method is-active" href="/methods/">Methods</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <section class="page-head">
+    <div class="wrap page-head-inner">
+      <div class="page-head-text">
+        
+          
+          <p class="eyebrow eyebrow-method"><a href="/methods/">Method</a><span class="sep">/</span><a class="link-operation" href="/operations/recombination-filtering/">Recombination filtering</a></p>
+        
+        <h1>Iterative recombination detection</h1>
+        
+        
+        <p class="lede">Alternate between tree building and detecting regions of elevated SNP density until the result converges.</p>
+      </div>
+      
+      <div class="page-head-graphic">
+        <a href="https://pgcoe.github.io/"><img src="/assets/img/pgcoe-network-graphic-element.png" alt="PGCoE Network"></a>
+      </div>
+      
+    </div>
+  </section>
+
+  <main class="content-band">
+    <div class="wrap">
+      
+<article class="entry entry-method">
+
+  
+  <h2 class="section-title section-title-first">When to use this method</h2>
+  
+<div class="guidance">
+  
+  <div class="guidance-col guidance-use">
+    <p class="guidance-label">Use when</p>
+    <ul><li>Samples are closely related, such as a single lineage or outbreak sharing a recent common ancestor.</li><li>You want a recombination-filtered alignment and a starting tree in one step.</li><li>No tree exists yet for your samples.</li></ul>
+  </div>
+  
+  
+  <div class="guidance-col guidance-avoid">
+    <p class="guidance-label">Use another method when</p>
+    <ul>
+      
+      
+        
+        <li>You need estimates of recombination parameters, such as the relative effect of recombination and mutation. <span class="guidance-alt">Use <a href="/methods/clonal-frame-inference/">Clonal frame inference</a> instead.</span></li>
+      
+      
+      
+        <li>The collection spans many distantly related lineages, where run time grows and detection becomes less reliable.</li>
+      
+      
+    </ul>
+  </div>
+  
+  
+</div>
+
+
+  
+
+  <div class="meta-grid">
+    <div class="meta-card">
+      <p class="label">Operation</p>
+      
+      <a class="pill pill-operation" href="/operations/recombination-filtering/">Recombination filtering</a>
+      
+    </div>
+    
+    <div class="meta-card">
+      <p class="label">Implementations</p>
+      <ul class="impl-list">
+        
+        <li><a href="https://github.com/nickjcroucher/gubbins">Gubbins</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <div class="meta-card">
+      <p class="label">Needs</p>
+      <p class="dtype-line"><span class="dtype">Full genome alignment</span>
+</p>
+    </div>
+    
+    
+    <div class="meta-card">
+      <p class="label">Produces</p>
+      <p class="dtype-line"><span class="dtype">Recombination-filtered alignment</span>, <span class="dtype">Phylogenetic tree</span>
+</p>
+    </div>
+    
+  </div>
+
+  
+
+  <div class="prose"><p>Recombinant regions appear as clusters of substitutions on a branch. This method repeatedly builds a tree, flags those clusters, masks them, and rebuilds until no new regions are found.</p>
+</div>
+
+  
+  
+  
+  
+
+  <h2 class="section-title">Used by protocols</h2>
+  
+    
+    <p class="label">Specified by</p>
+    <ul class="method-list"><li><a class="pill pill-protocol" href="/protocols/bacterial-phylogenomic-surveillance/">Bacterial phylogenomic surveillance</a><span class="pill-note">Step 4 (optional)</span></li></ul>
+    
+    
+  
+
+  
+  
+  
+  <h2 class="section-title">Alternative methods</h2>
+  <ul class="method-list">
+    
+    <li><a class="pill pill-method" href="/methods/clonal-frame-inference/">Clonal frame inference</a><span class="pill-note">Model recombination along a fixed tree with a hidden Markov model and infer the clonal genealogy.</span></li>
+    
+  </ul>
+  <a class="find-link" href="/operations/recombination-filtering/#choosing">Compare all methods for recombination filtering →</a>
+  
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 <a href="https://pgcoe.github.io/">Pathogen Genomics Centers of Excellence</a></p>
+    <p class="footer-note">Protocols are built from <strong>operations</strong> (what is done) and <strong>methods</strong> (how it is done).</p>
+  </footer>
+  <script src="/assets/js/filter.js" defer></script>
+</body>
+</html>

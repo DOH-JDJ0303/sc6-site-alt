@@ -1,0 +1,110 @@
+---
+layout: default
+---
+{% assign op = site.operations | where: "slug", page.operation | first %}
+<article class="entry entry-method">
+
+  {% if page.use_when or page.avoid_when or page.combine_with %}
+  <h2 class="section-title section-title-first">When to use this method</h2>
+  {% include method-guidance.html method=page %}
+  {% endif %}
+
+  <div class="meta-grid">
+    <div class="meta-card">
+      <p class="label">Operation</p>
+      {% if op %}
+      <a class="pill pill-operation" href="{{ op.url | relative_url }}">{{ op.title }}</a>
+      {% else %}
+      <span class="pill missing">Unknown operation: <code>{{ page.operation }}</code></span>
+      {% endif %}
+    </div>
+    {% if page.implementations %}
+    <div class="meta-card">
+      <p class="label">Implementations</p>
+      <ul class="impl-list">
+        {% for impl in page.implementations %}
+        <li>{% if impl.url %}<a href="{{ impl.url }}">{{ impl.name }}</a>{% else %}{{ impl.name }}{% endif %}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    {% if page.requires %}
+    <div class="meta-card">
+      <p class="label">Needs</p>
+      <p class="dtype-line">{% include data-types.html items=page.requires %}</p>
+    </div>
+    {% endif %}
+    {% if page.produces %}
+    <div class="meta-card">
+      <p class="label">Produces</p>
+      <p class="dtype-line">{% include data-types.html items=page.produces %}</p>
+    </div>
+    {% endif %}
+  </div>
+
+  {% if page.diagram %}
+  <h2 class="section-title">How it works</h2>
+  {% include method-diagram.html method=page %}
+  {% endif %}
+
+  {% if content != "" %}<div class="prose">{{ content }}</div>{% endif %}
+
+  {% comment %}
+    A protocol "specifies" this method when a step lists it explicitly.
+    It "permits" this method when a step names this method's operation
+    without restricting methods.
+  {% endcomment %}
+  {% assign specified_html = "" %}
+  {% assign permitted_html = "" %}
+  {% for p in site.protocols %}
+    {% assign spec_steps = "" %}
+    {% assign perm_steps = "" %}
+    {% for step in p.steps %}
+      {% if step.operation == page.operation %}
+        {% assign n_methods = step.methods | size %}{% if n_methods > 0 %}
+          {% if step.methods contains page.slug %}
+            {% if spec_steps != "" %}{% assign spec_steps = spec_steps | append: ", " %}{% endif %}{% assign spec_steps = spec_steps | append: forloop.index %}{% if step.optional %}{% assign spec_steps = spec_steps | append: " (optional)" %}{% endif %}
+          {% endif %}
+        {% else %}
+          {% if perm_steps != "" %}{% assign perm_steps = perm_steps | append: ", " %}{% endif %}{% assign perm_steps = perm_steps | append: forloop.index %}{% if step.optional %}{% assign perm_steps = perm_steps | append: " (optional)" %}{% endif %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    {% if spec_steps != "" %}
+      {% assign nums = spec_steps %}
+      {% capture row %}<li><a class="pill pill-protocol" href="{{ p.url | relative_url }}">{{ p.title }}</a><span class="pill-note">{% if nums contains "," %}Steps{% else %}Step{% endif %} {{ nums }}</span></li>{% endcapture %}
+      {% assign specified_html = specified_html | append: row %}
+    {% elsif perm_steps != "" %}
+      {% assign nums = perm_steps %}
+      {% capture row %}<li><a class="pill pill-protocol" href="{{ p.url | relative_url }}">{{ p.title }}</a><span class="pill-note">{% if nums contains "," %}Steps{% else %}Step{% endif %} {{ nums }}</span></li>{% endcapture %}
+      {% assign permitted_html = permitted_html | append: row %}
+    {% endif %}
+  {% endfor %}
+
+  <h2 class="section-title">Used by protocols</h2>
+  {% if specified_html == "" and permitted_html == "" %}
+    <p class="muted">No protocols use this method yet.</p>
+  {% else %}
+    {% if specified_html != "" %}
+    <p class="label">Specified by</p>
+    <ul class="method-list">{{ specified_html }}</ul>
+    {% endif %}
+    {% if permitted_html != "" %}
+    <p class="label">Permitted by <span class="hint">(step allows any method for this operation)</span></p>
+    <ul class="method-list">{{ permitted_html }}</ul>
+    {% endif %}
+  {% endif %}
+
+  {% if op %}
+  {% assign siblings = site.methods | where: "operation", page.operation | sort: "title" %}
+  {% if siblings.size > 1 %}
+  <h2 class="section-title">{% if op.selection == "multiple" %}Other methods for this operation{% else %}Alternative methods{% endif %}</h2>
+  <ul class="method-list">
+    {% for m in siblings %}{% if m.slug != page.slug %}
+    <li><a class="pill pill-method" href="{{ m.url | relative_url }}">{{ m.title }}</a>{% if m.summary %}<span class="pill-note">{{ m.summary }}</span>{% endif %}</li>
+    {% endif %}{% endfor %}
+  </ul>
+  <a class="find-link" href="{{ op.url | relative_url }}#choosing">Compare all methods for {{ op.title | downcase }} →</a>
+  {% endif %}
+  {% endif %}
+</article>

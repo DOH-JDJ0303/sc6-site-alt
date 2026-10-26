@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Genome alignment · Genomic Analysis Protocols · PGCoE Network</title>
+  <meta name="description" content="Arrange per-sample genome sequences so that equivalent positions line up across every sample.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  
+
+  
+  <nav class="network-nav" aria-label="PGCoE Network">
+    
+    <a href="https://pgcoe.github.io/">Home</a>
+    
+    <a href="https://pgcoe.github.io/protocols.html">Sequencing Protocols</a>
+    
+    <a href="https://pgcoe.github.io/workflows.html">Bioinformatics Workflows</a>
+    
+    <a href="https://pgcoe.github.io/response.html">Response and Readiness</a>
+    
+    <a href="https://pgcoe.github.io/dataviz.html">Data and Visualization</a>
+    
+    <a href="https://pgcoe.github.io/education.html">Education</a>
+    
+  </nav>
+  
+
+  <header class="hub-bar">
+    <div class="wrap hub-bar-inner">
+      <a class="brand" href="/">Genomic Analysis Protocols</a>
+      <nav class="site-nav" aria-label="Protocol hub">
+        <a class="nav-question" href="/questions/">Questions</a>
+        <a class="nav-protocol" href="/protocols/">Protocols</a>
+        <a class="nav-operation is-active" href="/operations/">Operations</a>
+        <a class="nav-method" href="/methods/">Methods</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <section class="page-head">
+    <div class="wrap page-head-inner">
+      <div class="page-head-text">
+        
+          <p class="eyebrow eyebrow-operation"><a href="/operations/">Operation</a></p>
+        
+        <h1>Genome alignment</h1>
+        
+        
+        <p class="lede">Arrange per-sample genome sequences so that equivalent positions line up across every sample.</p>
+      </div>
+      
+      <div class="page-head-graphic">
+        <a href="https://pgcoe.github.io/"><img src="/assets/img/pgcoe-network-graphic-element.png" alt="PGCoE Network"></a>
+      </div>
+      
+    </div>
+  </section>
+
+  <main class="content-band">
+    <div class="wrap">
+      
+<article class="entry entry-operation">
+
+  
+  <div class="meta-grid">
+    
+    <div class="meta-card">
+      <p class="label">Inputs</p>
+      <ul class="io-list"><li>Per-sample genome sequences</li></ul>
+    </div>
+    
+    
+    <div class="meta-card">
+      <p class="label">Outputs</p>
+      <ul class="io-list"><li>Whole-genome alignment (FASTA)</li></ul>
+    </div>
+    
+  </div>
+  
+
+  <div class="prose"><p>An alignment places homologous positions from every sample in the same column, so differences between samples can be counted and modeled. It is needed whenever the previous step produced one sequence per sample rather than an alignment.</p>
+</div>
+
+  
+  <h2 class="section-title" id="choosing">Methods <span class="count">1</span></h2>
+  
+  
+  <ul class="card-list">
+    
+    <li class="card card-method" id="method-multiple-sequence-alignment">
+      <a class="card-title" href="/methods/multiple-sequence-alignment/">Multiple sequence alignment</a>
+      <p>Align per-sample genome sequences so equivalent positions line up, optionally anchored to a reference to standardize coordinates.</p>
+      
+<div class="guidance">
+  
+  <div class="guidance-col guidance-use">
+    <p class="guidance-label">Use when</p>
+    <ul><li>You have one genome sequence per sample (or per segment), from consensus calling or curated de novo assemblies.</li><li>Indels should be kept in the alignment.</li><li>You want positions reported in standard reference coordinates. Use the reference-guided mode described below.</li></ul>
+  </div>
+  
+  
+  
+</div>
+
+
+      
+      <p class="impl-inline">MAFFT · Nextclade (reference-guided) · minimap2 + gofasta (reference-guided)</p>
+      
+    </li>
+    
+  </ul>
+
+  <h2 class="section-title">Protocols using this operation</h2>
+  
+  <ul class="method-list">
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+      
+        
+      
+        
+      
+        
+          
+          <li>
+            <a class="pill pill-protocol" href="/protocols/viral-phylogenomic-surveillance/">Viral phylogenomic surveillance</a>
+            <span class="pill-note">Step 3 ·
+            
+              <a href="/methods/multiple-sequence-alignment/">Multiple sequence alignment</a>
+            
+            </span>
+          </li>
+        
+      
+        
+      
+    
+  </ul>
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 <a href="https://pgcoe.github.io/">Pathogen Genomics Centers of Excellence</a></p>
+    <p class="footer-note">Protocols are built from <strong>operations</strong> (what is done) and <strong>methods</strong> (how it is done).</p>
+  </footer>
+  <script src="/assets/js/filter.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+---
+title: Operations
+eyebrow: Browse
+lede: >-
+  General analytical steps, defined by what they accomplish rather than how. Each operation can be carried out by one or more methods.
+section: operations
+---
+<header class="index-head">
+  <input class="filter" type="search" placeholder="Filter operations…" data-filter-target="#operation-list" aria-label="Filter operations">
+</header>
+
+<ul class="card-list" id="operation-list">
+  {% assign operations = site.operations | sort: "order" %}
+  {% for op in operations %}
+  {% assign op_methods = site.methods | where: "operation", op.slug | sort: "title" %}
+  <li class="card card-operation" data-search="{{ op.title | downcase }} {{ op.summary | downcase }} {{ op_methods | map: 'title' | join: ' ' | downcase }}">
+    <a class="card-title" href="{{ op.url | relative_url }}">{{ op.title }}</a>
+    {% if op.summary %}<p>{{ op.summary }}</p>{% endif %}
+    <ul class="pill-row">
+      {% for m in op_methods %}
+      <li><a class="pill pill-method" href="{{ m.url | relative_url }}">{{ m.title }}</a></li>
+      {% else %}
+      <li class="muted">No methods yet</li>
+      {% endfor %}
+    </ul>
+  </li>
+  {% endfor %}
+</ul>
+<p class="muted filter-empty" hidden>No operations match.</p>

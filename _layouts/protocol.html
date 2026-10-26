@@ -1,0 +1,208 @@
+---
+layout: default
+---
+<article class="entry entry-protocol">
+
+  {% if page.organisms %}
+  <p class="tags">
+    {% for o in page.organisms %}<span class="tag">{{ o }}</span>{% endfor %}
+  </p>
+  {% endif %}
+
+  {% if content != "" %}<div class="prose">{{ content }}</div>{% endif %}
+
+  {% comment %} Questions whose answer for some pathogen group includes this protocol. {% endcomment %}
+  {% assign answers_html = "" %}
+  {% assign answers_seen = "|" %}
+  {% assign questions = site.questions | sort: "order" %}
+  {% for q in questions %}
+    {% for r in q.routes %}
+      {% for item in r.protocols %}
+        {% assign rslug = item.protocol | default: item %}
+        {% assign qkey = "|" | append: q.slug | append: "|" %}
+        {% if rslug == page.slug %}{% unless answers_seen contains qkey %}
+          {% assign answers_seen = answers_seen | append: q.slug | append: "|" %}
+          {% assign n_with = r.protocols | size %}
+          {% capture row %}<li><a href="{{ q.url | relative_url }}">{{ q.title }}</a>{% if n_with > 1 %} <span class="pill-note">used with another protocol</span>{% endif %}</li>{% endcapture %}
+          {% assign answers_html = answers_html | append: row %}
+        {% endunless %}{% endif %}
+      {% endfor %}
+    {% endfor %}
+  {% endfor %}
+  {% if answers_html != "" %}
+  <div class="meta-card answers-card">
+    <p class="label">Helps answer</p>
+    <ul class="answers-list">{{ answers_html }}</ul>
+  </div>
+  {% endif %}
+
+  {% if page.inputs %}
+  <div class="meta-card inputs-card">
+    <p class="label">Starting inputs</p>
+    <p class="dtype-line">{% include data-types.html items=page.inputs %}</p>
+  </div>
+  {% endif %}
+
+  <div class="section-title steps-head">
+    <h2>Steps</h2>
+    <button type="button" class="reset-path" hidden>Reset choices</button>
+  </div>
+  <p class="builder-help" hidden>Choose a method at each step. Later steps only offer methods whose required inputs are produced by your earlier choices.</p>
+
+  <ol class="steps" id="protocol-steps" data-inputs='{{ page.inputs | jsonify }}'>
+    {% for step in page.steps %}
+    {% assign step_num = forloop.index %}
+    {% assign op = site.operations | where: "slug", step.operation | first %}
+    {% comment %} A step accepts several methods when its operation's methods are complementary (selection: multiple); the step can override. {% endcomment %}
+    {% assign selection = step.selection | default: op.selection | default: "single" %}
+    {% if selection == "multiple" %}{% assign input_type = "checkbox" %}{% else %}{% assign input_type = "radio" %}{% endif %}
+    <li class="step{% if step.optional %} is-optional{% endif %}{% if selection == "multiple" %} is-multiple{% endif %}" data-step="{{ step_num }}" data-operation="{{ step.operation }}"{% if step.optional %} data-optional="true"{% endif %}{% if selection == "multiple" %} data-multiple="true"{% endif %}>
+      <div class="step-head">
+        <span class="step-num">{{ step_num }}</span>
+        <div>
+          {% if op %}
+          <h3 class="step-title"><a class="link-operation" href="{{ op.url | relative_url }}">{{ op.title }}</a>{% if step.optional %} <span class="badge-optional">Optional</span>{% endif %}</h3>
+          {% if op.summary %}<p class="step-summary">{{ op.summary }}</p>{% endif %}
+          {% else %}
+          <h3 class="step-title missing">Unknown operation: <code>{{ step.operation }}</code></h3>
+          {% endif %}
+        </div>
+      </div>
+
+      {% if step.notes %}<div class="step-notes prose">{{ step.notes | markdownify }}</div>{% endif %}
+
+      <div class="step-methods">
+        {% assign n_methods = step.methods | size %}
+        {% if n_methods > 0 %}
+          {% assign candidates = "" | split: "" %}
+          {% for m_slug in step.methods %}
+            {% assign m = site.methods | where: "slug", m_slug | first %}
+            {% if m %}{% assign candidates = candidates | push: m %}{% else %}<p><span class="pill missing">Unknown method: <code>{{ m_slug }}</code></span></p>{% endif %}
+          {% endfor %}
+          <p class="label">{% if n_methods == 1 %}Specified method{% elsif selection == "multiple" %}Specified methods (select one or more){% else %}Specified methods (choose one){% endif %}</p>
+        {% else %}
+          {% assign candidates = site.methods | where: "operation", step.operation | sort: "title" %}
+          <p class="label">{% if selection == "multiple" %}Any methods for this operation (select one or more){% else %}Any method for this operation{% endif %}</p>
+        {% endif %}
+        {% if selection == "multiple" and candidates.size > 1 %}<p class="multi-help">These methods can be combined. Selected methods are applied in the order listed, and a method can use the output of one selected above it.</p>{% endif %}
+
+        <ul class="method-options">
+          {% for m in candidates %}
+          <li class="method-option"
+              data-method="{{ m.slug }}"
+              data-title="{{ m.title | escape }}"
+              data-requires='{{ m.requires | jsonify }}'
+              data-produces='{{ m.produces | jsonify }}'>
+            <label class="option-pick">
+              <input class="method-radio" type="{{ input_type }}" name="step-{{ step_num }}" value="{{ m.slug }}">
+              <span class="option-title">{{ m.title }}</span>
+            </label>
+            <a class="option-link" href="{{ m.url | relative_url }}">Details</a>
+            {% if m.summary %}<p class="option-summary">{{ m.summary }}</p>{% endif %}
+            {% if m.requires or m.produces %}
+            <p class="option-io">
+              {% if m.requires %}<span class="io-key">Needs</span> {% include data-types.html items=m.requires %}{% endif %}
+              {% if m.produces %}<span class="io-sep">→</span> <span class="io-key">Produces</span> {% include data-types.html items=m.produces %}{% endif %}
+            </p>
+            {% endif %}
+            {% if candidates.size > 1 %}{% include method-guidance.html method=m compact=true %}{% endif %}
+            <p class="option-status" hidden></p>
+          </li>
+          {% else %}
+          <li class="muted">No methods documented for this operation yet.</li>
+          {% endfor %}
+          {% if step.optional %}
+          <li class="method-option option-skip" data-method="-" data-title="Skipped" data-requires="[]" data-produces="[]">
+            <label class="option-pick">
+              <input class="method-radio" type="{{ input_type }}" name="step-{{ step_num }}" value="-">
+              <span class="option-title">Skip this step</span>
+            </label>
+            <p class="option-summary">Continue without this step. Later steps can't use anything it would have produced.</p>
+            <p class="option-status" hidden></p>
+          </li>
+          {% endif %}
+        </ul>
+        <p class="step-status" hidden></p>
+      </div>
+    </li>
+    {% endfor %}
+  </ol>
+
+  <section class="path-summary" hidden>
+    <h2 class="section-title">Your selected path</h2>
+    <ol class="path-list" aria-live="polite"></ol>
+    <p class="label">Data produced</p>
+    <p class="dtype-line path-outputs"></p>
+
+    <div class="export-panel">
+      <p class="label">Export this path</p>
+      <p class="export-note" hidden></p>
+      <div class="export-actions">
+        <button type="button" class="export-btn" data-export="print">Print / Save as PDF</button>
+        <button type="button" class="export-btn" data-export="markdown">Download Markdown</button>
+        <button type="button" class="export-btn" data-export="json">Download JSON</button>
+        <button type="button" class="export-btn export-btn-quiet" data-export="link">Copy link</button>
+      </div>
+      <p class="export-feedback" role="status"></p>
+    </div>
+  </section>
+</article>
+
+{% comment %}
+  Everything an export needs, embedded at build time so exports work offline
+  and always match the method pages they were built from.
+  Method content is passed through markdownify so it is HTML whether or not
+  that document has already been rendered.
+{% endcomment %}
+<script type="application/json" id="protocol-data">
+{
+  "slug": {{ page.slug | jsonify }},
+  "title": {{ page.title | jsonify }},
+  "summary": {{ page.summary | jsonify }},
+  "organisms": {{ page.organisms | jsonify }},
+  "inputs": {{ page.inputs | jsonify }},
+  "intro_html": {{ content | strip | jsonify }},
+  "site": {
+    "title": {{ site.title | jsonify }},
+    "built": {{ site.time | date_to_xmlschema | jsonify }},
+    "revision": {{ site.github.build_revision | jsonify }}
+  },
+  "steps": [
+    {% for step in page.steps %}{% assign op = site.operations | where: "slug", step.operation | first %}{% assign selection = step.selection | default: op.selection | default: "single" %}{
+      "operation": {{ step.operation | jsonify }},
+      "optional": {% if step.optional %}true{% else %}false{% endif %},
+      "multiple": {% if selection == "multiple" %}true{% else %}false{% endif %},
+      "notes": {{ step.notes | jsonify }},
+      "notes_html": {% if step.notes %}{{ step.notes | markdownify | strip | jsonify }}{% else %}null{% endif %}
+    }{% unless forloop.last %},{% endunless %}{% endfor %}
+  ],
+  "operations": {
+    {% for op in site.operations %}{{ op.slug | jsonify }}: {
+      "title": {{ op.title | jsonify }},
+      "summary": {{ op.summary | jsonify }},
+      "url": {{ op.url | relative_url | jsonify }},
+      "multiple": {% if op.selection == "multiple" %}true{% else %}false{% endif %}
+    }{% unless forloop.last %},{% endunless %}{% endfor %}
+  },
+  "methods": {
+    {% for m in site.methods %}{{ m.slug | jsonify }}: {
+      "title": {{ m.title | jsonify }},
+      "operation": {{ m.operation | jsonify }},
+      "summary": {{ m.summary | jsonify }},
+      "url": {{ m.url | relative_url | jsonify }},
+      "description_html": {{ m.content | markdownify | strip | jsonify }},
+      "implementations": {{ m.implementations | jsonify }},
+      "requires": {{ m.requires | jsonify }},
+      "produces": {{ m.produces | jsonify }},
+      "use_when": {{ m.use_when | jsonify }},
+      "avoid_when": {{ m.avoid_when | jsonify }},
+      "combine_with": {{ m.combine_with | jsonify }},
+      "diagram_caption": {{ m.diagram_caption | jsonify }},
+      "diagram_svg": {% if m.diagram %}{% capture dsvg %}{% include diagrams/{{ m.diagram }} %}{% endcapture %}{{ dsvg | strip | jsonify }}{% else %}null{% endif %}
+    }{% unless forloop.last %},{% endunless %}{% endfor %}
+  }
+}
+</script>
+<script type="application/json" id="data-types">{{ site.data.data_types | jsonify }}</script>
+<script src="{{ '/assets/js/protocol-builder.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/protocol-export.js' | relative_url }}" defer></script>

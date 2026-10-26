@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reference-free SNP calling · Genomic Analysis Protocols · PGCoE Network</title>
+  <meta name="description" content="Identify SNPs shared across samples directly from split k-mers, without a reference genome.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  
+
+  
+  <nav class="network-nav" aria-label="PGCoE Network">
+    
+    <a href="https://pgcoe.github.io/">Home</a>
+    
+    <a href="https://pgcoe.github.io/protocols.html">Sequencing Protocols</a>
+    
+    <a href="https://pgcoe.github.io/workflows.html">Bioinformatics Workflows</a>
+    
+    <a href="https://pgcoe.github.io/response.html">Response and Readiness</a>
+    
+    <a href="https://pgcoe.github.io/dataviz.html">Data and Visualization</a>
+    
+    <a href="https://pgcoe.github.io/education.html">Education</a>
+    
+  </nav>
+  
+
+  <header class="hub-bar">
+    <div class="wrap hub-bar-inner">
+      <a class="brand" href="/">Genomic Analysis Protocols</a>
+      <nav class="site-nav" aria-label="Protocol hub">
+        <a class="nav-question" href="/questions/">Questions</a>
+        <a class="nav-protocol" href="/protocols/">Protocols</a>
+        <a class="nav-operation" href="/operations/">Operations</a>
+        <a class="nav-method is-active" href="/methods/">Methods</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <section class="page-head">
+    <div class="wrap page-head-inner">
+      <div class="page-head-text">
+        
+          
+          <p class="eyebrow eyebrow-method"><a href="/methods/">Method</a><span class="sep">/</span><a class="link-operation" href="/operations/genome-assembly-and-variant-calling/">Genome assembly and variant calling</a></p>
+        
+        <h1>Reference-free SNP calling</h1>
+        
+        
+        <p class="lede">Identify SNPs shared across samples directly from split k-mers, without a reference genome.</p>
+      </div>
+      
+      <div class="page-head-graphic">
+        <a href="https://pgcoe.github.io/"><img src="/assets/img/pgcoe-network-graphic-element.png" alt="PGCoE Network"></a>
+      </div>
+      
+    </div>
+  </section>
+
+  <main class="content-band">
+    <div class="wrap">
+      
+<article class="entry entry-method">
+
+  
+  <h2 class="section-title section-title-first">When to use this method</h2>
+  
+<div class="guidance">
+  
+  <div class="guidance-col guidance-use">
+    <p class="guidance-label">Use when</p>
+    <ul><li>No suitable reference genome exists for your samples.</li><li>Samples span lineages diverse enough that a single reference would introduce mapping bias.</li><li>You need fast SNP distances for screening or a first look at a new collection.</li></ul>
+  </div>
+  
+  
+  <div class="guidance-col guidance-avoid">
+    <p class="guidance-label">Use another method when</p>
+    <ul>
+      
+      
+        
+        <li>A later step needs genome positions, such as recombination filtering, because only variable sites are kept. <span class="guidance-alt">Use <a href="/methods/reference-based-snp-calling/">Reference-based SNP calling</a> instead.</span></li>
+      
+      
+      
+        
+        <li>Indels carry signal you want to keep. <span class="guidance-alt">Use <a href="/methods/reference-based-consensus-calling/">Reference-based consensus calling</a> instead.</span></li>
+      
+      
+    </ul>
+  </div>
+  
+  
+</div>
+
+
+  
+
+  <div class="meta-grid">
+    <div class="meta-card">
+      <p class="label">Operation</p>
+      
+      <a class="pill pill-operation" href="/operations/genome-assembly-and-variant-calling/">Genome assembly and variant calling</a>
+      
+    </div>
+    
+    <div class="meta-card">
+      <p class="label">Implementations</p>
+      <ul class="impl-list">
+        
+        <li><a href="https://github.com/bacpop/ska.rust">SKA</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <div class="meta-card">
+      <p class="label">Needs</p>
+      <p class="dtype-line"><span class="dtype">Clean reads</span>
+</p>
+    </div>
+    
+    
+    <div class="meta-card">
+      <p class="label">Produces</p>
+      <p class="dtype-line"><span class="dtype">SNP-only alignment</span>
+</p>
+    </div>
+    
+  </div>
+
+  
+  <h2 class="section-title">How it works</h2>
+  
+<figure class="method-diagram">
+  <div class="diagram-scroll"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 316" role="img" aria-labelledby="reference-free-snp-calling-title reference-free-snp-calling-desc" class="diagram-svg">
+  <title id="reference-free-snp-calling-title">Reference-free SNP calling: split k-mers whose flanking sequence matches across samples are grouped, and the middle base of each becomes one column of the SNP alignment.</title>
+  <desc id="reference-free-snp-calling-desc">Each sample is broken into split k-mers: two flanks that must match exactly and a middle base that may differ. Split k-mers with the same flanks are grouped across samples, and their middle bases become the columns of the SNP alignment, with no reference genome and no genome positions.</desc>
+  <text x="20" y="26" font-family="Raleway, Lato, Arial, sans-serif" font-size="14" font-weight="700" fill="#055A5E" text-anchor="start">1. Match split k-mers across samples</text>
+  <text x="118" y="56" font-family="Raleway, Lato, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#055A5E" text-anchor="start">Split k-mer 1</text>
+  <text x="106" y="79" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="400" fill="#4B5D5F" text-anchor="end">Sample A</text>
+  <rect x="119" y="64" width="166" height="20" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="130.0" y="79" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="154.0" y="79" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="178.0" y="79" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="202.0" y="79" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="226.0" y="79" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="250.0" y="79" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="274.0" y="79" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <rect x="191" y="64" width="22" height="20" rx="2" fill="none" stroke="#95560A" stroke-width="1.4"/>
+  <text x="106" y="103" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="400" fill="#4B5D5F" text-anchor="end">Sample B</text>
+  <rect x="119" y="88" width="166" height="20" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="130.0" y="103" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="154.0" y="103" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="178.0" y="103" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <rect x="192" y="89" width="20" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="202.0" y="103" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#95560A" text-anchor="middle">C</text>
+  <text x="226.0" y="103" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="250.0" y="103" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="274.0" y="103" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <rect x="191" y="88" width="22" height="20" rx="2" fill="none" stroke="#95560A" stroke-width="1.4"/>
+  <text x="106" y="127" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="400" fill="#4B5D5F" text-anchor="end">Sample C</text>
+  <rect x="119" y="112" width="166" height="20" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="130.0" y="127" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="154.0" y="127" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="178.0" y="127" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="202.0" y="127" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="226.0" y="127" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="250.0" y="127" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="274.0" y="127" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <rect x="191" y="112" width="22" height="20" rx="2" fill="none" stroke="#95560A" stroke-width="1.4"/>
+  <text x="118" y="162" font-family="Raleway, Lato, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#055A5E" text-anchor="start">Split k-mer 2</text>
+  <text x="106" y="185" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="400" fill="#4B5D5F" text-anchor="end">Sample A</text>
+  <rect x="119" y="170" width="166" height="20" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="130.0" y="185" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="154.0" y="185" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="178.0" y="185" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="202.0" y="185" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="226.0" y="185" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="250.0" y="185" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="274.0" y="185" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <rect x="191" y="170" width="22" height="20" rx="2" fill="none" stroke="#95560A" stroke-width="1.4"/>
+  <text x="106" y="209" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="400" fill="#4B5D5F" text-anchor="end">Sample B</text>
+  <rect x="119" y="194" width="166" height="20" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="130.0" y="209" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="154.0" y="209" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="178.0" y="209" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="202.0" y="209" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="226.0" y="209" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="250.0" y="209" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="274.0" y="209" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <rect x="191" y="194" width="22" height="20" rx="2" fill="none" stroke="#95560A" stroke-width="1.4"/>
+  <text x="106" y="233" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="400" fill="#4B5D5F" text-anchor="end">Sample C</text>
+  <rect x="119" y="218" width="166" height="20" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="130.0" y="233" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="154.0" y="233" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">G</text>
+  <text x="178.0" y="233" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <rect x="192" y="219" width="20" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="202.0" y="233" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#95560A" text-anchor="middle">G</text>
+  <text x="226.0" y="233" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">C</text>
+  <text x="250.0" y="233" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="274.0" y="233" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <rect x="191" y="218" width="22" height="20" rx="2" fill="none" stroke="#95560A" stroke-width="1.4"/>
+  <text x="154.0" y="260" font-family="Lato, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#4B5D5F" text-anchor="middle">flank</text>
+  <text x="202.0" y="260" font-family="Raleway, Lato, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#95560A" text-anchor="middle">middle</text>
+  <text x="250.0" y="260" font-family="Lato, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#4B5D5F" text-anchor="middle">flank</text>
+  <line x1="316" y1="102.0" x2="428" y2="102.0" stroke="#027B84" stroke-width="2"/>
+  <polygon points="436,102.0 426,97.0 426,107.0" fill="#027B84"/>
+  <text x="376.0" y="78.0" font-family="Raleway, Lato, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#027B84" text-anchor="middle">collect the</text>
+  <text x="376.0" y="92.0" font-family="Raleway, Lato, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#027B84" text-anchor="middle">middle bases</text>
+  <text x="536" y="26" font-family="Raleway, Lato, Arial, sans-serif" font-size="14" font-weight="700" fill="#055A5E" text-anchor="start">2. SNP alignment</text>
+  <text x="548.0" y="58" font-family="Lato, Arial, sans-serif" font-size="11" font-weight="400" fill="#4B5D5F" text-anchor="middle">k1</text>
+  <text x="572.0" y="58" font-family="Lato, Arial, sans-serif" font-size="11" font-weight="400" fill="#4B5D5F" text-anchor="middle">k2</text>
+  <text x="524" y="81" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="400" fill="#4B5D5F" text-anchor="end">Sample A</text>
+  <rect x="537" y="66" width="46" height="20" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="548.0" y="81" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <text x="572.0" y="81" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="524" y="105" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="400" fill="#4B5D5F" text-anchor="end">Sample B</text>
+  <rect x="537" y="90" width="46" height="20" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <rect x="538" y="91" width="20" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="548.0" y="105" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#95560A" text-anchor="middle">C</text>
+  <text x="572.0" y="105" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">A</text>
+  <text x="524" y="129" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="400" fill="#4B5D5F" text-anchor="end">Sample C</text>
+  <rect x="537" y="114" width="46" height="20" rx="4" fill="#E3F5F9" stroke="#9ED8E6" stroke-width="1"/>
+  <text x="548.0" y="129" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="400" fill="#1B1B1B" text-anchor="middle">T</text>
+  <rect x="562" y="115" width="20" height="18" rx="2" fill="#F7E8D4" stroke="#95560A" stroke-width="1"/>
+  <text x="572.0" y="129" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#95560A" text-anchor="middle">G</text>
+  <text x="444" y="168" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="400" fill="#4B5D5F" text-anchor="start">No reference is used, so the</text>
+  <text x="444" y="184" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="400" fill="#4B5D5F" text-anchor="start">columns have no genome position.</text>
+</svg>
+</div>
+  <figcaption>Split k-mers with identical flanks are matched across samples. Their middle bases become the columns of the SNP alignment, with no reference and no genome positions.</figcaption>
+</figure>
+
+  
+
+  <div class="prose"><p>Variation is detected from split k-mers, which are k-mers that match across samples except at their middle base. SNPs are found directly by comparing samples, so results do not depend on choosing a reference.</p>
+
+<p>The output is an alignment of variable sites only. It is ready for tree building, but it carries no genome positions and does not capture indels. Because positions are unknown, recombination filtering cannot be applied afterward.</p>
+</div>
+
+  
+  
+  
+  
+
+  <h2 class="section-title">Used by protocols</h2>
+  
+    
+    <p class="label">Specified by</p>
+    <ul class="method-list"><li><a class="pill pill-protocol" href="/protocols/bacterial-phylogenomic-surveillance/">Bacterial phylogenomic surveillance</a><span class="pill-note">Step 3</span></li><li><a class="pill pill-protocol" href="/protocols/fungal-phylogenomic-surveillance/">Fungal phylogenomic surveillance</a><span class="pill-note">Step 3</span></li></ul>
+    
+    
+  
+
+  
+  
+  
+  <h2 class="section-title">Alternative methods</h2>
+  <ul class="method-list">
+    
+    <li><a class="pill pill-method" href="/methods/de-novo-assembly/">De novo assembly</a><span class="pill-note">Assemble each sample's genome from its reads alone, without a reference.</span></li>
+    
+    <li><a class="pill pill-method" href="/methods/reference-based-snp-calling/">Reference-based SNP calling</a><span class="pill-note">Map reads to a reference, call SNPs, and combine samples into a core SNP alignment of positions present in every sample.</span></li>
+    
+    <li><a class="pill pill-method" href="/methods/reference-based-consensus-calling/">Reference-based consensus calling</a><span class="pill-note">Map reads to a reference and write a complete consensus sequence for each sample, including indels.</span></li>
+    
+  </ul>
+  <a class="find-link" href="/operations/genome-assembly-and-variant-calling/#choosing">Compare all methods for genome assembly and variant calling →</a>
+  
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 <a href="https://pgcoe.github.io/">Pathogen Genomics Centers of Excellence</a></p>
+    <p class="footer-note">Protocols are built from <strong>operations</strong> (what is done) and <strong>methods</strong> (how it is done).</p>
+  </footer>
+  <script src="/assets/js/filter.js" defer></script>
+</body>
+</html>
